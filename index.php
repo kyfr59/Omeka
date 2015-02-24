@@ -9,8 +9,8 @@
 
 // Bootstrap the application.
 require_once 'bootstrap.php';
-echo "oo";
 // Configure, initialize, and run the application.
+
 $application = new Omeka_Application(APPLICATION_ENV);
 $application->getBootstrap()->setOptions(array(
     'resources' => array(
