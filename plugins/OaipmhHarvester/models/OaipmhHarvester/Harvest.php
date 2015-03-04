@@ -29,6 +29,8 @@ class OaipmhHarvester_Harvest extends Omeka_Record_AbstractRecord
     public $set_name;
     public $set_description;
     public $status;
+    public $day;
+    public $hour;
     public $status_messages;
     public $resumption_token;
     public $initiated;

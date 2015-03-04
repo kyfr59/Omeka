@@ -431,6 +431,7 @@ class File extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             }
         }
         $this->stored = '1';
+        echo "oo";
         $this->save();
     }
     

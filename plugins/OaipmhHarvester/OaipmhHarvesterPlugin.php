@@ -76,6 +76,8 @@ class OaipmhHarvesterPlugin extends Omeka_Plugin_AbstractPlugin
           `base_url` text NOT NULL,
           `metadata_prefix` tinytext NOT NULL,
           `set_spec` text,
+          `day` int NULL,
+          `hour` int NULL,
           `set_name` text,
           `set_description` text,
           `status` enum('queued','in progress','completed','error','deleted','killed') NOT NULL default 'queued',

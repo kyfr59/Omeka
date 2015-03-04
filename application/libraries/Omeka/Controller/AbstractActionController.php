@@ -238,6 +238,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
         }
         
         $this->view->$varName = $record;
+        
     }
     
     /**

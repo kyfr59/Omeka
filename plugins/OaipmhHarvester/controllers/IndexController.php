@@ -208,6 +208,40 @@ class OaipmhHarvester_IndexController extends Omeka_Controller_AbstractActionCon
         $this->_helper->flashMessenger($msg, 'success');
         return $this->_helper->redirector->goto('index');
     }
+
+
+    /**
+     * Webservice witch returns JSON list of automated harvests
+     * 
+     * @return void
+     */
+    public function viewAction()
+    {
+        //$harvestId = $this->_getParam('id');
+        $harvests = $this->_helper->db->getTable('OaipmhHarvester_Harvest')->getAutomatedHarvests();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        $this->_helper->json($harvests);
+    }
+
+    /**
+     * Manage the automated harvests
+     * 
+     * @return void
+     */
+    public function automatedAction()
+    {
+       
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        $harvestId = $this->_getParam('harvest_id');
+        $day = $this->_getParam('day');
+        $hour = $day == null ? null : $this->_getParam('hour');
+        $harvest = $this->_helper->db->getTable('OaipmhHarvester_Harvest')->find($harvestId);
+        $harvest->day = $day == null ? null : $day;
+        $harvest->hour = $hour;
+        $harvest->save();
+        return $this->_helper->redirector->goto('index');
+    }
+
     
     /**
      * Get the available OAI-PMH to Omeka maps, which should correspond to 

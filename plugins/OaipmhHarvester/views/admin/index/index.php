@@ -26,7 +26,32 @@ echo head($head);
 .harvest-status input[type="submit"] {
     margin: .25em 0 0 0;
 }
+
+#ok {
+    display:none;
+}
 </style>
+
+<script>
+jQuery(document).ready(function() {
+
+    jQuery('.days').change(function() {
+        var formId = jQuery(this).closest("form").attr('id');
+        if(this.value != '') {
+            jQuery('#'+formId +' > .hours').show();
+        } else {
+            jQuery('#'+formId +' > .hours').hide();
+        }
+        jQuery('#'+formId +' [name="ok"]').show();
+    });
+
+    jQuery('.hours').change(function() {
+        var formId = jQuery(this).closest("form").attr('id');
+        jQuery('#'+formId +' [name="ok"]').show();
+    });
+});
+</script>
+
 <div id="primary">
 
 <?php echo flash(); ?>
@@ -49,9 +74,43 @@ echo head($head);
         </thead>
         <tbody>
         <?php foreach ($this->harvests as $harvest): ?>
+            <?php
+                error_reporting(0);
+                unset($days, $hours);
+                if (empty($harvest->day) && $harvest->day != 0)
+                    $days['non'] = 'selected';
+                else    
+                    $days[$harvest->day] = 'selected';
+                $hours[$harvest->hour] = 'selected';
+            ?>
             <tr>
                 <td title="<?php echo html_escape($harvest->base_url); ?>" class="base-url">
                     <div><?php echo html_escape($harvest->base_url); ?></div>
+                    <form id="<?php echo $harvest->id?>" method="post" action="<?php echo url('oaipmh-harvester/index/automated');?>">
+                        <b>Automatique : </b>
+                        <select name="day" class="days">
+                        <?php print_r($days) ?>
+                            <option <?php echo $days['non']?> value="">non</option>
+                            <option <?php echo $days[1]?> value="1">le lundi</option>
+                            <option <?php echo $days[2]?> value="2">le mardi</option>
+                            <option <?php echo $days[3]?> value="3">le mercredi</option>
+                            <option <?php echo $days[4]?> value="4">le jeudi</option>
+                            <option <?php echo $days[5]?> value="5">le vendredi</option>
+                            <option <?php echo $days[6]?> value="6">le samedi</option>
+                            <option <?php echo $days[0]?> value="0">le dimanche</option>
+                        </select>
+                        <span class="hours" style="display:<?php echo $harvest->hour > 0 ? 'inline' : 'none'?>">
+                            <b>à</b>
+                            <select name="hour">
+                                <?php for($i=1 ; $i <24 ; $i++): ?>
+                                <option <?php echo $hours[$i]?> value="<?php echo $i ?>"><?php echo sprintf("%02d", $i) ?></option>
+                                <?php endfor; ?>
+                            </select>&nbsp;<b>heures</b>&nbsp;
+                            <?php echo $this->formHidden('harvest_id', $harvest->id); ?>
+                        </span>
+                        <?php echo $this->formSubmit('ok', 'OK'); ?>    
+                    </form>
+
                 </td>
                 <td><?php echo html_escape($harvest->metadata_prefix); ?></td>
                 <td>

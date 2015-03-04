@@ -48,4 +48,19 @@ class Table_OaipmhHarvester_Harvest extends Omeka_Db_Table
                 
         return $this->fetchObject($select);
     }
+
+    /**
+     * Returns all the automated harvests
+     *
+     * @return array An array of all OaipmhHarvester_Harvest objects
+     */
+    public function getAutomatedHarvests() {
+        $tableAlias = $this->getTableAlias();
+        $select = $this->getSelect()->where("$tableAlias.day != ?", '')
+                                    ->where("$tableAlias.hour != ?", '');
+
+        // $select = $this->getSelect()->order("$tableAlias.id DESC");
+        return $this->fetchObjects($select);
+    }
+
 }

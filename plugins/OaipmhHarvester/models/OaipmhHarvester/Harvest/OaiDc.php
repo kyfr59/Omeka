@@ -139,6 +139,20 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             $itemMetadata['item_type_id'] = self::FONDS_ITEM_TYPE;
         }
 
+        // Clean the 'Identifier' field in OMEKA (to remove the 'identifier' value of ATOM DC)
+        unset($elementTexts['Dublin Core']['Identifier']);
+
+        // Import ATOM 'identifierName' field to OMEKA 'identifier' field
+        if(isset($dcMetadata->identifierName) && !empty($dcMetadata->identifierName))
+            $elementTexts['Dublin Core']['Identifier'][] 
+                = array('text' => (string) trim($dcMetadata->identifierName), 'html' => false); 
+
+
+        // Import ATOM 'identifierUrl' field to OMEKA 'source' field
+        if(isset($dcMetadata->identifierUrl) && !empty($dcMetadata->identifierUrl))
+            $elementTexts['Dublin Core']['Source'][] 
+                = array('text' => (string) trim($dcMetadata->identifierUrl), 'html' => false); 
+
 
         // Clean the 'Format' field in OMEKA (to remove the 'format' value of ATOM DC)
         unset($elementTexts['Dublin Core']['Format']);
@@ -159,7 +173,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             }
         }   
 
-        // Import ATOM 'contributors & roles' fields to OMEKA 'creators' field
+        // Import ATOM 'contributors & roles' fields to OMEKA 'contributors' field
         if (isset($dcMetadata->contributors) && count($dcMetadata->contributors->contributor) > 0) {
             foreach($dcMetadata->contributors->contributor as $contributor) {
                 $elementTexts['Dublin Core']['Creator'][] 
@@ -193,6 +207,13 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
                 $elementTexts['Item Type Metadata']['Compression'][] 
                     = array('text' => (string) trim($dcMetadata->dataRate), 'html' => false);           
 
+
+            // Import ATOM 'extent & medium' field (aka format) to OMEKA 'compression' field
+            if(isset($dcMetadata->format) && !empty($dcMetadata->format))
+                $elementTexts['Item Type Metadata']['Original Format'][] 
+                    = array('text' => (string) trim($dcMetadata->format), 'html' => false); 
+
+
         }
 
         // MAPPING FOR STILL_IMAGE
@@ -208,7 +229,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
         if (isset($dcMetadata->itemTypeMetadata) && $dcMetadata->itemTypeMetadata == SOUND) {
 
-            // Import ATOM 'duration' field to OMEKA 'duration' field
+            // Import ATOM 'extent & medium' field (aka format) to OMEKA 'format' field
             if(isset($dcMetadata->format) && !empty($dcMetadata->format))
                 $elementTexts['Item Type Metadata']['Original Format'][] 
                     = array('text' => (string) trim($dcMetadata->format), 'html' => false); 
@@ -227,8 +248,8 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         }
 
         // Add the center's name in the item tags
-        if(isset($dcMetadata->centerName) && !empty($dcMetadata->centerName))
-            $tags[] = "Institution : ".$dcMetadata->centerName;
+        if(isset($dcMetadata->repositoryName) && !empty($dcMetadata->repositoryName))
+            $tags[] = "Institution : ".$dcMetadata->repositoryName;
 
         // Add the name of the parent's collection as tag
         if(isset($dcMetadata->collectionName) && !empty($dcMetadata->collectionName))
