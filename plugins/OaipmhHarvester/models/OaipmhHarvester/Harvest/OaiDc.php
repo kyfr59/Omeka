@@ -154,10 +154,19 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
                 = array('text' => (string) trim($dcMetadata->identifierName), 'html' => false); 
 
 
-        // Import ATOM 'identifierUrl' field to OMEKA 'source' field
+        // Import ATOM 'identifierUrl' field to OMEKA 'relation' field
+        unset($elementTexts['Dublin Core']['Relation']);
         if(isset($dcMetadata->identifierUrl) && !empty($dcMetadata->identifierUrl))
-            $elementTexts['Dublin Core']['Source'][] 
+            $elementTexts['Dublin Core']['Relation'][] 
                 = array('text' => (string) trim($dcMetadata->identifierUrl), 'html' => false); 
+
+
+        // Import ATOM 'descriptionIdentifier' field to OMEKA 'source' field
+        unset($elementTexts['Dublin Core']['Source']);
+        if(isset($dcMetadata->descriptionIdentifier) && !empty($dcMetadata->descriptionIdentifier))
+            $elementTexts['Dublin Core']['Source'][] 
+                = array('text' => (string) trim($dcMetadata->descriptionIdentifier), 'html' => false); 
+
 
 
         // Clean the 'Format' field in OMEKA (to remove the 'format' value of ATOM DC)
@@ -256,9 +265,12 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
         }
 
-        // Add the center's name in the item tags
-        if(isset($dcMetadata->repositoryName) && !empty($dcMetadata->repositoryName))
+        // Add the repository name in the item tags & 'Publisher' on OMEKA
+        if(isset($dcMetadata->repositoryName) && !empty($dcMetadata->repositoryName)) {
             $tags[] = "Institution : ".$dcMetadata->repositoryName;
+            $elementTexts['Dublin Core']['Publisher'][] = array('text' => (string) $dcMetadata->repositoryName, 'html' => false);    
+
+        }
 
         // Add the name of the parent's collection as tag
         if(isset($dcMetadata->collectionName) && !empty($dcMetadata->collectionName))
