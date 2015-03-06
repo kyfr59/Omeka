@@ -173,15 +173,19 @@ abstract class OaipmhHarvester_Harvest_Abstract
         }
         $existingRecord = $this->_recordExists($record);
         $harvestedRecord = $this->_harvestRecord($record);
-        
+
         // Cache the record for later use.
         $this->_record = $record;
-        
+
         // Record has already been harvested
         if ($existingRecord) {
+
             // If datestamp has changed, update the record, otherwise ignore.
             if($existingRecord->datestamp != $record->header->datestamp) {
+                //$message =  "ID : " . $harvestedRecord['atomId']. "\n" . $existingRecord->datestamp. "\n".$record->header->datestamp."\n\n";
+                $this->_addStatusMessage( $message );        
                 $this->_updateItem($existingRecord,
+                                  $harvestedRecord['itemMetadata'],
                                   $harvestedRecord['elementTexts'],
                                   $harvestedRecord['fileMetadata']);
             }
@@ -192,15 +196,15 @@ abstract class OaipmhHarvester_Harvest_Abstract
                 $harvestedRecord['elementTexts'],
                 $harvestedRecord['fileMetadata']
             );
-
-            // Retrive ATOM ID & Parent ID
-            $atomId         = (string)$harvestedRecord['atomId'];
-            $atomParentId   = (string)$harvestedRecord['atomParentId'];
-
-            $this->_parentCorrespondance[$atomId]['newId'] = $insertedId;
-            $this->_parentCorrespondance[$atomId]['atomParentId'] = $atomParentId;
-
         }
+
+        // Retrieve ATOM ID & Parent ID
+        $atomId         = (string)$harvestedRecord['atomId'];
+        $atomParentId   = (string)$harvestedRecord['atomParentId'];
+
+        $this->_parentCorrespondance[$atomId]['newId'] = $insertedId;
+        $this->_parentCorrespondance[$atomId]['atomParentId'] = $atomParentId;
+
     }
     
     /**
@@ -403,17 +407,22 @@ abstract class OaipmhHarvester_Harvest_Abstract
      */
     final protected function _updateItem(
         $record, 
+        $metadata = array(), 
         $elementTexts = array(), 
         $fileMetadata = array()
     ) {
+
+        $metadata['overwriteElementTexts'] = true;
+
         // Update the item
         $item = update_item(
             $record->item_id, 
-            array('overwriteElementTexts' => true), 
+            $metadata,
+            // array('overwriteElementTexts' => true), 
             $elementTexts, 
             $fileMetadata
         );
-        
+
         // Update the datestamp stored in the database for this record.
         $this->_updateRecord($record);
 

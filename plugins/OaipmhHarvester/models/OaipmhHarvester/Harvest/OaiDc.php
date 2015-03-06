@@ -74,7 +74,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
             if ($omekaId > 0 && $omekaParentId > 0)
             {   
-                ItemRelationsPlugin::insertItemRelation($omekaId, 4, $omekaParentId); //($subjectItem, $propertyId, $objectItem)
+                ItemRelationsPlugin::insertItemRelation($omekaId, 7, $omekaParentId);
             } 
         }
         // $this->_addStatusMessage( $val); // Debug
@@ -93,13 +93,14 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             'collection_id' => $this->_collection->id, 
             'public'        => $this->getOption('public'), 
             'featured'      => $this->getOption('featured'),
+            'item_type_id'  => null,
         );
 
         $dcMetadata = $record
                     ->metadata
                     ->children(self::OAI_DC_NAMESPACE)
                     ->children(self::DUBLIN_CORE_NAMESPACE);
-        
+
         $elementTexts = array();
         $elements = array('contributor', 'coverage', 'creator', 
                           'date', 'description', 'format', 
@@ -131,12 +132,17 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
             if (array_key_exists((string)$dcMetadata->itemTypeMetadata, $itemTypeMetadataChoices)) {
                 $itemMetadata['item_type_id'] = $itemTypeMetadataChoices[(string)$dcMetadata->itemTypeMetadata];
-            }             
+
+            }      
         }   
 
         // If 'levelOfDescription' = 'fonds' on ATOM, put 'fonds' for 'itemTypeMetadata' OMEKA field
         if ( !empty($dcMetadata->levelOfDescription) && $dcMetadata->levelOfDescription == 'fonds') {
             $itemMetadata['item_type_id'] = self::FONDS_ITEM_TYPE;
+            $elementTexts['Item Type Metadata']['Type de fonds'][] = array('text' => 'Fonds', 'html' => false); 
+        } else if ( !empty($dcMetadata->levelOfDescription) && $dcMetadata->levelOfDescription == 'collection') {
+            $itemMetadata['item_type_id'] = self::FONDS_ITEM_TYPE;
+            $elementTexts['Item Type Metadata']['Type de fonds'][] = array('text' => 'Collection archivistique', 'html' => false); 
         }
 
         // Clean the 'Identifier' field in OMEKA (to remove the 'identifier' value of ATOM DC)
@@ -173,11 +179,11 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             }
         }   
 
-        // Import ATOM 'contributors & roles' fields to OMEKA 'contributors' field
-        if (isset($dcMetadata->contributors) && count($dcMetadata->contributors->contributor) > 0) {
-            foreach($dcMetadata->contributors->contributor as $contributor) {
+        // Import ATOM 'creators & roles' fields to OMEKA 'creators' field
+        if (isset($dcMetadata->creators) && count($dcMetadata->creators->creator) > 0) {
+            foreach($dcMetadata->creators->creator as $creator) {
                 $elementTexts['Dublin Core']['Creator'][] 
-                    = array('text' => (string) trim($contributor->name. ' ('.$contributor->role.')'), 'html' => false);
+                    = array('text' => (string) trim($creator->name. ' ('.$creator->role.')'), 'html' => false);
             }
         }    
 
@@ -186,21 +192,26 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
         if (isset($dcMetadata->itemTypeMetadata) && $dcMetadata->itemTypeMetadata == MOVING_IMAGE) {
 
+            // Import ATOM 'contributors & roles' fields to OMEKA 'producer' and 'director' or 'contributor' fields
+            if (isset($dcMetadata->contributors) && count($dcMetadata->contributors->contributor) > 0) {
+                foreach($dcMetadata->contributors->contributor as $contributor) {
+                    if (strtolower($contributor->role) == 'director') {
+                        $elementTexts['Item Type Metadata']['Director'][] 
+                            = array('text' => (string) trim($contributor->name), 'html' => false);
+                    } else if (strtolower($contributor->role) == 'producer') {
+                        $elementTexts['Item Type Metadata']['Producer'][] 
+                            = array('text' => (string) trim($contributor->name), 'html' => false);
+                    } else  {
+                        $elementTexts['Dublin Core']['Contributor'][] 
+                            = array('text' => (string) trim($contributor->name. ' ('.$contributor->role.')'), 'html' => false);    
+                    } 
+                }
+            }    
+
             // Import ATOM 'duration' field to OMEKA 'duration' field
             if(isset($dcMetadata->duration) && !empty($dcMetadata->duration))
                 $elementTexts['Item Type Metadata']['Duration'][] 
                     = array('text' => (string) trim($dcMetadata->duration), 'html' => false); 
-
-
-            // Import ATOM 'creators & roles' fields to OMEKA 'producer' and 'director' fields
-            if (isset($dcMetadata->creators) && count($dcMetadata->creators->creator) > 0) {
-                foreach($dcMetadata->creators->creator as $creator) {
-                    $elementTexts['Item Type Metadata']['Producer'][] 
-                        = array('text' => (string) trim($creator->name. ' ('.$creator->role.')'), 'html' => false);
-                    $elementTexts['Item Type Metadata']['Director'][] 
-                        = array('text' => (string) trim($creator->name. ' ('.$creator->role.')'), 'html' => false);    
-                }
-            }    
 
             // Import ATOM 'data rate' field to OMEKA 'compression' field
             if(isset($dcMetadata->dataRate) && !empty($dcMetadata->dataRate))
@@ -212,8 +223,6 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             if(isset($dcMetadata->format) && !empty($dcMetadata->format))
                 $elementTexts['Item Type Metadata']['Original Format'][] 
                     = array('text' => (string) trim($dcMetadata->format), 'html' => false); 
-
-
         }
 
         // MAPPING FOR STILL_IMAGE
@@ -255,8 +264,14 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         if(isset($dcMetadata->collectionName) && !empty($dcMetadata->collectionName))
             $tags[] = "Collection : ".$dcMetadata->collectionName;
 
+        // Add the subjects as tag
+        if (isset($dcMetadata->subjects) && count($dcMetadata->subjects->subject) > 0) {
+            foreach($dcMetadata->subjects->subject as $subject) {
+                $tags[] = "Sujet : ".$subject;
+            }
+        }    
+       
         $itemMetadata['tags'] = $tags;
-
 
 
         /* ISAD/AV Importation END */

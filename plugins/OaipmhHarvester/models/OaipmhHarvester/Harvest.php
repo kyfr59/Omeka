@@ -107,7 +107,7 @@ class OaipmhHarvester_Harvest extends Omeka_Record_AbstractRecord
     public function addStatusMessage($message, $messageCode = null, $delimiter = "\n\n")
     {
         if (0 == strlen($this->status_messages)) {
-            $delimiter = '';
+            $delimiter = '----------------\n';
         }
         $date = $this->_getCurrentDateTime();
         $messageCodeText = $this->_getMessageCodeText($messageCode);
