@@ -17,14 +17,15 @@ class Omeka_Application_Resource_AtomDb
 {
     
     private $_atomDb;
-
-    const PHANTOMJS_DIR = '/usr/bin'; // PhantomJS exec path
+    private $_phantomJsDir;
 
     /**
      * @return Omeka_Db
      */
     public function __construct()
     {
+        $this->_phantomJsDir = APPLICATION_ENV == 'development' ? '/usr/bin' : '/shared/tools/bin/';
+
         $dbFile = BASE_DIR . '/db.ini';
                 
         if (!file_exists($dbFile)) {
@@ -79,7 +80,7 @@ class Omeka_Application_Resource_AtomDb
             // var $doc = WEB_FILES . '/original/' . $filename;
             $doc = 'http://documents.studens.info/files/original/246d72de5069928d68812556e8ce7e24.pdf';
 
-            $cmd = self::PHANTOMJS_DIR.'/phantomjs '.BASE_DIR.'/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc;
+            $cmd = $this->_phantomJsDir.'/phantomjs '.BASE_DIR.'/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc;
             $output = shell_exec($cmd);
             
             $query = "UPDATE  information_object SET  description_identifier =  '".$url."' WHERE id = 445";
