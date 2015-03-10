@@ -210,6 +210,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
      */
     public function editAction()
     {
+
         $varName = $this->view->singularize($this->_helper->db->getDefaultModelName());
         
         $record = $this->_helper->db->findById();
@@ -229,9 +230,15 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
             if ($record->save(false)) {
                 $successMessage = $this->_getEditSuccessMessage($record);
                 if ($successMessage != '') {
-                    $this->_helper->flashMessenger($successMessage, 'success');
+                    //$atomDb = new Omeka_Application_Resource_AtomDb;
+                    //$atomRecord  = $atomDb->updateRecord();
+                    //$this->_helper->flashMessenger('record : '.$atomRecord['id'], 'success');
+                    //$this->_helper->flashMessenger('Nouveau fichier', 'success');
+                    //$cmd = '/usr/bin/phantomjs updateAtom.js';
+                    //$res = exec($cmd, $output);
+                    $this->_helper->flashMessenger(print_r($res), 'success');
                 }
-                $this->_redirectAfterEdit($record);
+                //$this->_redirectAfterEdit_redirectAfterEdit($record);
             } else {
                 $this->_helper->flashMessenger($record->getErrors());
             }

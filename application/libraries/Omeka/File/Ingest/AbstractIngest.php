@@ -167,6 +167,8 @@ abstract class Omeka_File_Ingest_AbstractIngest
         // Don't catch or suppress parsing errors.
         $fileInfoArray = $this->_parseFileInfo($fileInfo);
         
+        
+
         // Iterate the files.
         $fileObjs = array();
         foreach ($fileInfoArray as $file) {            
@@ -183,6 +185,14 @@ abstract class Omeka_File_Ingest_AbstractIngest
                     $fileMetadata = isset($file['metadata']) 
                         ? $file['metadata'] : array();
                     $fileObjs[] = $this->_createFile($fileDestinationPath, $originalFileName, $fileMetadata);
+
+                    // If it's the first file of the item, update ATOM database
+                    //if (!$this->_item->getProperty('has_files')) 
+                    {
+                        $atomDb = new Omeka_Application_Resource_AtomDb;
+                        $atomRecord  = $atomDb->updateRecord($fileObjs[0]['filename'], $this->_item);
+                    }
+
                 }
             
             } catch (Omeka_File_Ingest_InvalidException $e) {
@@ -266,6 +276,7 @@ abstract class Omeka_File_Ingest_AbstractIngest
             fire_plugin_hook('after_ingest_file', array('file' => $file, 'item' => $this->_item));
             
             $this->_item->addFile($file);
+
             
         } catch(Exception $e) {
             if (!$file->exists()) {

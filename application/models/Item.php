@@ -503,7 +503,6 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
         if (!$file->isValid()) {
             throw new Omeka_Record_Exception(__("File must be valid before it can be associated with an item!"));
         }
-        
         $this->_files[] = $file;
     }
 
