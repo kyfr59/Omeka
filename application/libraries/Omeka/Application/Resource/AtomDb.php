@@ -77,7 +77,7 @@ class Omeka_Application_Resource_AtomDb
         if (isset($filename) && isset($addDigitalObjectUrl)) 
         {
             // var $doc = WEB_FILES . '/original/' . $filename;
-            var $doc = 'http://documents.studens.info/files/original/246d72de5069928d68812556e8ce7e24.pdf';
+            $doc = 'http://documents.studens.info/files/original/246d72de5069928d68812556e8ce7e24.pdf';
 
             $cmd = self::PHANTOMJS_DIR.'/phantomjs '.BASE_DIR.'/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc;
             $output = shell_exec($cmd);
@@ -89,7 +89,7 @@ class Omeka_Application_Resource_AtomDb
         }    
     }    
 
-    public function _getAddDigitalObjectUrl($item) {
+    private function _getAddDigitalObjectUrl($item) {
 
         $itemInfos = $item->getElementTexts('Dublin Core','Relation');
         $url = $itemInfos[0]['text'];
