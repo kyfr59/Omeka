@@ -24,7 +24,7 @@ class Omeka_Application_Resource_AtomDb
      */
     public function __construct()
     {
-        $this->_phantomJsDir = APPLICATION_ENV == 'development' ? '/usr/bin' : '/shared/tools/bin/';
+        $this->_phantomJsDir = APPLICATION_ENV == 'development' ? '/usr/bin' : '/shared/tools/bin';
 
         $dbFile = BASE_DIR . '/db.ini';
                 
@@ -77,10 +77,10 @@ class Omeka_Application_Resource_AtomDb
 
         if (isset($filename) && isset($addDigitalObjectUrl)) 
         {
-            // var $doc = WEB_FILES . '/original/' . $filename;
-            $doc = 'http://documents.studens.info/files/original/246d72de5069928d68812556e8ce7e24.pdf';
+            $doc = WEB_FILES . '/original/' . $filename;
+            // $doc = 'http://documents.studens.info/files/original/246d72de5069928d68812556e8ce7e24.pdf';
 
-            $cmd = $this->_phantomJsDir.'/phantomjs '.BASE_DIR.'/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc;
+            echo $cmd = $this->_phantomJsDir.'/phantomjs '.BASE_DIR.'/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc;
             $output = shell_exec($cmd);
             
             $query = "UPDATE  information_object SET  description_identifier =  '".$url."' WHERE id = 445";
