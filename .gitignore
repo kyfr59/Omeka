@@ -39,5 +39,4 @@
 .settings/
 
 # PhantomJS javascript files
-/harvest.js
-/*.js
+/phantomJS/
