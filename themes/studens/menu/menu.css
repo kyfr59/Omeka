@@ -1,0 +1,15 @@
+#header-studens {
+	margin:0;
+	padding:0;
+	background:url('../images/banner.png') center center no-repeat;
+    background-color:#efe5ca !important;
+    height:250px !important;
+    margin:0 auto;
+    border:1px solid red;
+}
+
+#header-studens-wrapper {
+	width:1230px;
+	margin:0 auto;
+	background:none !important;
+}
