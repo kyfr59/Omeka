@@ -38,8 +38,6 @@
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
 
-
-    <link href="/themes/studens/menu/menu.css" media="screen" rel="stylesheet" type="text/css" >
     <?php
         $file = dirname(__FILE__). '/../menu/index.php';
        require($file);

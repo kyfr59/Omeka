@@ -5,6 +5,7 @@
 		define('OMEKA_ROOT', 'http://documents.studens.info');
 ?>
 
+<link href="<?php echo OMEKA_ROOT ?>/themes/studens/menu/menu.css" media="screen" rel="stylesheet" type="text/css" >
 <div id="header-studens">
 	<div id="header-content">
 
