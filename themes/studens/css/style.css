@@ -39,7 +39,9 @@
 
   #wrapper {
     border:1px dashed white;
-    width:1230px;
+    width:1170px;
+    padding-left:30px;
+    padding-right:30px;
     margin:0 auto;
   }
 
