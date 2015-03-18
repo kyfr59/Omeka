@@ -1,15 +1,22 @@
+<?php
+	if ($_SERVER['HTTP_HOST'] == 'localhost')
+		define('OMEKA_ROOT', 'http://localhost');
+	else
+		define('OMEKA_ROOT', 'http://documents.studens.info');
+?>
+
 <div id="header-studens">
 	<div id="header-content">
 
 		<a title="Retour à l'accueil" class="logo-studens" href="/">Accueil</a>
 
 		<div class="social">
-			<a href="#"><img src="/themes/studens/images/menu-facebook.png" /></a>
-			<a href="#"><img src="/themes/studens/images/menu-twitter.png" /></a>
-			<a href="#"><img src="/themes/studens/images/menu-google.png" /></a>
-			<a href="#"><img src="/themes/studens/images/menu-vimeo.png" /></a>
-			<a href="#"><img src="/themes/studens/images/menu-flickr.png" /></a>
-			<a href="#"><img src="/themes/studens/images/menu-rss.png" /></a>
+			<a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-facebook.png" /></a>
+			<a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-twitter.png" /></a>
+			<a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-google.png" /></a>
+			<a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-vimeo.png" /></a>
+			<a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-flickr.png" /></a>
+			<a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-rss.png" /></a>
 		</div>
 
 		<form>
