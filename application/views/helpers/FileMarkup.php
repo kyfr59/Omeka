@@ -167,14 +167,14 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
             ),
         'ogg'=>array(
             'width' => '200',
-            'height' => '20',
+            'height' => '60',
             'autoplay' => false,
             'controller' => true,
             'loop' => false
             ),
         'mp3'=>array(
             'width' => '200',
-            'height' => '20',
+            'height' => '60',
             'autoplay' => false,
             'controller' => true,
             'loop' => false
