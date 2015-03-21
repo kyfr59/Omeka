@@ -80,7 +80,7 @@ class Omeka_Application_Resource_AtomDb
             $doc = WEB_FILES . '/original/' . $filename;
             // $doc = 'http://documents.studens.info/files/original/246d72de5069928d68812556e8ce7e24.pdf';
 
-            echo $cmd = $this->_phantomJsDir.'/phantomjs '.BASE_DIR.'/phantomJS/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc;
+            $cmd = $this->_phantomJsDir.'/phantomjs '.BASE_DIR.'/phantomJS/updateAtom.js '.$addDigitalObjectUrl. ' '.$doc. ' >/dev/null &';
             $output = exec($cmd);
             
             //$query = "UPDATE  information_object SET  description_identifier =  '".$url."' WHERE id = 445";
