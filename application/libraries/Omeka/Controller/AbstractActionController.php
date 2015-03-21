@@ -236,7 +236,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
                     //$this->_helper->flashMessenger('Nouveau fichier', 'success');
                     //$cmd = '/usr/bin/phantomjs updateAtom.js';
                     //$res = exec($cmd, $output);
-                    $this->_helper->flashMessenger(print_r($res), 'success');
+                    //$this->_helper->flashMessenger(print_r($res), 'success');
                 }
                 //$this->_redirectAfterEdit_redirectAfterEdit($record);
             } else {
