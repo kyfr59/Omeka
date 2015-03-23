@@ -2,7 +2,7 @@
 <html class="<?php echo get_theme_option('Style Sheet'); ?>" lang="<?php echo get_html_lang(); ?>">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <?php if ($description = option('description')): ?>
     <meta name="description" content="<?php echo $description; ?>">
     <?php endif; ?>
@@ -39,7 +39,7 @@
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
 
     <?php
-        $file = dirname(__FILE__). '/../menu/index.php';
+        $file = dirname(__FILE__). '/../shared/header.php';
        require($file);
     ?>
 
