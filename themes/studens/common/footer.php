@@ -13,11 +13,8 @@ jQuery(document).ready(function () {
 
 </div><!--end wrapper-->
 
-    <?php
-        // Include shared header
-        include_once(WEB_ROOT.'/shared/footer');
-    ?>
-    
+    <?php echo drawSharedFooter() ?>
+
 </body>
 
 </html>

@@ -26,6 +26,10 @@ function thanksroy_brighten($color, $steps) {
      return '#'.$r_hex.$g_hex.$b_hex;
 }
 
-function test() {
-    return "iii";
+function drawSharedHeader() {
+    return get_view()->partial('shared/header.php');
+}
+
+function drawSharedFooter() {
+    return get_view()->partial('shared/footer.php');
 }

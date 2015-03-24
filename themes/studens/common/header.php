@@ -40,7 +40,10 @@
 
     <?php
         // Studen's header inclusion
-        include_once(WEB_ROOT.'/shared/header');
+        // require(WEB_ROOT.'/shared/header');
+        // echo Zend_View_Helper_Partial->partial('shared/header.php'
+//        $this->view->partial('shared/header.php');
+    echo drawSharedHeader();
     ?>
 
     <div id="wrapper">
