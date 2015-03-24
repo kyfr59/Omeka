@@ -39,8 +39,8 @@
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
 
     <?php
-        $file = dirname(__FILE__). '/../shared/header.php';
-       require($file);
+        // Studen's header inclusion
+        include_once(WEB_ROOT.'/shared/header');
     ?>
 
     <div id="wrapper">
