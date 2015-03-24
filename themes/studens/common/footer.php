@@ -1,7 +1,4 @@
 </div><!-- end content -->
-
-
-
 </div><!--end wrap-->
 
 <script type="text/javascript">
@@ -13,7 +10,7 @@ jQuery(document).ready(function () {
 
 </div><!--end wrapper-->
 
-    <?php echo drawSharedFooter() ?>
+<?php echo drawSharedFooter() ?>
 
 </body>
 
