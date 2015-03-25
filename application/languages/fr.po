@@ -3433,7 +3433,7 @@ msgstr "Page courante"
 #: application/views/scripts/common/pagination_control.php:39
 #, php-format
 msgid "%s of %s"
-msgstr "%s of %s"
+msgstr "%s sur %s"
 
 #: application/views/scripts/common/pagination_control.php:48
 msgid "Next Page"

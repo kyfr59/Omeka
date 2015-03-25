@@ -34,11 +34,9 @@ $recent = get_recent_items(3);
 
 
 <style>
-
 #footer-studens {
     margin:0;
     padding:0;
-    min-width:1230px;
     background-color:#efe5ca !important;
     margin:0 auto;
     font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
@@ -46,14 +44,14 @@ $recent = get_recent_items(3);
 
 #footer-content {
     width:1130px;
-    padding:50px;
+    padding: 50px;
     margin:0 auto;
     background:none !important;
     border:1px solid red;
 }
 
 
-#footer-content div {
+#footer-content div.contact {
     display:block;
     width:320px;
     margin-right:50px;
@@ -103,23 +101,34 @@ $recent = get_recent_items(3);
 
 #footer-content strong {
     color:#E9A200;
+    display:block;
+    font-weight:normal;
+}
+
+#footer-content hr {
+    border-top:1px dotted #666;
+}
+
+
+#footer-content .bottom {
+    clear:both;
+    border:1px solid red;
 }
 
 </style>
 
-        <div class="left">
+        <div class="contact left">
             <h3>cité des mémoires étudiantes</h3>
             Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, definit amicitiam paribus officiis ac ut par sit.<br />
             <a href="#" class="site">Visitez citedesmemoiresetudiantes.org</a>
         </div>
-        <div>
+        <div class="contact">
             <h3>studens</h3>
             <span>Standard de 9h cà 18h</span>
             <span>Tél: +33 (0)1 44 55 66 77 88</span>
             <a href="">contact@citedesmemoiresetudiantes.org</a>
         </div>
-
-        <div>
+        <div class="contact">
             <h3>derniers inventaires</h3>
             <?php 
             foreach($recent as $item) {
@@ -127,13 +136,18 @@ $recent = get_recent_items(3);
                 $url = record_url($item);
                 $date = $item->added;
                 $dateFrench = ltrim(date("d ", strtotime($date)), '0'). strtolower($months[(int)date("m ", strtotime($date))]). date(" Y ", strtotime($date));
-                echo "<a href='".$url."'>".$title."</a><br />";
+                echo "<a href='".$url."'>".$title."</a>";
                 echo "<strong>".$dateFrench."</strong>";
+                echo "<hr />";
             }
             ?>        
         </div>
-        
-        <br style="clear:both;"/>
+
+        <br style="clear:both;" />
+
+    </div>
+    <div class="bottom">kk
+    
     </div>
 </div>
 

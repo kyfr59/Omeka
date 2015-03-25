@@ -23,7 +23,7 @@
     <!-- Stylesheets -->
     <?php
     queue_css_url('//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic');
-    queue_css_file(array('iconfonts', 'normalize', 'style'), 'screen');
+    queue_css_file(array('iconfonts', 'normalize', 'style', 'studens'), 'screen');
     queue_css_file('print', 'print');
     echo head_css();
     ?>
@@ -48,63 +48,20 @@
 
     <div id="wrapper">
 
+    <?php /*
         <div>
-            
             <?php if($user = current_user()) {
                 echo "connecté sur OMEKA";
             } else {
                 echo "déconnecté de OMEKA";
             } ?>
         </div>
-
-        <nav class="top">
-
-        <?php 
-        echo public_nav_items (
-                array(
-                    array('label' => __('Navigation 1'),
-                    'uri' => url('items/browse')
-                    ),
-                    array('label' => __('Browse by Tag'),
-                    'uri' => url('items/tags')
-                    ),
-                    array('label' => __('Search Articles'),
-                    'uri' => url('items/search')
-                    )
-                )
-            ); 
-        ?>
-        </nav>
-        <nav class="secondary-nav">
-        <?php 
-        echo public_nav_items (
-                array(
-                    array('label' => __('Navigation 1'),
-                    'uri' => url('items/browse')
-                    ),
-                    array('label' => __('Browse by Tag'),
-                    'uri' => url('items/tags')
-                    ),
-                    array('label' => __('Search Articles'),
-                    'uri' => url('items/search')
-                    )
-                )
-            ); 
-        ?>
-        </nav>
-
-        <?Php echo search_form(); ?>
+    */ ?>
+    <?Php // echo search_form(); ?>
         
 
         <div id="wrap">
-        <!--
-            <header>
-                <div id="site-title">
-                    <?php echo link_to_home_page(theme_logo()); ?>
-                </div>
-                <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-            </header>
-    -->
+        
             <div id="content">
                 <?php
                     if(! is_current_url(WEB_ROOT)) {

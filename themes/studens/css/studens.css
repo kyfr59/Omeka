@@ -1,0 +1,253 @@
+/* !---------- Studens Styles ---------- */
+  .studens body {
+    background-color: #FFFDE7;
+    color: black;
+    font-size:14px;
+  }
+  .studens h1 {
+    color: #bdbdbd;
+  }
+  .studens #site-title a {
+    color: #ffe000;
+  }
+  .studens input[type=submit], .studens button, .studens .button, .studens #advanced-search {
+    background-color: #666666;
+    color: #252525;
+  }
+  .studens input[type=text], .studens input[type=password], .studens textarea {
+    background-color: #252525;
+    border: 1px solid #666666;
+    color: #cccccc;
+  }
+  .studens a:link {
+    color: #0F565A;
+  }
+  .studens a:visited {
+    color: #0F565A;
+  }
+  .studens a:hover, .studens a:active {
+    color: black;
+  }
+  .studens header {
+    background-color: red;
+  }
+
+  .studens #intro {
+    color: #bdbdbd;
+  }
+  .studens #content,
+  .studens #secondary-nav .current a,
+  .studens #secondary-nav a.current,
+  .studens .exhibit-section-nav .current a {
+  }
+
+  .studens #list {
+    margin-left:150px;
+    /* Override .studens #content > div in general CSS*/
+    background-color:inherit !important;
+    border:none !important;
+    box-shadow: none !important;
+    box-sizing: none !important;
+  }
+
+  /* Item infos */
+
+  .studens .item-infos {
+    margin-top:15px;
+    margin-left:160px;    
+    margin-bottom:20px;
+    padding-bottom:50px;
+    border-bottom:1px solid #ccc;
+  }
+
+  .studens #list span {
+    color:#999;
+  }
+
+  .studens #list .creators {
+    padding:0 10px 0 17px;
+    float:left;
+    background:url('../images/item-infos-creator-icon.png') center left no-repeat;
+  }
+
+  .studens #list .date {
+    padding:0 10px 0 19px;
+    float:left;
+    background:url('../images/item-infos-date-icon.png') center left no-repeat;
+  }
+
+  
+  /* Sort list */
+  .studens #sort-links li {
+    height:40px !important;
+    display:inline-block !important;
+  }
+
+  .studens #sort-links li a {
+    color:black;
+    display:block;
+    height:40px !important;
+  }
+
+  .studens #sort-links li {
+    background:url('../images/sort-desc.png') bottom center no-repeat; 
+  }
+
+  .studens #sort-links li.asc a,
+  .studens #sort-links li.desc a {
+    font-weight:bold;
+  }
+
+  .studens #sort-links li.asc {
+    background:url('../images/sort-asc.png') bottom center no-repeat; 
+  }
+
+  .studens #sort-links li.desc {
+    background:url('../images/sort-desc-active.png') bottom center no-repeat; 
+  }
+
+  .studens #sort-links li a:after {
+    content:none;
+  }
+
+  .studens #advanced-form {
+    background-color: #252525;
+    color: #cccccc;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #313131;
+  }
+  .studens #home #content > div {
+    border-color: #666666;
+  }
+  .studens #home #content div .items-list .item {
+    border-top: 1px solid #313131;
+  }
+  .studens #home #content div .items-list .item:first-of-type {
+    border-top: 0;
+  }
+  .studens #home #content > div img, .studens .items.show #itemfiles a,
+  .studens #home #content .item, .studens #home #content div .view-items-link,
+  .studens .collections #content div .view-items-link {
+    border-color: #313131;
+  }
+  .studens #content h1 {
+    color: #bdbdbd;
+  }
+  .studens #content h2 {
+    border:none;
+    margin-bottom:0;
+    font-size:18px;
+  }
+  .studens #content > div, .studens #content #primary > div, .studens #content #sidebar > div,
+  .studens #content #advanced-search-form > div, .studens #content #exhibit-pages {
+    background-color: orangered;
+
+  }
+  .studens #content #primary > div, .studens #content #sidebar > div,
+  .studens #content .item-pagination li {
+    background-color: #252525;
+  }
+  .studens #content .pagination_previous a, .studens #content .pagination_next a {
+    /* background-color: #252525; */
+  }
+  .studens #content nav .pagination_list {
+    background-color: #252525;
+  }
+
+  .studens #content nav.pagination-nav {
+    clear:both;
+    margin-top:20px;
+  }
+
+  .studens #content nav.pagination-nav form {
+    margin-top:5px;
+  }
+
+
+  .studens #content .pagination_previous a, .studens #content .pagination_next a {
+    background:url('../images/nav-prev.png'); 
+    box-shadow: none;
+    width:35px;
+    height:35px;    
+  }
+
+  .studens #content .pagination_previous a:after, .studens #content .pagination_next a:after {
+    content:none;
+  }
+
+  .studens #content .pagination_next a {
+    background:url('../images/nav-next.png'); 
+  }
+
+  .studens #content .pagination_next a:hover {
+    background:url('../images/nav-next-hover.png'); 
+  }
+
+  .studens #content .pagination_previous a:hover {
+    background:url('../images/nav-prev-hover.png'); 
+  }
+
+  .studens #content .item-img {
+    margin-top:10px;
+    margin-right:15px; 
+    float:left; 
+    width:130px; 
+    height:63px;
+    padding-left:18px;
+    background:url('../images/thumbmail-background.png') left center no-repeat;
+  }
+
+  .studens #content .item-img img {
+    width:130px; 
+    height:63px;
+  }
+
+  .studens #content div.hTagcloud {
+    border: 0;
+    background-color: transparent;
+    -webkit-box-shadow: transparent 0 0 0;
+    -moz-box-shadow: transparent 0 0 0;
+    box-shadow: transparent 0 0 0;
+  }
+  .studens #search-results th {
+    background-color: #666666;
+    color: #bdbdbd;
+  }
+  .studens #search-results td {
+    background-color: #252525;
+  }
+  .studens #search-filters li, .studens #item-filters li {
+    background-color: #666666;
+  }
+  .studens .page #content {
+    border-color: #666666;
+  }
+  .studens .page #primary {
+    background-color: #252525;
+  }
+  .studens footer {
+    background-color: transparent;
+  }
+  .studens footer p {
+    color: #cccccc;
+  }
+  .studens .exhibit-page-nav {
+    background-color: #252525;
+  }
+  .studens .exhibit-page-nav .current, .studens .exhibit-child-nav .current {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .studens #exhibit-page-navigation a, .studens #exhibit-page-navigation span {
+    background-color: #252525;
+  }
+  .studens .exhibits.show #content .exhibit-page-nav > li:nth-child(3) {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .studens .exhibits.tags #content p:only-of-type {
+    background-color: #252525;
+    border-color: #666666;
+  }
+  .studens #content div.hTagcloud ul li {
+    background-color: #252525;
+  }

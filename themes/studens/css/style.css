@@ -24,6 +24,7 @@
   -- Summer Styles
   -- Autumn Styles
   -- Night Styles
+  -- Students Styles
   */
   /* !---------- General HTML Elements ---------- */
   body {
@@ -34,7 +35,6 @@
     word-wrap: break-word;
     height: 100%;
     margin:0 auto;
-    background-color:red !important;
   }
 
   #wrapper {
@@ -2008,6 +2008,9 @@
   .night #content div.hTagcloud ul li {
     background-color: #252525;
   }
+
+    
+  @import url("./studens.css");
 }
 @media screen and (min-width: 768px) {
   /*

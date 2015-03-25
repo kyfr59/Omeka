@@ -34,11 +34,11 @@
              --><li><a href="#">inventaires d'archives</a></li>
             </ul>
             <ul class="submenu">
-                <li><a href="#">accueil</a></li><!--
-             --><li><a href="#">expositions</a></li><!--
-             --><li><a href="#">collections</a></li><!--
-             --><li><a href="#">contribuer</a></li><!--
-             --><li><a href="#">recherche avancée</a></li>
+                <li><a href="/">accueil</a></li><!--
+             --><li><a href="/items">expositions</a></li><!--
+             --><li><a href="/items">collections</a></li><!--
+             --><li><a href="/">contribuer</a></li><!--
+             --><li><a href="/items/search">recherche avancée</a></li>
             </ul>
         </div>
     </div>
