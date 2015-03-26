@@ -1,8 +1,15 @@
 /* !---------- Studens Styles ---------- */
   .studens body {
-    background-color: #FFFDE7;
+    background-color: #F1E5CA;
     color: black;
     font-size:14px;
+  }
+
+  .studens #wrapper {
+    background:#FFFDE6;
+    border:none;
+    border-left:1px solid #D7CEAF;
+    border-right:1px solid #D7CEAF;
   }
   .studens h1 {
     color: #bdbdbd;
@@ -29,7 +36,7 @@
     color: black;
   }
   .studens header {
-    background-color: red;
+    /* background-color: red;*/
   }
 
   .studens #intro {
@@ -135,7 +142,27 @@
     border-color: #313131;
   }
   .studens #content h1 {
-    color: #bdbdbd;
+    height:60px;
+    background:url('../images/title-background.png') left center no-repeat;
+    margin-top:-20px;
+    padding-left:90px;
+    color:black;
+    font-size:20px;
+    padding-top:25px;
+    text-transform: lowercase;
+  }
+  .studens #content h1:first-letter {
+    text-transform: uppercase;
+  }
+  .studens #content h1 span {
+    display:block;
+    margin:0;
+    margin-top:-7px;
+    padding:0;
+    padding-left: 25px;
+    line-height: 15px;
+    color:#F8A301;
+    background:url('../images/subtitle-background.png') left center no-repeat;
   }
   .studens #content h2 {
     border:none;
@@ -220,8 +247,15 @@
   .studens #search-results td {
     background-color: #252525;
   }
-  .studens #search-filters li, .studens #item-filters li {
-    background-color: #666666;
+  .studens #search-filters,
+  .studens #item-filters {
+  }
+
+  .studens #search-filters li, 
+  .studens #item-filters li {
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
   }
   .studens .page #content {
     border-color: #666666;

@@ -17,7 +17,7 @@ $pageTitle = __('Browse Items');
 echo head(array('title'=>$pageTitle,'bodyclass' => 'items browse'));
 ?>
 
-<h1><?php echo $pageTitle;?> <?php echo __('(%s total)', $total_results); ?></h1>
+<h1><?php echo $pageTitle;?><span><?php echo $total_results ?> Item<?php echo $total_results > 1 ? 's':'';?></span></h1>
 
 <div id="list">
     <?php  echo item_search_filters(); ?>

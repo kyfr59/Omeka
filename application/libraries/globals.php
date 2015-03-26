@@ -1980,9 +1980,9 @@ function body_tag($attributes = array())
  * @params array $params Params to override the ones read from the request.
  * @return string
  */
-function item_search_filters(array $params = null)
+function item_search_filters(array $params = null, $number_of_items = null)
 {
-    return get_view()->itemSearchFilters($params);
+    return get_view()->itemSearchFilters($params, $number_of_items);
 }
 
 /**
