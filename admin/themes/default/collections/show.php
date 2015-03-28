@@ -12,6 +12,16 @@
 <section class="seven columns alpha">
     <?php echo flash(); ?>
 
+    <?php if ($this->collectionThumbmail && $this->collectionOriginal): ?>
+        <a target="_new" href="<?php echo $this->collectionOriginal ?>"><img src="<?php echo $this->collectionThumbmail?>" /></a>
+        <?php if ($this->isOnSlider): ?>
+            <br />Cette image apparait dans le slider de la page d'accueil
+        <?php endif; ?>
+        <br /><br />
+    <?php endif; ?>
+
+    
+
     <?php echo all_element_texts('collection'); ?>
 
     <?php if(metadata('collection', 'Total Items') > 0): ?>

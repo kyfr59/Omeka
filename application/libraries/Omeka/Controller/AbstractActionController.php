@@ -150,6 +150,16 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
      */
     public function showAction()
     {
+        // Retrieve thumbmail if collection & add flag to say if the image is on the slider or not
+        $record = $this->_helper->db->findById();
+        $recordType = get_class($record);
+        if ($recordType == 'Collection') {
+            $helperCollectionImage = new $this->_helper->collectionImage($record);
+            $this->view->collectionThumbmail = $helperCollectionImage->getThumbmail();
+            $this->view->collectionOriginal = $helperCollectionImage->getOriginal();
+            $this->view->isOnSlider = strlen(trim($helperCollectionImage->getSlider())) > 0 ? true : false;
+        }
+
         $singularName = $this->view->singularize($this->_helper->db->getDefaultModelName());
         $record = $this->_helper->db->findById();
         $this->view->assign(array($singularName => $record));
