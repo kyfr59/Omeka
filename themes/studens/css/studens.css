@@ -345,6 +345,8 @@
   .studens #slider p i {
     font-weight:bold;
     font-style:normal;
+    height:25px;
+    overflow:hidden;
   }
 
   .studens #slider p strong {

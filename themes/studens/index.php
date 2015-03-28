@@ -61,8 +61,18 @@ jQuery(document).ready(function() {
             <span></span>
             <p>
                 <i><?php echo metadata($collection, array('Dublin Core', 'Description')); ?></i>
-                <strong><?php echo metadata($collection, array('Dublin Core', 'Title')); ?></strong>
-                <u><?php echo metadata($collection, array('Dublin Core', 'Subject')); ?></u>
+                <strong>
+                    <?php 
+                        $title = metadata($collection, array('Dublin Core', 'Title')); 
+                        echo rtrim(mb_strimwidth($title, 0, 60))."...";
+                    ?>
+                </strong>
+                <u>
+                    <?php 
+                        $subject = metadata($collection, array('Dublin Core', 'Subject')); 
+                        echo rtrim(mb_strimwidth($subject, 0, 220))."...";
+                    ?>
+                </u>
             </p>
             <a class="prev" href="#">Précédent</a>
             <a class="next" href="#">Suivant</a>
