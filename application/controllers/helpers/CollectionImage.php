@@ -170,5 +170,22 @@ class Omeka_Controller_Action_Helper_CollectionImage extends Zend_Controller_Act
         if ($this->getSlider())
             exec("rm ".$this->slidersPath.$this->record->id.'.jpg');
     }    
+
+    /**
+     * getSliderImages() - Retrieve an array of collection IDs appearing on homepage slider
+     *
+     * @return array List of collection's IDs
+     */
+    public static function getSliderImages() 
+    {
+        $folder = FILES_DIR . '/collections/sliders/';
+        $array = array_diff(scandir($folder), array('..', '.'));
+
+        foreach($array as $a)
+            $res[] = rtrim($a, '.jpg');
         
+        return $res;
+    }
+
+            
 }
