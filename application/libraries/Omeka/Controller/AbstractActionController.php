@@ -212,8 +212,17 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
     {
 
         $varName = $this->view->singularize($this->_helper->db->getDefaultModelName());
-        
+
         $record = $this->_helper->db->findById();
+
+        $recordType = get_class($record);
+
+        // Retrieve thumbmail if collection & add flag to say if the image is on the slider or not
+        if ($recordType == 'Collection') {
+            $helperCollectionImage = new $this->_helper->collectionImage($record);
+            $this->view->collectionThumbmail = $helperCollectionImage->getThumbmail();
+            $this->view->isOnSlider = strlen(trim($helperCollectionImage->getSlider())) > 0 ? true : false;
+        }
 
         if ($this->_autoCsrfProtection) {
             $csrf = new Omeka_Form_SessionCsrf;
@@ -238,7 +247,20 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
                     //$res = exec($cmd, $output);
                     //$this->_helper->flashMessenger(print_r($res), 'success');
                 }
-                //$this->_redirectAfterEdit_redirectAfterEdit($record);
+
+                // Manage images of collections
+                if ($recordType == 'Collection') 
+                {
+                    if ($_POST['delete-image'] == 'yes') {
+                        $helperCollectionImage->deleteImage();
+                    } else {    
+                        $imageAdded = $helperCollectionImage->addImage($_FILES);
+                        $helperCollectionImage->addToSlider($_POST['collection-image-homepage']);
+                    }
+                }
+
+                $this->_redirectAfterEdit($record);
+                
             } else {
                 $this->_helper->flashMessenger($record->getErrors());
             }
