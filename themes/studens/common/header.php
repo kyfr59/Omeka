@@ -47,7 +47,6 @@
     ?>
 
     <div id="wrapper">
-
     <?php /*
         <div>
             <?php if($user = current_user()) {

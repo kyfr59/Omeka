@@ -293,11 +293,15 @@
   /* Slider */
 
   .studens #slider {
-    width:752px !important;
-    height:500px;
+    width:792px !important;
+    height:520px;
     float:left !important;
     margin:0; padding:0;
-    border:1px solid #666;
+    border:none;
+    box-shadow:none;
+    background: url('../images/slider-background.png') right top no-repeat;
+    padding-top:20px;
+    background-color:inherit !important;
   }
 
 
@@ -313,7 +317,7 @@
     width:750px !important;
     height:500px;
     position:absolute;
-    border:none;
+    border:1px solid #666 !important;
   }
 
   .studens #slider p,
@@ -384,6 +388,17 @@
     background: url('../images/slider-right-arrow.png') left center no-repeat;
   }
 
+  /* Text-homepage */
 
+  .studens #text-homepage {
+    color:#2c2421 !important;
+    margin-left:820px;
+    font-size:16px;
+  }
+
+  .studens #text-homepage strong {
+      display:block;
+      font-size:20px;
+  }
 
 

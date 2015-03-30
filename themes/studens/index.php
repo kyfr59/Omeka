@@ -43,15 +43,8 @@ jQuery(document).ready(function() {
 
     // Start the slider
     displaySlide();            
-
 });
 </script>
-
-<style>
-.studens #slider a.wrapper {
-    display:block;
-}
-</style>
 
 <div id="slider">
     <?php $i = 1; ?>
@@ -80,6 +73,12 @@ jQuery(document).ready(function() {
         <?php $i++; ?>
     <?php endforeach; ?>
 </div>
+
+<p id="text-homepage">
+    <?php echo get_theme_option('Homepage Text'); ?>
+</p>
+
+<br style="clear:both" />
 
 
 <?php echo foot(); ?>
