@@ -210,9 +210,14 @@
     width:1130px;
     padding: 50px;
     margin:0 auto;
-    background: #eee5ca url('../images/footer-background.png') -20px center no-repeat;
+    background: #eee5ca url('../images/footer-background.png') top left no-repeat;
     border-left:1px solid #D7CEAF;
     border-right:1px solid #D7CEAF;
+}
+
+#footer-content .contact a,
+#footer-content .contact strong {
+	color:#0F565A !important;
 }
 
 
@@ -331,9 +336,9 @@
 	line-height: 18px;
 }
 
-#footer-studens a,
-#footer-studens a:hover {
-	color:#e1a123 !important;
+#footer-studens .bottom a,
+#footer-studens .bottom a:hover {
+	color:#e1a123;
 }
 
 #footer-studens .social a {
