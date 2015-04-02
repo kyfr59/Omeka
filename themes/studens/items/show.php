@@ -50,33 +50,32 @@
 	    		<?php endif; ?>		
 
 	   			<!-- Coverage -->
-	    		<div class="full coverage">
-	    			<div class="<?php echo $hasMap ? 'with' : 'no' ?>-localization">
-
-	    				<?php 
-	    				$coverages = $this->item->getElementTexts('Dublin Core','Coverage'); ?>
-	    				<?php if (count($coverages) > 0 ): ?>
-		    				<b>Couverture<?php echo count($coverages) > 1 ? 's' : '';?></b><br />
-		    				<?php foreach($coverages as $coverage): ?>
-		    					<?php echo $coverage->text; ?><br />
-		    				<?php endforeach; ?>	
-	    				<?php endif; ?>		
-						<?php if ($hasMap): ?>
-							<b>Localisation</b><br />
-							<?php echo $hasMap[0]->address ?>
-						<?php endif; ?>	
-	    			</div>	
-	    			<?php if ($hasMap): ?>
-		    			<div class="localization">
-		    				<span>
-		    					<?php echo $this->itemGoogleMap($item, '100%', '100%') ?>
-		    				</span>
-	        			</div>
-        			<?php endif; ?>
-	    		</div>
-
+	   			<?php $coverages = $this->item->getElementTexts('Dublin Core','Coverage'); ?>
+	   			<?php if($hasMap || count($coverages)>0): ?>
+		    		<div class="full coverage">
+		    			<div class="<?php echo $hasMap ? 'with' : 'no' ?>-localization">
+		    				<?php if (count($coverages) > 0 ): ?>
+			    				<b>Couverture<?php echo count($coverages) > 1 ? 's' : '';?></b><br />
+			    				<?php foreach($coverages as $coverage): ?>
+			    					<?php echo $coverage->text; ?><br />
+			    				<?php endforeach; ?>	
+		    				<?php endif; ?>		
+							<?php if ($hasMap): ?>
+								<b>Localisation</b><br />
+								<?php echo $hasMap[0]->address ?>
+							<?php endif; ?>	
+		    			</div>	
+		    			<?php if ($hasMap): ?>
+			    			<div class="localization">
+			    				<span>
+			    					<?php echo $this->itemGoogleMap($item, '100%', '100%') ?>
+			    				</span>
+		        			</div>
+	        			<?php endif; ?>
+		    		</div>
+				<?php endif; ?>
+				
 	    		<!-- Creators -->
-
 	    		<?php $creators = $this->item->getElementTexts('Dublin Core','Creator'); ?>
 	    		<?php if (count($creators) > 0 ): ?>
 	    			<div class="full creator">
@@ -103,7 +102,6 @@
 	    		<?php endif; ?>
 
 	    		<!-- View -->
-
 	    		<div class="half clear view"><span><a href="">Consulter la source de cet item</a></span></div>
 
 	    		<!-- Social -->
