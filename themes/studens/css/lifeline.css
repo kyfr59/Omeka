@@ -22,13 +22,10 @@
 }
 
 .lifeline .full {
-	width:171px;
 	padding-left:185px;
 	padding-bottom:20px;
 	padding-top:10px;
 	min-height:41px;
-	/*border:1px dashed #ccc;*/
-	/* background: url(/themes/studens/images/lifeline-orange-background.png) left top repeat-y; */
 }
 
 .lifeline .half span {
@@ -55,6 +52,13 @@
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	min-height:49px;
+}
+
+.lifeline .subject span {
+	display: block;
+	line-height:16px;
+	width:100%;
+	margin-top:8px;
 }
 
 .lifeline .date {

@@ -3499,6 +3499,10 @@ msgstr "Voir tous les contenus"
 msgid "Files"
 msgstr "Fichiers"
 
+#: application/views/scripts/items/show.php:11
+msgid "Email Body"
+msgstr "Corps du mail"
+
 #: application/views/scripts/items/show.php:33
 msgid "Citation"
 msgstr "Citer ce document"

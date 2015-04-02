@@ -21,7 +21,7 @@ class Omeka_Controller_Action_Helper_Geolocation extends Zend_Controller_Action_
         $dbHelper = Zend_Controller_Action_HelperBroker::getExistingHelper('Db');
         $location = $dbHelper->getTable('Location')->findBy(array('item_id' => $item_id));
         if (count($location)>0)
-            return true;
+            return $location;
         return false;
     }
   

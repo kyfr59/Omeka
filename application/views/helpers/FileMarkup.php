@@ -173,7 +173,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
             'loop' => false
             ),
         'mp3'=>array(
-            'width' => '200',
+            'width' => '300',
             'height' => '60',
             'autoplay' => false,
             'controller' => true,

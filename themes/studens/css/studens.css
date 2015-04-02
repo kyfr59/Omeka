@@ -487,6 +487,10 @@
     border-bottom:3px solid #e3a224;
   }
 
+  #collection-page .item .item-file {
+    margin-top:15px;
+  }
+
   #collection-page .left .item h2 {
       margin:0px;
       color:white;
