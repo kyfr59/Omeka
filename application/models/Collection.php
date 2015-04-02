@@ -103,6 +103,16 @@ class Collection extends Omeka_Record_AbstractRecord implements Zend_Acl_Resourc
     {
         return $this->getDb()->getTable('Item')->count(array('collection' => $this->id));
     }
+
+    /**
+     * Get the total number of items in this collection.
+     * 
+     * @return int
+     */
+    public function getItems()
+    {
+        return $this->getDb()->getTable('Item')->findBy(array('collection' => $this->id));
+    }
     
     /**
      * Set the user who added the collection.

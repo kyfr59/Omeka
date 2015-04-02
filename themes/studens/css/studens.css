@@ -1,8 +1,17 @@
 /* !---------- Studens Styles ---------- */
+
+
   .studens body {
     background-color: #F1E5CA;
     color: black;
     font-size:14px;
+  }
+
+  .studens #content > div, 
+  .studens #content section {
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
   }
 
   .studens #wrapper {
@@ -13,6 +22,9 @@
   }
   .studens h1 {
     color: #bdbdbd;
+  }
+  .studens h2 a {
+    font-weight:bold;
   }
   .studens #site-title a {
     color: #ffe000;
@@ -57,6 +69,41 @@
     box-sizing: none !important;
   }
 
+  /* Collections list */
+
+  .studens #content .collection {
+    background:inherit;
+    padding-left:110px;
+    margin-bottom:15px;
+  }
+
+  .studens #content .collection h2 {
+    line-height:inherit;
+  }
+
+  .studens #content .collection p {
+    border:none !important;
+  }
+
+  .studens #content .collection a.image {
+    box-shadow:none !important;
+    -moz-box-shadow:none !important;
+    -webkit-box-shadow:none !important;
+    width:100px; 
+    height:63px;
+    background:url('../images/thumbmail-background.png') left center no-repeat;
+    position:absolute;
+    margin-left:-128px;
+    margin-top:5px;
+    padding-left:18px;
+  }
+
+  .studens #content .collection .item-infos {
+    margin:0;
+    padding-bottom:30px;
+    margin-bottom:30px;
+  }
+
   /* Item infos */
 
   .studens .item-infos {
@@ -65,6 +112,7 @@
     margin-bottom:20px;
     padding-bottom:50px;
     border-bottom:1px solid #ccc;
+    color:#999;
   }
 
   .studens .item-infos span {
@@ -88,6 +136,11 @@
   }
   
   /* Sort list */
+
+  .studens #sort-links {
+    background-color:inherit;
+  }
+
   .studens #sort-links li {
     height:40px !important;
     display:inline-block !important;
@@ -150,6 +203,7 @@
     font-size:20px;
     padding-top:25px;
     text-transform: lowercase;
+    line-height:22px !important;
   }
   .studens #content h1:first-letter {
     text-transform: uppercase;
@@ -157,13 +211,14 @@
   .studens #content h1 span {
     display:block;
     margin:0;
-    margin-top:-7px;
+    margin-top:7px;
     padding:0;
     padding-left: 25px;
     line-height: 15px;
     color:#F8A301;
     background:url('../images/subtitle-background.png') left center no-repeat;
   }
+
   .studens #content h2 {
     border:none;
     margin-bottom:0;
@@ -171,7 +226,7 @@
   }
   .studens #content > div, .studens #content #primary > div, .studens #content #sidebar > div,
   .studens #content #advanced-search-form > div, .studens #content #exhibit-pages {
-    background-color: orangered;
+    
 
   }
   .studens #content #primary > div, .studens #content #sidebar > div,
@@ -402,3 +457,63 @@
   }
 
 
+
+
+  /*** Page "Collection" ***/
+
+  #collection-page {
+      border:none !important;
+      background-color:inherit !important;
+      /* TOTAL WIDTH : 1106px */
+  }
+
+  #collection-page .left, 
+  #collection-page .right {
+      width:533px;
+      float:left;
+  }
+
+  /* Left area */
+
+  #collection-page .left {
+      margin-right:40px;
+  } 
+
+  #collection-page .left .item {
+    background-color:green;
+    background-color:#efe5ca !important;
+    background: url('../images/collection-page-left-description-background.png') top right no-repeat;
+    border-bottom:3px solid #e3a224;
+  }
+
+  #collection-page .left .item h2 {
+      margin:0px;
+      color:white;
+      text-align:center;
+      background-color:black;
+      display: block;
+      padding:10px;
+  } 
+
+  #collection-page .left .item span.top {
+    display:block;
+    height:15px;
+    margin:0;
+    padding:0;
+    background: url('../images/collection-page-left-title-background.png') top center no-repeat;
+  }
+
+  #collection-page .left .item span.bottom {
+    display:block;
+    height:29px;
+    width:29px;
+    float:right;
+    margin:0;
+    margin-top:-29px;
+    padding:0;
+    background: url('../images/collection-page-left-item-background.png') top right no-repeat;
+  }
+
+  #collection-page .left .item p {
+    padding:20px;
+  }

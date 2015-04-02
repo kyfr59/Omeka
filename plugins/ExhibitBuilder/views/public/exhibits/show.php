@@ -32,4 +32,3 @@ echo head(array(
     </div>
 </div>
 
-<?php echo foot(); ?>

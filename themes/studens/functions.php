@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Modify a hex color by the given number of steps (out of 255).
  *
@@ -14,15 +15,12 @@ function thanksroy_brighten($color, $steps) {
     $r = hexdec(substr($hex,0,2));
     $g = hexdec(substr($hex,2,2));
     $b = hexdec(substr($hex,4,2));
-
     $r = max(0,min(255,$r + $steps));
     $g = max(0,min(255,$g + $steps));  
     $b = max(0,min(255,$b + $steps));
-
     $r_hex = str_pad(dechex($r), 2, '0', STR_PAD_LEFT);
     $g_hex = str_pad(dechex($g), 2, '0', STR_PAD_LEFT);
     $b_hex = str_pad(dechex($b), 2, '0', STR_PAD_LEFT);
-
      return '#'.$r_hex.$g_hex.$b_hex;
 }
 
@@ -33,3 +31,4 @@ function drawSharedHeader() {
 function drawSharedFooter() {
     return get_view()->partial('shared/footer.php');
 }
+

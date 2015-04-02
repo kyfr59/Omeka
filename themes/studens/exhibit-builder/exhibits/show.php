@@ -7,7 +7,9 @@ echo head(array(
     <?php echo exhibit_builder_page_nav(); ?>
 </nav>
 
-<h1><span class="exhibit-page"><?php echo metadata('exhibit_page', 'title'); ?></span></h1>
+<h1><?php echo metadata('exhibit', 'title'); ?></h1>
+<h2><?php echo metadata('exhibit_page', 'title'); ?></h2>
+
 
 <?php if (count(exhibit_builder_child_pages()) > 0): ?>
 <nav id="exhibit-child-pages" class="secondary-nav">

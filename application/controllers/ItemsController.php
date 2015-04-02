@@ -234,7 +234,7 @@ class ItemsController extends Omeka_Controller_AbstractActionController
             $this->render('batch-delete');
         }
     }
-    
+
     /**
      * Processes batch edit information. Only accessible via POST.
      * 

@@ -161,6 +161,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
         }
 
         $singularName = $this->view->singularize($this->_helper->db->getDefaultModelName());
+
         $this->view->assign(array($singularName => $record));
     }
     
