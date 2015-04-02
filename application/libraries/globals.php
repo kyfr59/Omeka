@@ -2226,6 +2226,7 @@ function get_recent_items($num = 10)
     return get_db()->getTable('Item')->findBy(array('sort_field' => 'added', 'sort_dir' => 'd'), $num);
 }
 
+
 /**
  * Get random featured items.
  *

@@ -74,7 +74,7 @@
 	        			<?php endif; ?>
 		    		</div>
 				<?php endif; ?>
-				
+
 	    		<!-- Creators -->
 	    		<?php $creators = $this->item->getElementTexts('Dublin Core','Creator'); ?>
 	    		<?php if (count($creators) > 0 ): ?>
@@ -125,15 +125,25 @@
 	    	<span class="collection-tree">
 			    <h3>Collection tree</h3>
 			    <ul><?php echo metadata($collection, array('Dublin Core', 'Title')); ?></ul>
-				<?php foreach($collection->getItems() as $item): ?>
+				<?php foreach(get_recent_items(5) as $item): ?>
 			    	<li><?php echo metadata($item, array('Dublin Core', 'Title')); ?></li>
 			    <?php endforeach; ?>
 			</span>
 			
 			<span class="collection-items">
 			    <h3>Items extraits de la collection</h3>
-			    <strong>Titre</strong>
-			    <p>texte</p>
+			    <?php $i = 0; ?>
+			    <?php foreach(get_recent_items() as $item): ?>
+			    	<?php if(metadata($item, array('Dublin Core', 'Description'))): ?>
+			    		<strong><?php echo metadata($item, array('Dublin Core', 'Title')); ?></strong>
+			    		<p><?php echo metadata($item, array('Dublin Core', 'Description')); ?></p>	
+			    		<?php $i++; ?>
+			    	<?php endif; ?>		
+			    	<?php if($i > 5) {break;} ?>
+			    <?php endforeach; ?>
+
+			    
+			    
 	    </div>
 
 
