@@ -534,5 +534,22 @@
 
   #collection-page .recent-items {
     display:block;
-    margin-top:60px;
+  }
+
+  #collection-page .recent-items strong {
+    padding-left:50px;
+    display:block;
+  }
+
+  #collection-page .recent-items p {
+    padding-bottom:30px;
+    margin-left:50px;
+    border-bottom:1px solid #ccc;
+
+  }
+
+  #collection-page .recent-items > div {
+    position:absolute;
+    float:left;
+    margin-left:10px;
   }

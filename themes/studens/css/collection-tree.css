@@ -1,3 +1,7 @@
+#collection-tree {
+	margin-bottom:60px;
+}
+
 #collection-tree a {
 	color:black;
 }
@@ -30,6 +34,11 @@
 	background:url(../images/collection-tree/second-level-icon-last.png), url(../images/collection-tree/second-level-bg-last.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
+}
+
+#collection-tree > ul > li > ul.no-children {
+	background:url(../images/collection-tree/second-level-icon-last.png) top left no-repeat;
+	background-color:#ffffe7;
 }
 
 #collection-tree > ul > li > ul > li > ul {

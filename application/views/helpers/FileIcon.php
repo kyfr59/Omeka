@@ -7,7 +7,7 @@
  */
 
 /**
- * View Helper that returns the icon name for given file (based on mime_type)
+ * View Helper that returns the font-awesome icon code for given file (based on mime_type)
  * 
  * 
  * @package Omeka\View\Helper
@@ -16,16 +16,16 @@ class Omeka_View_Helper_FileIcon extends Zend_View_Helper_Abstract
 {   
 
     static protected $_icons = array(
-        'audio'         => 'audio.png',
-        'video'         => 'video.png',
-        'image'         => 'image.png',
-        'text'          => 'text.png',
-        'msword'        => 'msword.png',
-        'zip'           => 'zip.png',
-        'pdf'           => 'pdf.png',
-        'msoffice'      => 'msoffice.png',
-        'openoffice'    => 'openoffice.png',
-        'file'          => 'file.png'
+        'audio'         => 'fa-volume-up',
+        'video'         => 'fa-video-camera',
+        'image'         => 'fa-image',
+        'text'          => 'fa-file-text-o',
+        'msword'        => 'fa-file-word-o',
+        'zip'           => 'fa-file-zip-o',
+        'pdf'           => 'fa-file-pdf-o',
+        'msoffice'      => 'fa-file-text-o',
+        'openoffice'    => 'fa-file-text-o',
+        'file'          => 'fa-file-text-o'
     );
 
     /**
@@ -40,8 +40,8 @@ class Omeka_View_Helper_FileIcon extends Zend_View_Helper_Abstract
         
         $valid = self::_getValidIconType($mimeType);
 
-        if (!$valid) {
-            return $valid;
+        if ($valid) {
+            return self::$_icons[$valid];
         } elseif($returnGeneric) {
             return self::_getGenericIcon();
         } else {

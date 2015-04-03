@@ -164,6 +164,18 @@ class Table_CollectionTree extends Omeka_Db_Table
         return $options;
     }
 
+    public function hasCollectionTree($collectionId)
+    {
+        
+        $ancestors   = $this->getAncestorTree($collectionId);
+        $descendants = $this->getDescendantTree($collectionId);
+
+        if (count($ancestors) == 0 && count($descendants) == 0)        
+            return false;
+        return true;
+    }
+
+
     /**
      * Get the entire collection tree of the specified collection.
      *

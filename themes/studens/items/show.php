@@ -134,70 +134,44 @@
 	    </div>
 
 	    <div class="right">
-
+ 
     	    <?php fire_plugin_hook('public_items_show_collection_tree', array('collection' => $collection)); ?>
-
-			
 
 			<span class="recent-items">
 			    <h2>Items extraits de la collection</h2>
-			    <?php $i = 0; ?>
-			    <?php
 			    
-			    /*
-				$mime_types = explode(',', Omeka_Validate_File_MimeType::DEFAULT_WHITELIST);
-				foreach($mime_types as $type)
-				{
-					$t = explode('/', $type);
-					if($t[0]!='audio' && $t[0]!='video' && $t[0]!='image' && $t[0]!='text')
-						echo $type.'<br>';
-				}
-				*/
-				    			
-
-	    		$files = $item->getFiles();
-	    		foreach($files as $file) {
-					echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type);
-	    			
-
-	    		}
+			    <?php
+	    		
 			    ?>
 
-			    <style>
-			#collection-page .recent-items strong {
-				padding-left:50px;
-				display:block;
-			}
+<style type="text/css">
+	.right .recent-items span.fa {
+		display:block;
+		color:#e49f26;
+		font-size:25px;
+		margin:2px;
+		text-align:center;
+	}
+</style>
 
-			#collection-page .recent-items p {
-				padding-bottom:30px;
-				margin-left:50px;
-				border-bottom:1px solid #ccc;
-
-			}
-
-			#collection-page .recent-items > div {
-				position:absolute;
-				float:left;
-				margin-left:10px;
-			}
-			</style>
-
-			    
-			    
-
+				<?php $i = 0; ?>
 			    <?php foreach(get_recent_items() as $i): ?>
 
 			    	<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
 
-			    		<div>
-			    			<img src="/themes/studens/images/files-types/video.png"><br />
-			    			<img src="/themes/studens/images/files-types/video.png"><br />
-			    		</div>
+						<?php $files = $item->getFiles(); ?>
+						<?php if(count($files) > 0 ): ?>
+							<div>
+								<?php foreach($files as $file): ?>
+									<span class="fa <?php echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type) ?>"></span>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>	
 			    		<strong><?php echo metadata($i, array('Dublin Core', 'Title')); ?></strong>
 			    		<p><?php echo metadata($i, array('Dublin Core', 'Description')); ?></p>	
 			    		<?php $i++; ?>
-			    	<?php endif; ?>		
+			    	<?php endif; ?>	
+
 			    	<?php if($i > 5) {break;} ?>
 			    <?php endforeach; ?>
 			</span>    

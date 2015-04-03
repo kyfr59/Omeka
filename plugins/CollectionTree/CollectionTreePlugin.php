@@ -242,7 +242,14 @@ class CollectionTreePlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookPublicItemsShowCollectionTree($args)
     {
-        $this->_appendToCollectionsShow($args['collection']);
+        $collection = $args['collection'];
+        $hasCollectionTree = $this->_db->getTable('CollectionTree')->hasCollectionTree($collection->id);
+        if ($hasCollectionTree) {
+            $this->_appendToCollectionsShow($args['collection']);
+        } else {
+            return false;
+        }    
+        
     }
     
     protected function _appendToCollectionsShow($collection)
