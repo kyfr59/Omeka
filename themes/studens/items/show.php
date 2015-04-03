@@ -166,6 +166,7 @@
 			    <style>
 			#collection-page .recent-items strong {
 				padding-left:50px;
+				display:block;
 			}
 
 			#collection-page .recent-items p {
