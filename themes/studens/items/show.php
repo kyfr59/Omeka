@@ -86,9 +86,19 @@
 	    			</div>
 	    		<?php endif; ?>		
 
+	    		<!-- Item Type Metadata -->
 	    		<?php $itemTypeMetadata = item_type_elements($item); ?>
-	    		<?php if (count($itemTypeMetadata) > 0): ?>
+	    		<?php $formats = $this->item->getElementTexts('Dublin Core', 'Format'); ?>
+	    		<?php if (count($itemTypeMetadata) > 0 || count($format) > 0): ?>
 		    		<div class="full infos">
+		    			<?php foreach($formats as $format): ?>
+		    				<?php if($format): ?>
+				    			<div>
+				    				<span>Format</span>
+					    			<strong><?php echo $format ?></strong>
+					    		</div>	
+		    				<?php endif; ?>
+			    		<?php endforeach; ?>
 		    			<?php foreach($itemTypeMetadata as $key => $value): ?>
 		    				<?php if($value): ?>
 				    			<div>
@@ -102,7 +112,12 @@
 	    		<?php endif; ?>
 
 	    		<!-- View -->
-	    		<div class="half clear view"><span><a href="">Consulter la source de cet item</a></span></div>
+	    		<?php $relations = $this->item->getElementTexts('Dublin Core', 'Relation'); ?>
+	    		<?php if ($relations[0]): ?>
+	    			<div class="half clear view"><span><a target="_new" href="<?php echo $relations[0] ?>">Consulter la source de cet item</a></span></div>
+	    		<?php else: ?>		
+	    			<div class="clear"></div>
+	    		<?php endif; ?>	
 
 	    		<!-- Social -->
 	    		<?php $url = absolute_url('items/show/'.$item->id); ?>
@@ -118,37 +133,78 @@
 	    	</div>
 	    </div>
 
+	    <div class="right">
 
+    	    <?php fire_plugin_hook('public_items_show_collection_tree', array('collection' => $collection)); ?>
 
-	    <div class="collection-page right">
-
-	    	<span class="collection-tree">
-			    <h3>Collection tree</h3>
-			    <ul><?php echo metadata($collection, array('Dublin Core', 'Title')); ?></ul>
-				<?php foreach(get_recent_items(5) as $item): ?>
-			    	<li><?php echo metadata($item, array('Dublin Core', 'Title')); ?></li>
-			    <?php endforeach; ?>
-			</span>
 			
-			<span class="collection-items">
-			    <h3>Items extraits de la collection</h3>
+
+			<span class="recent-items">
+			    <h2>Items extraits de la collection</h2>
 			    <?php $i = 0; ?>
-			    <?php foreach(get_recent_items() as $item): ?>
-			    	<?php if(metadata($item, array('Dublin Core', 'Description'))): ?>
-			    		<strong><?php echo metadata($item, array('Dublin Core', 'Title')); ?></strong>
-			    		<p><?php echo metadata($item, array('Dublin Core', 'Description')); ?></p>	
+			    <?php
+			    
+			    /*
+				$mime_types = explode(',', Omeka_Validate_File_MimeType::DEFAULT_WHITELIST);
+				foreach($mime_types as $type)
+				{
+					$t = explode('/', $type);
+					if($t[0]!='audio' && $t[0]!='video' && $t[0]!='image' && $t[0]!='text')
+						echo $type.'<br>';
+				}
+				*/
+				    			
+
+	    		$files = $item->getFiles();
+	    		foreach($files as $file) {
+					echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type);
+	    			
+
+	    		}
+			    ?>
+
+			    <style>
+			#collection-page .recent-items strong {
+				padding-left:50px;
+			}
+
+			#collection-page .recent-items p {
+				padding-bottom:30px;
+				margin-left:50px;
+				border-bottom:1px solid #ccc;
+
+			}
+
+			#collection-page .recent-items > div {
+				position:absolute;
+				float:left;
+				margin-left:10px;
+			}
+			</style>
+
+			    
+			    
+
+			    <?php foreach(get_recent_items() as $i): ?>
+
+			    	<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
+
+			    		<div>
+			    			<img src="/themes/studens/images/files-types/video.png"><br />
+			    			<img src="/themes/studens/images/files-types/video.png"><br />
+			    		</div>
+			    		<strong><?php echo metadata($i, array('Dublin Core', 'Title')); ?></strong>
+			    		<p><?php echo metadata($i, array('Dublin Core', 'Description')); ?></p>	
 			    		<?php $i++; ?>
 			    	<?php endif; ?>		
 			    	<?php if($i > 5) {break;} ?>
 			    <?php endforeach; ?>
-
-			    
-			    
+			</span>    
 	    </div>
-
 
 	</div>
 	<br style="clear:both" />
+
 <?php endif; ?>
 
 

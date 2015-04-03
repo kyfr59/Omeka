@@ -42,13 +42,13 @@
 
 .lifeline .begin {
 	height:29px;
-	background:url(/themes/studens/images/lifeline/lifeline-begin-background.png), url(/themes/studens/images/lifeline/lifeline-orange-background.png);
+	background:url(../images/lifeline/lifeline-begin-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 }
 
 .lifeline .subject {
-	background: url(/themes/studens/images/lifeline/lifeline-subject-background.png), url(/themes/studens/images/lifeline/lifeline-black-background.png);
+	background: url(../images/lifeline/lifeline-subject-background.png), url(../images/lifeline/lifeline-black-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	min-height:49px;
@@ -62,7 +62,7 @@
 }
 
 .lifeline .date {
-	background-image: url(/themes/studens/images/lifeline/lifeline-date-background.png), url(/themes/studens/images/lifeline/lifeline-orange-background.png);
+	background-image: url(../images/lifeline/lifeline-date-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 }	    	
@@ -70,7 +70,7 @@
 /* Coverage */
 
 .lifeline .coverage {
-	background-image: url(/themes/studens/images/lifeline/lifeline-coverage-background.png), url(/themes/studens/images/lifeline/lifeline-orange-background.png);
+	background-image: url(../images/lifeline/lifeline-coverage-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	padding-left:147px;
@@ -78,13 +78,13 @@
 }	
 
 .lifeline .coverage .no-localization {
-	background: url(/themes/studens/images/lifeline/lifeline-coverage-no-localization-background.png) left top no-repeat;
+	background: url(../images/lifeline/lifeline-coverage-no-localization-background.png) left top no-repeat;
 	padding-left:40px;
 	padding-top:10px;
 }
 
 .lifeline .coverage .with-localization {
-	background-image: url(/themes/studens/images/lifeline/lifeline-coverage-with-localization-background.png), url(/themes/studens/images/lifeline/lifeline-coverage-localization-green-background.png);
+	background-image: url(../images/lifeline/lifeline-coverage-with-localization-background.png), url(../images/lifeline/lifeline-coverage-localization-green-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	padding-left:40px;
@@ -92,7 +92,7 @@
 }
 
 .lifeline .coverage .localization {
-	background: url(/themes/studens/images/lifeline/lifeline-coverage-localization-background.png) 92px 0 no-repeat;
+	background: url(../images/lifeline/lifeline-coverage-localization-background.png) 92px 0 no-repeat;
 	width:400px;
 	height:166px;
 	margin-left:-100px;
@@ -109,7 +109,7 @@
 
 	
 .lifeline .creator {
-	background-image: url(/themes/studens/images/lifeline/lifeline-creator-background.png), url(/themes/studens/images/lifeline/lifeline-orange-background.png);
+	background-image: url(../images/lifeline/lifeline-creator-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 }	
@@ -117,7 +117,7 @@
 /* Infos Area */
 
 .lifeline .infos {
-	background-image: url(/themes/studens/images/lifeline/lifeline-infos-background.png), url(/themes/studens/images/lifeline/lifeline-orange-background.png);
+	background-image: url(../images/lifeline/lifeline-infos-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	float:left;
@@ -148,7 +148,7 @@
 }
 
 .lifeline .view {
-	background-image: url(/themes/studens/images/lifeline/lifeline-view-background.png), url(/themes/studens/images/lifeline/lifeline-orange-background.png);
+	background-image: url(../images/lifeline/lifeline-view-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	padding-bottom:20px;
@@ -158,7 +158,7 @@
 	margin-left:73px;
 	margin-top:5px;
 	padding-right:50px;
-	background: #e3a224 url(/themes/studens/images/lifeline/lifeline-view-link-background.png) right center no-repeat;
+	background: #e3a224 url(../images/lifeline/lifeline-view-link-background.png) right center no-repeat;
 }
 
 .lifeline .view span a {
@@ -169,7 +169,7 @@
 
 
 .lifeline .social {
-	background: url(/themes/studens/images/lifeline/lifeline-social-background.png) left top no-repeat;
+	background: url(../images/lifeline/lifeline-social-background.png) left top no-repeat;
 	padding-left:124px;
 	min-height:49px;
 }	
@@ -185,7 +185,7 @@
 	overflow:hidden;
 	padding-left:30px;
 	font-size:13px;
-	background: url(/themes/studens/images/lifeline/lifeline-social-permalink-background.png) 5px center no-repeat;
+	background: url(../images/lifeline/lifeline-social-permalink-background.png) 5px center no-repeat;
 	color:black;
 	margin-top:-3px;
 }
@@ -207,11 +207,11 @@
 }
 
 .lifeline .social a.google {
-	background:url(/themes/studens/images/lifeline/lifeline-social-google-background.png);
+	background:url(../images/lifeline/lifeline-social-google-background.png);
 }
 .lifeline .social a.facebook {
-	background:url(/themes/studens/images/lifeline/lifeline-social-facebook-background.png);
+	background:url(../images/lifeline/lifeline-social-facebook-background.png);
 }
 .lifeline .social a.twitter {
-	background:url(/themes/studens/images/lifeline/lifeline-social-twitter-background.png);
+	background:url(../images/lifeline/lifeline-social-twitter-background.png);
 }

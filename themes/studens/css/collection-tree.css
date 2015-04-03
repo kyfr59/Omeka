@@ -1,0 +1,53 @@
+#collection-tree a {
+	color:black;
+}
+
+#collection-tree ul {
+	font-size:16px;
+	font-weight:bold;
+	list-style-type: none;
+}
+
+#collection-tree > ul {
+	background:url(../images/collection-tree/first-level-icon.png), url(../images/collection-tree/first-level-bg.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	padding-left:40px;
+	padding-top:5px;
+}
+
+#collection-tree > ul > li > ul {
+	background:url(../images/collection-tree/second-level-icon.png), url(../images/collection-tree/second-level-bg.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	margin-top:10px;
+	margin-left:-40px;
+	padding-left:80px;
+	font-weight:normal;
+}
+
+#collection-tree > ul > li > ul:last-child {
+	background:url(../images/collection-tree/second-level-icon-last.png), url(../images/collection-tree/second-level-bg-last.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+}
+
+#collection-tree > ul > li > ul > li > ul {
+	padding-top:10px;
+}
+
+#collection-tree > ul > li > ul > li > ul > li {
+	background:url(../images/collection-tree/third-level-icon.png) left center no-repeat;
+	margin-left:-25px;
+	padding-left:47px;
+	font-weight:normal;
+}
+
+#collection-tree > ul > li > ul > li > ul > li:last-child {
+	background:url(../images/collection-tree/third-level-icon-last.png) left top no-repeat;
+	margin-left:-25px;
+	padding-left:54px;
+	font-weight:normal;
+	margin-left:-31px;
+	background-color:#ffffe7;
+}
