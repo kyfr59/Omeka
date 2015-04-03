@@ -5,6 +5,7 @@
     background-color: #F1E5CA;
     color: black;
     font-size:14px;
+    font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
   }
 
   .studens #content > div, 
@@ -15,11 +16,12 @@
   }
 
   .studens #wrapper {
-    background:#FFFDE6;
     border:none;
     border-left:1px solid #D7CEAF;
     border-right:1px solid #D7CEAF;
+    background: #FFFDE6 url('../images/body-square-background.png') -25px 400px no-repeat;
   }
+
   .studens h1 {
     color: #bdbdbd;
   }
@@ -536,14 +538,20 @@
     display:block;
   }
 
-  #collection-page .recent-items strong {
+  #collection-page .recent-items a.title {
     padding-left:50px;
     display:block;
+    color:black;
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:10px;
   }
 
-  #collection-page .recent-items p {
+  #collection-page .recent-items a.description {
+    display:block;
     padding-bottom:30px;
     margin-left:50px;
+    color:black;
     border-bottom:1px solid #ccc;
 
   }
@@ -552,4 +560,12 @@
     position:absolute;
     float:left;
     margin-left:10px;
+  }
+
+  #collection-page .recent-items span.fa {
+    display:block;
+    color:#e49f26;
+    font-size:25px;
+    margin:2px;
+    text-align:center;
   }

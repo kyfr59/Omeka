@@ -7,7 +7,6 @@
         define('OMEKA_ROOT', 'http://documents.studens.info');
 ?>
 
-<link href="<?php echo OMEKA_ROOT ?>/themes/studens/shared/shared.css" media="screen" rel="stylesheet" type="text/css" >
 <div id="header-studens">
     <div id="header-content">
 
@@ -23,7 +22,7 @@
         </div>
 
         <form>
-            <input style="height:32px !important" type="text" placeholder="Rehercher" required>
+            <input type="text" placeholder="Rehercher" required>
             <button type="submit">Search</button>
         </form>
         

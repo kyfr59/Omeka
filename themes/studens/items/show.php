@@ -140,24 +140,10 @@
 			<span class="recent-items">
 			    <h2>Items extraits de la collection</h2>
 			    
-			    <?php
-	    		
-			    ?>
-
-<style type="text/css">
-	.right .recent-items span.fa {
-		display:block;
-		color:#e49f26;
-		font-size:25px;
-		margin:2px;
-		text-align:center;
-	}
-</style>
-
 				<?php $i = 0; ?>
 			    <?php foreach(get_recent_items() as $i): ?>
 
-			    	<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
+			    	<?php if(metadata($i, array('Dublin Core', 'Description')) && $i->id != $item->id): ?>
 
 						<?php $files = $item->getFiles(); ?>
 						<?php if(count($files) > 0 ): ?>
@@ -167,8 +153,8 @@
 								<?php endforeach; ?>
 							</div>
 						<?php endif; ?>	
-			    		<strong><?php echo metadata($i, array('Dublin Core', 'Title')); ?></strong>
-			    		<p><?php echo metadata($i, array('Dublin Core', 'Description')); ?></p>	
+			    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
+			    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Description')); ?></a>	
 			    		<?php $i++; ?>
 			    	<?php endif; ?>	
 
@@ -183,10 +169,8 @@
 <?php endif; ?>
 
 
-
-
 <!-- CODE & CSS si l'item n'appartient pas à une collection -->
-
+<?php /*
 <div id="primary">
 
     <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
@@ -202,5 +186,6 @@
     <li id="previous-item" class="previous"><?php echo link_to_previous_item_show(); ?></li>
     <li id="next-item" class="next"><?php echo link_to_next_item_show(); ?></li>
 </ul>
+*/ ?>
 
 <?php echo foot(); ?>

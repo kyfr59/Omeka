@@ -53,7 +53,7 @@
 	height: 120px;
 	position: absolute;
 	margin-top: 135px;
-	width: 1170px;
+	width: 1200px;
 }
 
 #header-content .menu ul {	
@@ -122,7 +122,7 @@
 #header-content ul.submenu li a,
 #header-content ul.submenu li a:hover {
 	padding-top:7px;
-	font-size:16px;
+	font-size:18px;
 	background:none;
 	border:none;
 }
@@ -147,7 +147,7 @@
 
 #header-content input {
 	width:150px;
-	height:34px !important;
+	height:34px;
 	background:white;
 	font-size:15px;
 	border:1px solid #D2C8AF;

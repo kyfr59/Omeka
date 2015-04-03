@@ -6,7 +6,6 @@
     else
         define('OMEKA_ROOT', 'http://documents.studens.info');
 ?>
-<link href="<?php echo OMEKA_ROOT ?>/themes/studens/shared/shared.css" media="screen" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 <?php
@@ -30,7 +29,7 @@ $recent = get_recent_items(3);
         <div class="contact left">
             <h3>cité des mémoires étudiantes</h3>
             Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, definit amicitiam paribus officiis ac ut par sit.<br />
-            <a href="#" class="site">Visitez citedesmemoiresetudiantes.org</a>
+            <a target="_new" href="http://www.citedesmemoiresetudiantes.org" class="site">Visitez citedesmemoiresetudiantes.org</a>
         </div>
         <div class="contact">
             <h3>studens</h3>
@@ -67,7 +66,7 @@ $recent = get_recent_items(3);
 
         </div>
         <div class="mentions">
-            <a href="#">Mentions légales</a>
+            <a href="#">Mentions légales</a>&nbsp;&nbsp;-&nbsp;
             <a href="#">Contact</a><br />
             Copyright &copy; citememoiresetudiantes.org<br />
             Tous droits réservés

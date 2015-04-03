@@ -37,7 +37,7 @@
     <?php echo head_js(); ?>
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
-
+    <link href="/themes/studens/shared/shared.css" media="screen" rel="stylesheet" type="text/css" >
     <?php
         // Studen's header inclusion
         // require(WEB_ROOT.'/shared/header');
