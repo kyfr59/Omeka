@@ -32,3 +32,38 @@ function drawSharedFooter() {
     return get_view()->partial('shared/footer.php');
 }
 
+function cutString($string, $length = 'medium') {
+
+    switch ($length) {
+        case 'short':
+            $size = 90;
+            break;
+        
+        case 'medium':
+            $size = 180;
+            break;
+
+        case 'long':
+            $size = 300;
+            break;
+
+        default:
+            $size = is_integer($length) ? $length : 100;
+            break;
+    }
+
+    $string = strip_tags($string); // Remove HTML tags
+
+    if (strlen($string) <= $size) { // It's not necessary to cut the string
+        return $string;
+    }
+
+    $string = substr($string, 0, $size); // Cut the string roughly
+
+    $lastSpace = strrpos($string, ' '); // Find the position of the last space in the string
+
+    $string = substr($string, 0, $lastSpace);
+
+    return rtrim($string).'...';
+}
+

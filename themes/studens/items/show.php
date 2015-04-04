@@ -11,7 +11,6 @@
 	<?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 	<div id="collection-page">
 
-
 	    <div class="left">
 	      	<div class="item">
 	    		<h2><?php echo metadata($item, array('Dublin Core', 'Title')); ?></h2><span class="top"></span>
@@ -119,14 +118,26 @@
 	    			<div class="clear"></div>
 	    		<?php endif; ?>	
 
+
 	    		<!-- Social -->
+	    		<script>
+				jQuery(document).ready(function() {
+					jQuery('.networks > a').click(function() {
+						var href = jQuery(this).attr('href');
+						window.open(href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+						return false;
+					});
+				});
+				</script>
 	    		<?php $url = absolute_url('items/show/'.$item->id); ?>
+	    		<?php $tweet = cutString(metadata($item, array('Dublin Core', 'Title')), 140); ?>
 				<div class="full social">
+					<span class="permalink">permalink</span>
 					<a class="permalink" href="<?php echo $url ?>"><?php echo $url ?></a>
 					<div class="networks">
-						<a class="facebook" target="_new" href="http://www.facebook.com/"></a>
-						<a class="google" target="_new" href="http://plus.google.com/"></a>
-						<a class="twitter" target="_new" href="http://www.twitter.com/"></a>
+						<a class="facebook" href="http://www.facebook.com/sharer/sharer.php?u=<?php echo $url ?>"></a>
+						<a class="google" 	href="https://plus.google.com/share?url=<?php echo $url ?>"></a>
+						<a class="twitter" 	href="http://twitter.com/intent/tweet/?url=<?php echo $url ?>&text=<?php echo $tweet ?>"></a>
 					</div>	
 				</div>
 
@@ -140,7 +151,7 @@
 			<span class="recent-items">
 			    <h2>Items extraits de la collection</h2>
 			    
-				<?php $i = 0; ?>
+				<?php $j = 0; ?>
 			    <?php foreach(get_recent_items() as $i): ?>
 
 			    	<?php if(metadata($i, array('Dublin Core', 'Description')) && $i->id != $item->id): ?>
@@ -154,11 +165,10 @@
 							</div>
 						<?php endif; ?>	
 			    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
-			    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Description')); ?></a>	
-			    		<?php $i++; ?>
+			    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
+			    		<?php $j++; ?>
 			    	<?php endif; ?>	
-
-			    	<?php if($i > 5) {break;} ?>
+			    	<?php if($j > 5) {break;} ?>
 			    <?php endforeach; ?>
 			</span>    
 	    </div>

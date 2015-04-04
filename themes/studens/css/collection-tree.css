@@ -18,6 +18,11 @@
 	background-repeat: no-repeat, repeat-y;
 	padding-left:40px;
 	padding-top:5px;
+	margin-left:55px;
+}
+
+#collection-tree > ul:first-child {
+	
 }
 
 #collection-tree > ul > li > ul {

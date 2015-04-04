@@ -37,16 +37,20 @@
     <?php echo head_js(); ?>
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
-    <link href="/themes/studens/shared/shared.css" media="screen" rel="stylesheet" type="text/css" >
-    <?php
-        // Studen's header inclusion
-        // require(WEB_ROOT.'/shared/header');
-        // echo Zend_View_Helper_Partial->partial('shared/header.php'
-//        $this->view->partial('shared/header.php');
-    echo drawSharedHeader();
-    ?>
 
-    <div id="wrapper">
+    <!-- Studen's header inclusion -->
+    <link href="/themes/studens/shared/shared.css" media="screen" rel="stylesheet" type="text/css" >
+    <?php echo drawSharedHeader(); ?>
+
+
+    <?php 
+        // Manage #wrapper with no background image (square)
+        if (substr($_SERVER['REQUEST_URI'], 0, 12) == '/items/show/') {
+            $noBackground = ' class="no-background" '; 
+        }
+    ?>
+    <div id="wrapper" <?php echo $noBackground ?>>
+
     <?php /*
         <div>
             <?php if($user = current_user()) {

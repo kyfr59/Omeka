@@ -19,7 +19,12 @@
     border:none;
     border-left:1px solid #D7CEAF;
     border-right:1px solid #D7CEAF;
-    background: #FFFDE6 url('../images/body-square-background.png') -25px 400px no-repeat;
+    background: #FFFDE6 url('../images/body-square-background.png') -45px 400px no-repeat;
+  }
+
+  .studens #wrapper.no-background {
+    background:none;
+    background-color: #FFFDE6;
   }
 
   .studens h1 {
@@ -460,7 +465,6 @@
 
 
 
-
   /*** Page "Collection" ***/
 
   #collection-page {
@@ -486,6 +490,7 @@
     background-color:#efe5ca !important;
     background: url('../images/collection-page-left-description-background.png') top right no-repeat;
     border-bottom:3px solid #e3a224;
+    font-size:16px;
   }
 
   #collection-page .item .item-file {
@@ -532,10 +537,12 @@
     color:#105658;
     margin-top:0px;
     margin-bottom:20px;
+    font-size:20px;
   }
 
   #collection-page .recent-items {
     display:block;
+    font-size:16px;
   }
 
   #collection-page .recent-items a.title {
