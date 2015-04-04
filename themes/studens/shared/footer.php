@@ -29,13 +29,13 @@ $recent = get_recent_items(3);
         <div class="contact left">
             <h3>cité des mémoires étudiantes</h3>
             Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, definit amicitiam paribus officiis ac ut par sit.<br />
-            <a target="_new" href="http://www.citedesmemoiresetudiantes.org" class="site">Visitez citedesmemoiresetudiantes.org</a>
+            <a target="_blank" href="http://www.citedesmemoiresetudiantes.org" class="site">Visitez citedesmemoiresetudiantes.org</a>
         </div>
         <div class="contact">
             <h3>studens</h3>
             <span>Standard de 9h cà 18h</span>
             <span>Tél: +33 (0)1 44 55 66 77 88</span>
-            <a href="">contact@citedesmemoiresetudiantes.org</a>
+            <a href="mailto:contact@citedesmemoiresetudiantes.org">contact@citedesmemoiresetudiantes.org</a>
         </div>
         <div class="contact">
             <h3>derniers inventaires</h3>
