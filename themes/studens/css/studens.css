@@ -615,15 +615,15 @@
   }
 
   #last > a.last-archival span {
-      background:url(/themes/studens/images/homepage-last-archival.png) top left no-repeat;
+      background:url(/themes/studens/images/homepage-last-archival.png) 1px 1px no-repeat;
   }
 
   #last > a.last-exhibit span {
-      background:url(/themes/studens/images/homepage-last-exhibit.png) top left no-repeat;
+      background:url(/themes/studens/images/homepage-last-exhibit.png) 1px 1px no-repeat;
   }
 
   #last > a.last-collection span {
-      background:url(/themes/studens/images/homepage-last-collection.png) top left no-repeat;
+      background:url(/themes/studens/images/homepage-last-collection.png) 1px 1px no-repeat;
   }
 
   #last > a.last-collection {
@@ -633,7 +633,7 @@
   #last > a img {
       width:355px !important;
       height:192px !important;
-      border:none;
+      border:1px solid #aaa !important;
   }
 
   #last h2 {
