@@ -581,3 +581,71 @@
     margin:2px;
     text-align:center;
   }
+
+
+  /* Last articles on homepage */
+
+  #last {
+    border:none !important;
+    float:left !important;
+    width:1130px !important;
+    padding:0 !important;
+    margin:0 !important;
+    margin-top:50px !important;
+    margin-bottom:50px !important;
+    background-color:inherit !important;
+  }
+
+  #last > a {
+      display:block;
+      margin:0;
+      float:left;
+      width:355px;
+      padding:0px;
+      margin-right:32px;
+      color:#2d2523;
+  }
+
+  #last > a span {
+      width:259px;
+      height:192px;
+      display:block;
+      background-color:orange;
+      position:absolute;
+  }
+
+  #last > a.last-archival span {
+      background:url(/themes/studens/images/homepage-last-archival.png) top left no-repeat;
+  }
+
+  #last > a.last-exhibit span {
+      background:url(/themes/studens/images/homepage-last-exhibit.png) top left no-repeat;
+  }
+
+  #last > a.last-collection span {
+      background:url(/themes/studens/images/homepage-last-collection.png) top left no-repeat;
+  }
+
+  #last > a.last-collection {
+      margin-right:0px;
+  }
+
+  #last > a img {
+      width:355px !important;
+      height:192px !important;
+      border:none;
+  }
+
+  #last h2 {
+      margin:0 !important;
+      margin-top:15px !important;
+      font-size:22px !important;
+      line-height: 24px !important;
+  }
+
+
+  #last p {
+      margin:0 !important;
+      font-size:18px !important;
+      line-height: 20px !important;
+  }
