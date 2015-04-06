@@ -99,9 +99,10 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
      */
     public function browseAction()
     {
+
         // Respect only GET parameters when browsing.
         $this->getRequest()->setParamSources(array('_GET'));
-        
+
         // Inflect the record type from the model name.
         $pluralName = $this->view->pluralize($this->_helper->db->getDefaultModelName());
 
@@ -119,6 +120,8 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
                 }
             }
         }
+
+        Zend_Debug::dump($this->getAllParams());
         
         $params = $this->getAllParams();
         $recordsPerPage = $this->_getBrowseRecordsPerPage($pluralName);

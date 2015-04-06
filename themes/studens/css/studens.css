@@ -19,7 +19,11 @@
     border:none;
     border-left:1px solid #D7CEAF;
     border-right:1px solid #D7CEAF;
-    background: #FFFDE6 url('../images/body-square-background.png') -45px 400px no-repeat;
+    background-color:#FFFDE6 !important;
+    background:url(../images/body-square-background.png), url(../images/body-bottom-background.png);
+    background-position: -45px 400px, bottom right;
+    background-repeat: no-repeat;
+    
   }
 
   .studens #wrapper.no-background {

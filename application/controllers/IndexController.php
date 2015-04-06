@@ -13,6 +13,7 @@ class IndexController extends Omeka_Controller_AbstractActionController
 {
     public function indexAction()
     {
+
     	// Retrieve slider images
 		$collectionImageHelper = new $this->_helper->collectionImage();
 		$this->view->sliderImages = $collectionImageHelper::getSliderImages();
@@ -31,6 +32,31 @@ class IndexController extends Omeka_Controller_AbstractActionController
 
 		$this->view->collections = $collections;
 
+		/** Retrieve last archival description */
+
+		$this->_helper->db->setDefaultModelName('Item');
+		$this->setParam('sort_field', 'added');
+		$this->setParam('sort_dir', 'd');
+        $records = $this->_helper->db->findBy($this->getAllParams());
+        $this->view->lastItem = $records[0];		
+
+		/** Retrieve last exhibit */
+
+		$this->_helper->db->setDefaultModelName('Exhibit');
+        $records = $this->_helper->db->findBy();
+        $this->view->lastExhibit = $records[0];
+
+		/** Retrieve last collection */
+
+		$this->_helper->db->setDefaultModelName('Collection');
+        $this->setParam('sort_field', 'added');
+		$this->setParam('sort_dir', 'd');
+		$records = $this->_helper->db->findBy($this->getAllParams());		
+        Zend_Debug::dump($records[0]);
+        $this->view->lastCollection = $records[0];
+
+
 		$this->_helper->viewRenderer->renderScript('index.php');
     }
 }
+

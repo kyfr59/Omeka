@@ -78,7 +78,96 @@ jQuery(document).ready(function() {
     <?php echo get_theme_option('Homepage Text'); ?>
 </p>
 
-<br style="clear:both" />
+
+
+<style>
+#last {
+    border:none !important;
+    float:left !important;
+    width:1130px !important;
+    padding:0 !important;
+    margin:0 !important;
+    margin-top:50px !important;
+    margin-bottom:50px !important;
+    background-color:inherit !important;
+}
+
+#last > a {
+    display:block;
+    margin:0;
+    float:left;
+    width:355px;
+    padding:0px;
+    margin-right:32px;
+    color:#2d2523;
+}
+
+#last > a span {
+    width:259px;
+    height:192px;
+    display:block;
+    background-color:orange;
+    position:absolute;
+}
+
+#last > a.last-archival span {
+    background:url(/themes/studens/images/homepage-last-archival.png) top left no-repeat;
+}
+
+#last > a.last-exhibit span {
+    background:url(/themes/studens/images/homepage-last-exhibit.png) top left no-repeat;
+}
+
+#last > a.last-collection span {
+    background:url(/themes/studens/images/homepage-last-collection.png) top left no-repeat;
+}
+
+#last > a.last-collection {
+    margin-right:0px;
+}
+
+#last > a img {
+    width:355px !important;
+    height:192px !important;
+    border:none;
+}
+
+#last h2 {
+    margin:0 !important;
+    margin-top:15px !important;
+    font-size:22px !important;
+}
+
+
+#last p {
+    margin:0 !important;
+    margin-top:-5px !important;
+    font-size:18px !important;
+}
+
+</style>
+
+<div id="last">
+    <a href="#" class="last-archival">
+        <span></span>
+        <img src="http://localhost/wordpress/wp-content/uploads/2015/03/Colchester-Augmented-reality.jpg" />
+        <h2><?php echo $this->lastExhibit->title; ?></h2>
+        <p><?php echo cutString($this->lastExhibit->description) ?></p>
+    </a>    
+    <a href="#" class="last-exhibit">
+        <span></span>
+        <img src="http://localhost/wordpress/wp-content/uploads/2015/03/Colchester-Augmented-reality.jpg" />
+        <h2><?php echo metadata($this->lastItem, array('Dublin Core', 'Title')); ?></h2>
+        <p><?php echo metadata($this->lastItem, array('Dublin Core', 'Description')); ?></p>
+    </a>
+
+    <a href="#" class="last-collection">
+        <span></span>
+        <img src="http://localhost/wordpress/wp-content/uploads/2015/03/Colchester-Augmented-reality.jpg" />
+        <h2><?php echo metadata($this->lastCollection, array('Dublin Core', 'Title')); ?></h2>
+        <p><?php echo cutString($this->lastCollection->description, 'short'); ?></p>
+    </a>
+</div>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 

@@ -67,3 +67,4 @@ function cutString($string, $length = 'medium') {
     return rtrim($string).'...';
 }
 
+
