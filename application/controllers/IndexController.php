@@ -52,9 +52,9 @@ class IndexController extends Omeka_Controller_AbstractActionController
         $this->setParam('sort_field', 'added');
 		$this->setParam('sort_dir', 'd');
 		$records = $this->_helper->db->findBy($this->getAllParams());		
-        Zend_Debug::dump($records[0]);
         $this->view->lastCollection = $records[0];
-
+		$collectionImageHelper = new $this->_helper->collectionImage($records[0]);
+		$this->view->lastCollectionImage = $collectionImageHelper->getOriginal();
 
 		$this->_helper->viewRenderer->renderScript('index.php');
     }
