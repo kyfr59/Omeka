@@ -1,10 +1,19 @@
 <?php
-    if ($_SERVER['HTTP_HOST'] == 'localhost')
+    if ($_SERVER['HTTP_HOST'] == 'localhost') {
+        define('WORDPRESS_ROOT', 'http://localhost/wordpress');
         define('OMEKA_ROOT', 'http://localhost');
-    else if($_SERVER['HTTP_HOST'] == '192.168.0.18')
+        define('ATOM_ROOT', 'http://localhost/atom');
+    }
+    else if($_SERVER['HTTP_HOST'] == '192.168.0.18') {
+        define('WORDPRESS_ROOT', 'http://192.168.0.18/wordpress');
         define('OMEKA_ROOT', 'http://192.168.0.18');
-    else
+        define('ATOM_ROOT', 'http://192.168.0.18/atom');
+    }
+    else {
+        define('WORDPRESS_ROOT', 'http://www.studens.info');
         define('OMEKA_ROOT', 'http://documents.studens.info');
+        define('ATOM_ROOT', 'http://inventaires.studens.info');
+    }
 ?>
 
 <div id="header-studens">
@@ -28,9 +37,9 @@
         
         <div class="menu">
             <ul style="clear:both;">
-                <li><a href="#">accueil</a></li><!--
-             --><li class="selected"><a href="#">ressources numériques</a></li><!--
-             --><li><a href="#">inventaires d'archives</a></li>
+                <li><a href="<?php echo WORDPRESS_ROOT ?>">accueil</a></li><!--
+             --><li class="selected"><a href="<?php echo OMEKA_ROOT ?>">ressources numériques</a></li><!--
+             --><li><a href="<?php echo ATOM_ROOT ?>">inventaires d'archives</a></li>
             </ul>
             <ul class="submenu">
                 <li><a href="/">accueil</a></li><!--
