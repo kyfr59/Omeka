@@ -136,6 +136,7 @@ jQuery(document).ready(function() {
     margin:0 !important;
     margin-top:15px !important;
     font-size:22px !important;
+    line-height: 24px !important;
 }
 
 
@@ -148,17 +149,19 @@ jQuery(document).ready(function() {
 </style>
 
 <div id="last">
+
     <a href="#" class="last-archival">
+        <span></span>
+        <img src="http://localhost/wordpress/wp-content/uploads/2015/03/Colchester-Augmented-reality.jpg" />
+        <h2><?php echo metadata($this->lastItem, array('Dublin Core', 'Title')); ?></h2>
+        <p><?php echo cutString(metadata($this->lastItem, array('Dublin Core', 'Description'))); ?></p>
+    </a>    
+
+    <a href="#" class="last-exhibit">
         <span></span>
         <img src="http://localhost/wordpress/wp-content/uploads/2015/03/Colchester-Augmented-reality.jpg" />
         <h2><?php echo $this->lastExhibit->title; ?></h2>
         <p><?php echo cutString($this->lastExhibit->description) ?></p>
-    </a>    
-    <a href="#" class="last-exhibit">
-        <span></span>
-        <img src="http://localhost/wordpress/wp-content/uploads/2015/03/Colchester-Augmented-reality.jpg" />
-        <h2><?php echo metadata($this->lastItem, array('Dublin Core', 'Title')); ?></h2>
-        <p><?php echo metadata($this->lastItem, array('Dublin Core', 'Description')); ?></p>
     </a>
 
     <a href="#" class="last-collection">
