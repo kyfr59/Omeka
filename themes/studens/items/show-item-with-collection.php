@@ -150,8 +150,8 @@
 		    <h2>Items extraits de la collection</h2>
 		    
 			<?php $j = 0; ?>
-		    <?php foreach(get_recent_items() as $i): ?>
-
+		    <?php foreach($this->recent_items as $i): ?>
+				
 		    	<?php if(metadata($i, array('Dublin Core', 'Description')) && $i->id != $item->id): ?>
 
 					<?php $files = $item->getFiles(); ?>
@@ -168,6 +168,20 @@
 		    	<?php endif; ?>	
 		    	<?php if($j > 5) {break;} ?>
 		    <?php endforeach; ?>
+
+<style>
+.view-all-items {
+	margin-left:50px;
+	display:inline-block;
+	padding:8px;
+	padding-right:45px;
+	color:white !important;
+	background:black url(/themes/studens/images/lifeline/lifeline-view-all-items-background.png) right center no-repeat;
+	width:inherit !important;
+
+}
+</style>
+			<?php echo link_to_collection('Voir tous les items de la collection', array("class"=>"view-all-items"), 'show', $collection); ?>
 		</span>    
     </div>
 

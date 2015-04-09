@@ -89,8 +89,12 @@ class ItemsController extends Omeka_Controller_AbstractActionController
 
         // Render the correction view on frontoffice
         if (!is_admin_theme()) {
-            if ($record->collection_id)
-                $this->render('show-item-with-collection');
+            if ($record->collection_id) {
+                $this->view->recent_items = $this->_helper->db->getTable('Item')->findBy(
+                    array('collection' => $record->collection_id, 'sort_field' => 'Dublin Core,Identifier')
+                );
+                $this->render('show-item-with-collection');                
+            }
             else
                 $this->render('show-item-without-collection');
         }
