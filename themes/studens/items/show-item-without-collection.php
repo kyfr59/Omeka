@@ -116,7 +116,7 @@
     			<?php if (count($formats)>0): ?>
 	    			<?php foreach($formats as $format): ?>
 	    				<div class="left"><span><u>
-	    				<?php if ($format && strlen(trim($format)) > 0): ?>
+	    				<?php if ($format && strlen(trim($format, '<br>')) > 0): ?>
 			    			<i>Format</i>
 							<strong>
 								<?php echo $format ?><br />
@@ -129,7 +129,7 @@
 		    	<?php if (count($formats)>0): ?>	
 		    		<div class="right"><span><u>
 	    			<?php foreach($itemTypeMetadata as $key => $value): ?>
-	    				<?php if($value && strlen(trim($value)) > 0): ?>
+	    				<?php if($value && strlen(trim($value, '<br>')) > 0): ?>
 		    				<i><?php echo __($key) ?></i>
 			    			<strong><?php echo $value ?></strong>
 	    				<?php endif; ?>
