@@ -89,7 +89,7 @@
     		<?php if (count($itemTypeMetadata) > 0 || count($format) > 0): ?>
 	    		<div class="full infos">
 	    			<?php foreach($formats as $format): ?>
-	    				<?php if($format): ?>
+	    				<?php if(strlen(trim($format))>0): ?>
 			    			<div>
 			    				<span>Format</span>
 				    			<strong><?php echo $format ?></strong>
