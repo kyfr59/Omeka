@@ -213,7 +213,7 @@
     color:black;
     font-size:20px;
     padding-top:25px;
-    text-transform: lowercase;
+    text-transform: inherit !important;
     line-height:22px !important;
   }
   .studens #content h1:first-letter {
@@ -468,119 +468,6 @@
   }
 
 
-
-  /*** Page "Collection" ***/
-
-  #collection-page {
-      border:none !important;
-      background-color:inherit !important;
-      /* TOTAL WIDTH : 1106px */
-  }
-  
-  #collection-page .left, 
-  #collection-page .right {
-      width:533px;
-      float:left;
-  }
-
-  /* Left area */
-
-  #collection-page .left {
-      margin-right:40px;
-  } 
-
-  #collection-page .left .item {
-    background-color:green;
-    background-color:#efe5ca !important;
-    background: url('../images/collection-page-left-description-background.png') top right no-repeat;
-    border-bottom:3px solid #e3a224;
-    font-size:16px;
-  }
-
-  #collection-page .item .item-file {
-    margin-top:15px;
-  }
-
-  #collection-page .left .item h2 {
-      margin:0px;
-      color:white;
-      text-align:center;
-      background-color:black;
-      display: block;
-      padding:10px;
-  } 
-
-  #collection-page .left .item span.top {
-    display:block;
-    height:15px;
-    margin:0;
-    padding:0;
-    background: url('../images/collection-page-left-title-background.png') top center no-repeat;
-  }
-
-  #collection-page .left .item span.bottom {
-    display:block;
-    height:29px;
-    width:29px;
-    float:right;
-    margin:0;
-    margin-top:-29px;
-    padding:0;
-    background: url('../images/collection-page-left-item-background.png') top right no-repeat;
-  }
-
-  #collection-page .left .item p {
-    padding:20px;
-  }
-
-  /* Right area */
-  #collection-page .right h2 {
-    background: url(/themes/studens/images/collection-page-right-title-background.png) left center no-repeat;
-    padding-left:60px;
-    font-weight:normal;
-    color:#105658;
-    margin-top:0px;
-    margin-bottom:20px;
-    font-size:20px;
-  }
-
-  #collection-page .recent-items {
-    display:block;
-    font-size:16px;
-  }
-
-  #collection-page .recent-items a.title {
-    padding-left:50px;
-    display:block;
-    color:black;
-    font-weight:bold;
-    font-size:18px;
-    margin-bottom:10px;
-  }
-
-  #collection-page .recent-items a.description {
-    display:block;
-    padding-bottom:30px;
-    margin-left:50px;
-    color:black;
-    border-bottom:1px solid #ccc;
-    margin-bottom:20px;
-
-  }
-
-  #collection-page .recent-items > div {
-    position:absolute;
-    float:left;
-    margin-left:10px;
-  }
-
-  #collection-page .recent-items span.fa {
-    display:block;
-    color:#e49f26;
-    font-size:25px;
-    margin:2px;
-    text-align:center;
-  }
 
 
   /* Last articles on homepage */

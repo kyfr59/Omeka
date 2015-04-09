@@ -76,7 +76,27 @@ class ItemsController extends Omeka_Controller_AbstractActionController
     {
         return $this->_helper->db->getTable('ElementSet')->findByRecordType('Item');
     }
-    
+
+    /**
+     * Adds an additional permissions check to the built-in edit action.
+     * 
+     */
+    public function showAction()
+    {
+        $record = $this->_helper->db->findById();
+
+        parent::editAction();
+
+        // Render the correction view on frontoffice
+        if (!is_admin_theme()) {
+            if ($record->collection_id)
+                $this->render('show-item-with-collection');
+            else
+                $this->render('show-item-without-collection');
+        }
+
+    }
+
     /**
      * Adds an additional permissions check to the built-in edit action.
      * 

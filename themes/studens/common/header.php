@@ -23,7 +23,7 @@
     <!-- Stylesheets -->
     <?php
     queue_css_url('//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic');
-    queue_css_file(array('iconfonts', 'normalize', 'style', 'studens', 'lifeline', 'collection-tree'), 'screen');
+    queue_css_file(array('iconfonts', 'normalize', 'style', 'studens', 'item-with-collection', 'item-without-collection', 'collection-tree'), 'screen');
     queue_css_file('print', 'print');
     echo head_css();
     ?>
@@ -42,14 +42,7 @@
     <link href="/themes/studens/shared/shared.css" media="screen" rel="stylesheet" type="text/css" >
     <?php echo drawSharedHeader(); ?>
 
-
-    <?php 
-        // Manage #wrapper with no background image (square)
-        if (substr($_SERVER['REQUEST_URI'], 0, 12) == '/items/show/') {
-            $noBackground = ' class="no-background" '; 
-        }
-    ?>
-    <div id="wrapper" <?php echo $noBackground ?>>
+    <div id="wrapper" class="<?php echo $wrapperclass ?>">
 
     <?php /*
         <div>
