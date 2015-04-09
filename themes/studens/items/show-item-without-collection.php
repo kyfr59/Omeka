@@ -78,10 +78,12 @@
 
 
 
+		<?php $creators = $this->item->getElementTexts('Dublin Core','Creator'); ?>
+		<?php $contributors = $this->item->getElementTexts('Dublin Core','Contributor'); ?>		
+		<?php if (count($creators) && count($contributors) ): ?>
 		<div class="row persons">
 
 			<!-- Creators -->
-    		<?php $creators = $this->item->getElementTexts('Dublin Core','Creator'); ?>
     		<?php if (count($creators) > 0 ): ?>
     			<div class="creators">
     				<i>
@@ -94,7 +96,6 @@
     		<?php endif; ?>	
 
 			<!-- Contributors -->
-			<?php $contributors = $this->item->getElementTexts('Dublin Core','Contributor'); ?>
     		<?php if (count($contributors) > 0 ): ?>
     			<div class="contributors">
     				<i>
@@ -107,6 +108,7 @@
     		<?php endif; ?>	
 
 		</div>
+		<?php endif; ?>
 
 		<!-- Item Type Metadata -->
 		<?php $itemTypeMetadata = item_type_elements($item); ?>
