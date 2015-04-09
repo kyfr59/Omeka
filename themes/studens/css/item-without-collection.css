@@ -53,10 +53,6 @@
 	padding:20px;
 }
 
-#item-without-collection .item a {
-	outline:none !important;
-}
-
 /* Lifeline - General styles */
 
 #item-without-collection .lifeline {

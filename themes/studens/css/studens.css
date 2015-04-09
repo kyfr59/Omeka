@@ -58,6 +58,11 @@
   .studens a:hover, .studens a:active {
     color: black;
   }
+
+  a:active{outline: none !important;}
+  a:focus{ outline: none !important;}
+  :focus {outline: 0 !important;}
+
   .studens header {
     /* background-color: red;*/
   }
