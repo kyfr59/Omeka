@@ -24,11 +24,14 @@
 		<div class="begin"></div>
 
 		<!-- About & subjects -->
+    	<?php $about = metadata($item, array('Dublin Core', 'Description')); ?>
     	<?php $subjects = $this->item->getElementTexts('Dublin Core','Subject'); ?>
 		<div class="row">
-			<div class="left about shift" >
-				<span><?php echo cutString(metadata($item, array('Dublin Core', 'Description')), 'long'); ?></span>
-			</div>
+			<?php if (strlen(trim($about)) > 0):?>
+				<div class="left about shift" >
+					<span><?php echo cutString($about, 'long'); ?></span>
+				</div>
+			<?php endif; ?>	
 			<?php if (count($subjects) > 0 ): ?>
 				<div class="right has-about subject">
 					<b>Sujet<?php echo count($subjects) > 1 ? 's' : '';?></b><br />
@@ -178,13 +181,14 @@
 
 		<div class="row comments"></div>
 	</div>
+</div>
 <br style="clear:both" />
 
-
+<!--
 <ul class="item-pagination navigation">
     <li id="previous-item" class="previous"><?php echo link_to_previous_item_show(); ?></li>
     <li id="next-item" class="next"><?php echo link_to_next_item_show(); ?></li>
 </ul>
-
+-->
 
 <?php echo foot(); ?>
