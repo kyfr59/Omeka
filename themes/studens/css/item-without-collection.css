@@ -1,0 +1,450 @@
+/* Page style */
+
+#item-without-collection {
+  border:none !important;
+  background-color:inherit !important;
+  /* TOTAL WIDTH : 1106px */
+}
+
+
+#item-without-collection .item {
+	background-color:green;
+	background-color:#efe5ca !important;
+	background: url('../images/collection-page-left-description-background.png') top right no-repeat;
+	border-bottom:3px solid #e3a224;
+	font-size:16px;
+}
+
+#item-without-collection .item .item-file {
+	margin-top:15px;
+}
+
+#item-without-collection .item h2 {
+	margin:0px;
+	color:white;
+	text-align:center;
+	display: block;
+	padding:10px;
+	background: black url('../images/item-without-collection/title-background.png') bottom right no-repeat;
+} 
+
+#item-without-collection .item span.top {
+	display:block;
+	height:15px;
+	margin:0;
+	padding:0;
+	background: url('../images/item-without-collection/item-top-background.png') top center no-repeat;
+}
+
+#item-without-collection .item span.bottom {
+	display:block;
+	height:81px;
+	width:100%;
+	float:right;
+	margin:0;
+	margin-top:-81px;
+	padding:0;
+	background-image: url('../images/item-without-collection/item-left-background.png'), url('../images/item-without-collection/item-right-background.png');
+	background-position: left bottom, right top;
+	background-repeat: no-repeat;
+}
+
+#item-without-collection .item p {
+	padding:20px;
+}
+
+/* Lifeline - General styles */
+
+#item-without-collection .lifeline {
+	font-size:17px !important;
+	color:#555;
+}
+
+#item-without-collection .lifeline div.left,
+#item-without-collection .lifeline div.right {
+	width:550px;
+}
+
+#item-without-collection .lifeline div.left {
+	float:left;	
+}
+
+#item-without-collection .lifeline div.right {
+	margin-left:550px;
+}
+
+#item-without-collection .lifeline .row {
+	/* border:1px solid red; */
+	float:left;
+	width:100%;
+}
+
+#item-without-collection .lifeline b {
+	font-size:18px;
+}
+
+#item-without-collection .lifeline a {
+	font-size:16px;
+	color:black;
+}
+
+#item-without-collection .lifeline a:hover {
+	color:#e3a224;
+}
+
+#item-without-collection .lifeline .clear {
+	clear:both;
+}
+
+#item-without-collection .lifeline .left.shift {
+	padding-right:30px !important;
+}
+
+
+#item-without-collection .lifeline .begin {
+	height:29px;
+	margin-left:524px;
+	padding-top:70px;
+	background:url(../images/lifeline/lifeline-begin-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+}
+
+
+#item-without-collection .lifeline .about {
+	background:url(../images/item-without-collection/about-background.png), url('../images/item-without-collection/about-line-background.png');
+	background-position: right top;
+	background-repeat: no-repeat, repeat-y;
+	padding-top:50px;
+	min-height:56px;
+}
+
+#item-without-collection .lifeline .about span {
+	display:block;
+	width:350px;
+	float: right;
+	line-height: 18px;
+	margin-right:50px;
+}
+
+
+#item-without-collection .lifeline .subject {
+    background:url(/themes/studens/images/item-without-collection/subject-background.png), url(/themes/studens/images/item-without-collection/subject-line-background.png);
+    background-position: left bottom, left top;
+	background-repeat: no-repeat, repeat-y;
+    padding-left:100px;
+    margin-left:541px !important;
+
+}
+
+#item-without-collection .lifeline .subject.has-about {
+	padding-top:100px;
+}
+
+#item-without-collection .lifeline .date {
+	display:inline-block;
+	margin:0;
+	background:url(/themes/studens/images/item-without-collection/date-line-background.png);
+    background-position: center top;
+	background-repeat: repeat-y;
+	padding-top:50px;
+}
+
+#item-without-collection .lifeline .date span {
+	display:block;
+	font-size:20px;
+	font-weight:normal;
+	color:white;
+	background:url(/themes/studens/images/item-without-collection/date-background.png) center bottom no-repeat;
+	height:50px;
+	margin:0;
+}
+
+#item-without-collection .lifeline .date span i {
+	display:block;
+	margin:0;
+	padding:0;
+	height:34px;
+	background-color:#0f565a;
+	padding:10px 10px 0 10px;
+	font-style:normal;
+}
+
+#item-without-collection .coverage {
+	background:url(/themes/studens/images/item-without-collection/coverage-background.png), url(/themes/studens/images/item-without-collection/coverage-line-background.png);
+    background-position: right top, right top;
+	background-repeat: no-repeat, repeat-y;
+	min-height:220px;
+	padding-bottom:20px;
+}
+
+#item-without-collection .coverage span {
+	background-color:#0f565a;
+	float:right;
+	margin-right:59px;
+	padding:20px;
+	width:225px;
+	min-height:100px;
+	margin-top:60px;
+	color:white;
+}
+
+#item-without-collection .no-coverage {
+	background:url(/themes/studens/images/item-without-collection/no-coverage-background.png), url(/themes/studens/images/item-without-collection/coverage-line-background.png);
+	background-position: right top, right top;
+	background-repeat: no-repeat, repeat-y;
+}
+
+#item-without-collection .localization {
+	padding-left:50px;
+	background:url(/themes/studens/images/item-without-collection/localization-background.png) 40px top no-repeat;
+	width:300px !important; 
+	height:200px; 
+	padding:0; 
+	margin-top:22px;
+}
+
+#item-without-collection .localization span {
+	display:block;
+	border:4px solid #0f565a !important;
+	width:300px;
+	height:200px;
+	margin-left:70px;
+}
+
+#item-without-collection .persons {
+	background:url(/themes/studens/images/item-without-collection/persons-icon.png), url(/themes/studens/images/item-without-collection/persons-line-background.png);
+    background-position: 513px 50px, 513px top;
+	background-repeat: no-repeat, repeat-y;
+	min-height:130px !important;
+}
+
+#item-without-collection .creators {
+	float:left !important;
+	margin-left:225px;
+}
+
+#item-without-collection .creators,
+#item-without-collection .contributors {
+	margin-top:20px;
+	width:300px;
+	float:right;
+	margin-right:25px;
+	background:url(/themes/studens/images/item-without-collection/creators-background.png) right 30px no-repeat;
+	text-align:left;
+
+}
+
+#item-without-collection .creators i,
+#item-without-collection .contributors i {
+	display: block;
+	color:white;
+	padding:20px;
+	background-color: black;
+	width:226px;
+	min-height: 80px;
+	font-style:normal;
+}
+
+#item-without-collection .contributors {
+	background:url(/themes/studens/images/item-without-collection/contributors-background.png), url(/thems/studens/images/item-without-collection/contributors-line-background.png);
+    background-position: 42px 30px, left center;
+	background-repeat: no-repeat, repeat-y;
+	margin-left:0px;
+	padding-left:30px;
+
+}
+
+#item-without-collection .contributors i {
+	margin-left:40px;
+	margin-right:0;
+}
+
+#item-without-collection .contributors {
+	float:left;
+
+}
+
+/* Infos */
+
+#item-without-collection .infos {
+	background:url(/themes/studens/images/item-without-collection/infos-background.png), url(/themes/studens/images/item-without-collection/infos-line-background.png);
+    background-position: 212px 50px, 212px top;
+	background-repeat: no-repeat, repeat-y;
+	min-height:60px;
+	padding-bottom:40px;
+}
+
+#item-without-collection .infos .left,
+#item-without-collection .infos .right {
+	padding-top:100px;
+}
+
+#item-without-collection .infos .left span,
+#item-without-collection .infos .right span { 
+	display:block;	
+	width:285px;
+	margin-right:50px;
+}
+
+#item-without-collection .infos span {
+	float:right;
+	line-height:15px;
+	font-size:15px;
+}
+
+#item-without-collection .infos .right span {
+	float: left;
+	margin-left:50px;
+}
+
+
+#item-without-collection .infos u {
+	display:block;
+	margin-top:8px;
+	float:left;
+	width:100%;
+}
+
+#item-without-collection .infos i {
+	font-style:normal;
+	display:block;
+	float:left;
+	width:50%;
+}
+
+#item-without-collection .infos strong {
+	display:block;
+	float:left;
+}
+
+#item-without-collection .infos .right i {
+	width:100%;
+}
+
+#item-without-collection .infos .right strong {
+	clear:both;
+	margin-top:5px;
+	padding-left:10px;
+	background:url(/themes/studens/images/item-without-collection/infos-chip.png) left top no-repeat;
+}
+
+/* View */
+
+#item-without-collection .view {
+	background-image: url(/themes/studens/images/item-without-collection/view-background.png), url(/themes/studens/images/item-without-collection/view-line-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	padding-bottom:20px;
+	margin-left:525px !important;
+	padding-top:10px;
+}	
+
+#item-without-collection .view span {
+	display:block;
+	margin-left:73px;
+	padding-right:50px;
+	background: #ffa100 url(/themes/studens/images/lifeline/lifeline-view-link-background.png) right center no-repeat;
+	padding:10px;
+	width:270px;
+	margin-top:2px;
+	color:white;	
+	font-size:18px;
+}
+
+#item-without-collection .view span a {
+	color:white;
+	font-weight:bold;
+	font-size:18px;
+	border:1px solid red;
+}
+
+/* Exhibit */
+
+#item-without-collection .exhibit  {
+	text-align:center;
+	background: url(/themes/studens/images/item-without-collection/exhibit-background.png) center top no-repeat;
+}
+
+#item-without-collection .exhibit span {
+	display: block;
+	background-color:#0f565c;
+	font-size:16px;
+	color:white;
+	width:300px;
+	margin:0 auto;
+	padding:15px;
+	margin-top:85px;	
+}
+
+/* Social */
+
+#item-without-collection .social  {
+	width:250px;
+	background: url(/themes/studens/images/item-without-collection/social-background.png) center top no-repeat;
+	text-align:center !important;
+	padding-top:100px;
+}
+
+#item-without-collection .social span.permalink {
+	display:block;
+	text-indent:-9999px;
+	position:absolute; 
+	margin-left:250px; 
+	margin-top:-29px;
+	width:103px;
+	height:31px; 
+	background:none;
+	background: url(/themes/studens/images/lifeline/lifeline-permalink-background.png) left bottom no-repeat;
+	margin-left:650px;
+}
+
+#item-without-collection .social a.permalink {
+	display:block;
+	width:300px;
+	border:3px solid black;
+	background-color:white !important;
+	padding:2px;
+	width:350px;
+	height:25px;
+	overflow:hidden;
+	padding-left:18px;
+	font-size:15px;
+	background: url(/themes/studens/images/lifeline/lifeline-social-permalink-background.png) 5px center no-repeat;
+	color:black;
+	margin-left:365px;
+}
+
+#item-without-collection .social a.permalink:hover {
+	color:black;
+}
+
+/* Comments */
+
+#item-without-collection .lifeline .social .networks {
+	margin-left:445px;
+}
+
+#item-without-collection .lifeline .social .networks a {
+	display:block;
+	float:left;
+	width:71px;
+	height:88px;
+}
+
+#item-without-collection .social a.google {
+	background:url(/themes/studens/images/item-without-collection/google-background.png);
+}
+#item-without-collection .social a.facebook {
+	background:url(/themes/studens/images/lifeline/lifeline-social-facebook-background.png);
+}
+#item-without-collection .social a.twitter {
+	background:url(/themes/studens/images/lifeline/lifeline-social-twitter-background.png);
+}
+
+#item-without-collection .comments {
+	background:url(/themes/studens/images/item-without-collection/comments-background.png) center top no-repeat;
+	width:58px;
+	height:128px;
+	margin-top:0;
+}

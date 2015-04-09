@@ -1,0 +1,341 @@
+/* Page style */
+
+#item-with-collection {
+  border:none !important;
+  background-color:inherit !important;
+  /* TOTAL WIDTH : 1106px */
+}
+
+#item-with-collection .left, 
+#item-with-collection .right {
+  width:533px;
+  float:left;
+}
+
+/* Left area */
+
+#item-with-collection .left {
+  margin-right:40px;
+} 
+
+#item-with-collection .left .item {
+	background-color:green;
+	background-color:#efe5ca !important;
+	background: url('../images/collection-page-left-description-background.png') top right no-repeat;
+	border-bottom:3px solid #e3a224;
+	font-size:16px;
+}
+
+#item-with-collection .item .item-file {
+	margin-top:15px;
+}
+
+#item-with-collection .left .item h2 {
+	margin:0px;
+	color:white;
+	text-align:center;
+	background-color:black;
+	display: block;
+	padding:10px;
+} 
+
+#item-with-collection .left .item span.top {
+	display:block;
+	height:15px;
+	margin:0;
+	padding:0;
+	background: url('../images/collection-page-left-title-background.png') top center no-repeat;
+}
+
+#item-with-collection .left .item span.bottom {
+	display:block;
+	height:29px;
+	width:29px;
+	float:right;
+	margin:0;
+	margin-top:-29px;
+	padding:0;
+	background: url('../images/collection-page-left-item-background.png') top right no-repeat;
+}
+
+#item-with-collection .left .item p {
+	padding:20px;
+}
+
+/* Right area */
+#item-with-collection .right h2 {
+	background: url(/themes/studens/images/collection-page-right-title-background.png) left center no-repeat;
+	padding-left:60px;
+	font-weight:normal;
+	color:#105658;
+	margin-top:0px;
+	margin-bottom:20px;
+	font-size:20px;
+}
+
+#item-with-collection .recent-items {
+	display:block;
+	font-size:16px;
+}
+
+#item-with-collection .recent-items a.title {
+	padding-left:50px;
+	display:block;
+	color:black;
+	font-weight:bold;
+	font-size:18px;
+	margin-bottom:10px;
+}
+
+#item-with-collection .recent-items a.description {
+	display:block;
+	padding-bottom:30px;
+	margin-left:50px;
+	color:black;
+	border-bottom:1px solid #ccc;
+	margin-bottom:20px;
+}
+
+#item-with-collection .recent-items > div {
+	position:absolute;
+	float:left;
+	margin-left:10px;
+}
+
+#item-with-collection .recent-items span.fa {
+	display:block;
+	color:#e49f26;
+	font-size:25px;
+	margin:2px;
+	text-align:center;
+}
+
+/* Lifeline - General styles */
+
+
+#item-with-collection .lifeline {
+	font-size:15px !important;
+}
+
+#item-with-collection .lifeline b {
+	font-size:18px;
+}
+
+#item-with-collection .lifeline a {
+	font-size:16px;
+	color:black;
+}
+
+#item-with-collection .lifeline a:hover {
+	color:#e3a224;
+}
+
+#item-with-collection .lifeline .clear {
+	clear:both;
+}
+
+#item-with-collection .lifeline .full {
+	padding-left:185px;
+	padding-bottom:20px;
+	padding-top:10px;
+	min-height:41px;
+}
+
+#item-with-collection .lifeline .half span {
+	display:inline-block;
+	margin-left:60px;
+	padding:15px;
+	background-color:black;
+	color:white;
+	margin-bottom:15px;
+}	 
+
+
+/* Lifeline - Specific styles */
+
+#item-with-collection .lifeline .begin {
+	height:29px;
+	background:url(../images/lifeline/lifeline-begin-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+}
+
+#item-with-collection .lifeline .subject {
+	background: url(../images/lifeline/lifeline-subject-background.png), url(../images/lifeline/lifeline-black-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	min-height:49px;
+}
+
+#item-with-collection .lifeline .subject span {
+	display: block;
+	line-height:16px;
+	width:100%;
+	margin-top:8px;
+}
+
+#item-with-collection .lifeline .date {
+	background-image: url(../images/lifeline/lifeline-date-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+}	    	
+
+/* Coverage */
+
+#item-with-collection .lifeline .coverage {
+	background-image: url(../images/lifeline/lifeline-coverage-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	padding-left:147px;
+	padding-top:0;
+}	
+
+#item-with-collection .lifeline .coverage .no-localization {
+	background: url(../images/lifeline/lifeline-coverage-no-localization-background.png) left top no-repeat;
+	padding-left:40px;
+	padding-top:10px;
+}
+
+#item-with-collection .lifeline .coverage .with-localization {
+	background-image: url(../images/lifeline/lifeline-coverage-with-localization-background.png), url(../images/lifeline/lifeline-coverage-localization-green-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	padding-left:40px;
+	padding-top:10px;
+}
+
+#item-with-collection .lifeline .coverage .localization {
+	background: url(../images/lifeline/lifeline-coverage-localization-background.png) 92px 0 no-repeat;
+	width:400px;
+	height:166px;
+	margin-left:-100px;
+	padding-top:16px;
+}
+
+#item-with-collection .lifeline .coverage .localization span {
+	display:block;
+	border:4px solid #0f565a;
+	width:400px;
+	height:150px;
+}
+
+
+	
+#item-with-collection .lifeline .creator {
+	background-image: url(../images/lifeline/lifeline-creator-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+}	
+
+/* Infos Area */
+
+#item-with-collection .lifeline .infos {
+	background-image: url(../images/lifeline/lifeline-infos-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	float:left;
+	padding-top:18px;
+}	
+
+#item-with-collection .lifeline .infos > div {
+	float:left; 
+	width:340px !important;
+	font-size:14px;
+	line-height:15px;
+	margin-bottom:10px;
+}
+
+#item-with-collection .lifeline .infos span {
+	display:block;
+	float:left;
+	width:120px;
+	/*background-color:#ccc;*/
+}
+
+#item-with-collection .lifeline .infos strong {
+	display:block;
+	float:left;
+	/*background-color:#eee;*/
+	margin-left:15px;
+	width:200px;
+}
+
+#item-with-collection .lifeline .view {
+	background-image: url(../images/lifeline/lifeline-view-background.png), url(../images/lifeline/lifeline-orange-background.png);
+	background-position: left top;
+	background-repeat: no-repeat, repeat-y;
+	padding-bottom:20px;
+}	
+
+#item-with-collection .lifeline .view span {
+	margin-left:73px;
+	margin-top:5px;
+	padding-right:50px;
+	background: #ffa100 url(../images/lifeline/lifeline-view-link-background.png) right center no-repeat;
+}
+
+#item-with-collection .lifeline .view span a {
+	color:white;
+	font-weight:bold;
+	font-size:18px;
+}
+
+
+#item-with-collection .lifeline .social {
+	background: url(../images/lifeline/lifeline-social-background.png) left top no-repeat;
+	padding-left:124px;
+	min-height:49px;
+}	
+
+#item-with-collection .lifeline .social span.permalink {
+	display:block;
+	text-indent:-9999px;
+	position:absolute; 
+	margin-left:250px; 
+	margin-top:-29px;
+	width:103px;
+	height:31px; 
+	background:none;
+	background: url(../images/lifeline/lifeline-permalink-background.png) left bottom no-repeat;
+}
+
+#item-with-collection .lifeline .social a.permalink {
+	display:block;
+	width:300px;
+	border:3px solid black;
+	background-color:white !important;
+	padding:2px;
+	width:280px;
+	height:25px;
+	overflow:hidden;
+	padding-left:30px;
+	font-size:15px;
+	background: url(../images/lifeline/lifeline-social-permalink-background.png) 5px center no-repeat;
+	color:black;
+	margin-top:-3px;
+}
+
+#item-with-collection .lifeline .social a.permalink:hover {
+	color:black;
+}
+
+#item-with-collection .lifeline .social .networks {
+	margin-left:-147px;
+}
+
+#item-with-collection .lifeline .social .networks a {
+	display:block;
+	float:left;
+	width:71px;
+	height:88px;
+}
+
+#item-with-collection .lifeline .social a.google {
+	background:url(../images/lifeline/lifeline-social-google-background.png);
+}
+#item-with-collection .lifeline .social a.facebook {
+	background:url(../images/lifeline/lifeline-social-facebook-background.png);
+}
+#item-with-collection .lifeline .social a.twitter {
+	background:url(../images/lifeline/lifeline-social-twitter-background.png);
+}
