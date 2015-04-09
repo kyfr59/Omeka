@@ -175,16 +175,20 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         // Import ATOM 'physicalFormat' field to OMEKA 'format' field
         if (isset($dcMetadata->physicalFormat)) {
             foreach($dcMetadata->physicalFormat as $physicalFormat) {
-                $elementTexts['Dublin Core']['Format'][] 
-                    = array('text' => (string) trim($physicalFormat->item), 'html' => false);
+                if (strlen(trim($physicalFormat)) > 0) {
+                    $elementTexts['Dublin Core']['Format'][] 
+                        = array('text' => (string) trim($physicalFormat->item), 'html' => false);
+                }
             }
         }
 
         // Import ATOM 'digitalFormat' field to OMEKA 'format' field
         if (isset($dcMetadata->digitalFormat)) {
             foreach($dcMetadata->digitalFormat as $digitalFormat) {
-                $elementTexts['Dublin Core']['Format'][] 
-                    = array('text' => (string) trim($digitalFormat->item), 'html' => false);
+                if (strlen(trim($digitalFormat)) > 0) {
+                    $elementTexts['Dublin Core']['Format'][] 
+                        = array('text' => (string) trim($digitalFormat->item), 'html' => false);
+                }
             }
         }   
 
