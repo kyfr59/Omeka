@@ -12,7 +12,7 @@
 	background-color:#efe5ca !important;
 	background: url('../images/collection-page-left-description-background.png') top right no-repeat;
 	border-bottom:3px solid #e3a224;
-	font-size:16px;
+	font-size:15px;
 }
 
 #item-without-collection .item .item-file {
@@ -53,10 +53,14 @@
 	padding:20px;
 }
 
+#item-without-collection .item a {
+	outline:none !important;
+}
+
 /* Lifeline - General styles */
 
 #item-without-collection .lifeline {
-	font-size:17px !important;
+	font-size:15px !important;
 	color:#555;
 }
 
@@ -103,7 +107,7 @@
 
 #item-without-collection .lifeline .begin {
 	height:29px;
-	margin-left:526px;
+	margin-left:523px;
 	padding-top:70px;
 	background:url(../images/lifeline/lifeline-begin-background.png), url(../images/lifeline/lifeline-orange-background.png);
 	background-position: left top;
@@ -112,11 +116,22 @@
 
 
 #item-without-collection .lifeline .about {
-	background:url(../images/item-without-collection/about-background.png), url('../images/item-without-collection/about-line-background.png');
+	background:url(../images/item-without-collection/about-background.png), url('../images/item-without-collection/bout-line-background.png');
 	background-position: right top;
 	background-repeat: no-repeat, repeat-y;
 	padding-top:50px;
 	min-height:56px;
+	position:relative;	
+}
+
+#item-without-collection .lifeline .about u {
+	position:absolute;
+	left:150px;
+	top:17px;
+	text-decoration: none;
+	font-size:22px;
+	color:black;
+	font-weight:bold;
 }
 
 #item-without-collection .lifeline .about span {
@@ -135,6 +150,11 @@
     padding-left:100px;
     margin-left:541px !important;
 
+}
+
+#item-without-collection .lifeline .subject b {
+	font-size:22px;
+	color:black;
 }
 
 #item-without-collection .lifeline .subject.has-about {
@@ -181,12 +201,13 @@
 #item-without-collection .coverage span {
 	background-color:#0f565a;
 	float:right;
-	margin-right:59px;
+	margin-right:58px;
 	padding:20px;
 	width:225px;
 	min-height:100px;
 	margin-top:60px;
 	color:white;
+	text-align:center;
 }
 
 #item-without-collection .no-coverage {

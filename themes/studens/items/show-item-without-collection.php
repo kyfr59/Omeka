@@ -1,17 +1,12 @@
 <?php echo head(array('title' => metadata('item', array('Dublin Core', 'Title')),'bodyclass' => 'items show')); ?>
 
-<?php if($item->collection_id): ?>
-	<?php $collection = $item->getCollection(); ?>	
-	<h1><?php echo metadata($collection, array('Dublin Core', 'Title')); ?></h1>
-<?php else: ?>	
-	<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>
-<?php endif; ?>	
+<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>
 
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 <div id="item-without-collection">
 
   	<div class="item">
-		<h2><?php echo metadata($item, array('Dublin Core', 'Title')); ?></h2><span class="top"></span>
+		<h2><?php echo strtoupper(metadata($item, array('Dublin Core', 'Title'))); ?></h2><span class="top"></span>
     	<?php 
     		if (metadata($item, 'has files')) { 
     			echo files_for_item(array('imageSize' => 'fullsize'));
@@ -29,12 +24,13 @@
 		<div class="row">
 			<?php if (strlen(trim($about)) > 0):?>
 				<div class="left about shift" >
+					<u>A propos</u>
 					<span><?php echo cutString($about, 'long'); ?></span>
 				</div>
 			<?php endif; ?>	
 			<?php if (count($subjects) > 0 ): ?>
 				<div class="right has-about subject">
-					<b>Sujet<?php echo count($subjects) > 1 ? 's' : '';?></b><br />
+					<b>Sujets</b><br />
 					<?php foreach($subjects as $subject): ?>
 						<?php echo $subject->text; ?><br />
 					<?php endforeach; ?>	

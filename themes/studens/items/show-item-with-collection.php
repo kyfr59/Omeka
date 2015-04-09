@@ -9,6 +9,12 @@
 
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 <div id="item-with-collection">
+
+<?php 
+$b = new Zend_View_Helper_Navigation_Breadcrumbs;
+echo $b->getPartial();
+?>
+
     <div class="left">
       	<div class="item">
     		<h2><?php echo metadata($item, array('Dublin Core', 'Title')); ?></h2><span class="top"></span>
