@@ -25,7 +25,7 @@ function thanksroy_brighten($color, $steps) {
 }
 
 function drawSharedHeader() {
-    return get_view()->partial('shared/header.php');
+    return get_view()->partial('shared/header.php', array('isOmeka' => true));
 }
 
 function drawSharedFooter() {
