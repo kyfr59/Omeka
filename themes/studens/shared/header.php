@@ -14,6 +14,7 @@
         define('OMEKA_ROOT', 'http://documents.studens.info');
         define('ATOM_ROOT', 'http://inventaires.studens.info');
     }
+
 ?>
 
 <div id="header-studens">
@@ -41,13 +42,20 @@
              --><li class="selected"><a href="<?php echo OMEKA_ROOT ?>">ressources numériques</a></li><!--
              --><li><a href="<?php echo ATOM_ROOT ?>">inventaires d'archives</a></li>
             </ul>
-            <ul class="submenu">
-                <li><a href="/">accueil</a></li><!--
-             --><li><a href="/exhibits">expositions</a></li><!--
-             --><li><a href="/collections">collections</a></li><!--
-             --><li><a href="/">contribuer</a></li><!--
-             --><li><a href="/items/search">recherche avancée</a></li>
-            </ul>
+            <?php if($this->isOmeka): ?>
+                <ul class="submenu">
+                    <li><a href="/">accueil</a></li><!--
+                 --><li><a href="/exhibits">expositions</a></li><!--
+                 --><li><a href="/collections">collections</a></li><!--
+                 --><li><a href="/">contribuer</a></li><!--
+                 --><li><a href="/items/search">recherche avancée</a></li>
+                </ul>
+            <?php else: ?>
+                <ul class="submenu">
+                    <li><a href="/">accueil</a></li><!--
+                 --><li><a href="/contact">contact</a></li>
+                </ul>
+            <?php endif; ?>   
         </div>
     </div>
 </div>
