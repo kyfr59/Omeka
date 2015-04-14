@@ -38,8 +38,8 @@
         
         <div class="menu">
             <ul style="clear:both;">
-                <li><a href="<?php echo WORDPRESS_ROOT ?>">accueil</a></li><!--
-             --><li class="selected"><a href="<?php echo OMEKA_ROOT ?>">ressources numériques</a></li><!--
+                <li class="<?php echo !$this->isOmeka ? 'selected' : ''; ?>"><a href="<?php echo WORDPRESS_ROOT ?>">accueil</a></li><!--
+             --><li class="<?php echo $this->isOmeka ? 'selected' : ''; ?>"><a href="<?php echo OMEKA_ROOT ?>">ressources numériques</a></li><!--
              --><li><a href="<?php echo ATOM_ROOT ?>">inventaires d'archives</a></li>
             </ul>
             <?php if($this->isOmeka): ?>
