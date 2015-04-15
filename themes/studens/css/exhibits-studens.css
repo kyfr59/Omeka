@@ -1,0 +1,112 @@
+@media screen {
+    /*
+    Exhibits styles : Table of Contents
+    =================
+    -- Wrappers
+    -- Navigation
+    -- Layouts
+
+    ----- Headings
+    ----- Form Elements
+    -- Global Classes
+    -- Navigation
+    ----- Pagination
+    -- Header 
+    -- Footer
+    */
+
+    /* Wrappers */
+
+    .studens #primary,
+    div[role=main] {
+        float:left;
+        display:inline;
+        margin:0 !important;
+        padding:0 !important;
+        width:830px !important;
+        font-size:16px;
+        border:none !important;
+    }
+
+    .studens #content > div, #content section {
+        background-color:inherit;
+    }
+
+
+    /* Navigation */
+
+    #exhibit-nav {
+        float:left;
+        margin-right:25px;
+        width:280px;
+        font-size:17px;
+    }
+
+    #exhibit-nav > p {
+        margin:0;
+        padding:0;
+        padding-left:50px;
+        margin-bottom:10px;
+        font-weight:bold;
+    }
+
+    #exhibit-nav ul {
+        padding-left:0;
+    }
+
+    #exhibit-nav li {
+        min-height:30px;
+        background:url(/themes/studens/images/exhibits/nav-background.png) left 4px no-repeat;
+        padding-left:50px;
+        padding-top:5px;
+    }
+
+    #exhibit-nav li.current {
+        background:url(/themes/studens/images/exhibits/nav-background-hover.png) left 4px no-repeat;
+    }
+
+    #exhibit-nav a {
+        color:#333;
+        line-height:16px;
+    }
+
+    #exhibit-nav a:hover {
+        color:#e3a126;
+    }
+
+    #exhibit-nav li.current a {
+        color:#e3a126;
+    }
+
+
+    /* Layouts */
+
+    .layout-gallery {
+        
+    }
+
+    .layout-text {
+        
+    }
+
+    .layout-file-text {
+        /*border:1px dashed green !important;*/
+    }
+
+
+    /* Content styles */
+
+    .exhibit-block h1 {
+        font-size:16px !important;
+        text-transform: inherit !important;
+        line-height: 18px !important;
+        color:black !important;
+        padding-bottom:2px !important;
+    }
+
+    .exhibit-block p {
+        line-height: 14px !important;
+    }
+
+    
+}
