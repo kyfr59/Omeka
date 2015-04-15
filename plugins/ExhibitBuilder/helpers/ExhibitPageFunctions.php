@@ -63,22 +63,23 @@ function exhibit_builder_page_nav($exhibitPage = null)
     }
 
     $exhibit = $exhibitPage->getExhibit();
-    $html = '<ul class="exhibit-page-nav navigation" id="secondary-nav">' . "\n";
+    //$html = '<ul>' . "\n";
     $pagesTrail = $exhibitPage->getAncestors();
     $pagesTrail[] = $exhibitPage;
-    $html .= '<li>';
-    $html .= '<a class="exhibit-title" href="'. html_escape(exhibit_builder_exhibit_uri($exhibit)) . '">';
-    $html .= html_escape($exhibit->title) .'</a></li>' . "\n";
-    
+    //$html .= '<li>';
+    //$html .= '<a class="exhibit-title" href="'. html_escape(exhibit_builder_exhibit_uri($exhibit)) . '">';
+    //$html .= html_escape($exhibit->title) .'</a></li>' . "\n";
+    //$html .= 'Page d\'accueil de l\'exposition</a></li>' . "\n";
     $levelNumber = 1;
     
     foreach ($pagesTrail as $page) {
+
         $linkText = $page->title;
         $pageExhibit = $page->getExhibit();
         $pageParent = $page->getParent();
         $pageSiblings = ($pageParent ? exhibit_builder_child_pages($pageParent) : $pageExhibit->getTopPages()); 
 
-        $html .= "<li>\n<ul class=\"exhibit-nav-level-$levelNumber\">\n";
+        $html .= "<ul class=\"exhibit-nav-level-$levelNumber\">\n";
         $levelNumber +=1;
         
         foreach ($pageSiblings as $pageSibling) {
@@ -86,9 +87,9 @@ function exhibit_builder_page_nav($exhibitPage = null)
             $html .= '<a class="exhibit-page-title" href="' . html_escape(exhibit_builder_exhibit_uri($exhibit, $pageSibling)) . '">';
             $html .= html_escape($pageSibling->title) . "</a></li>\n";
         }
-        $html .= "</ul>\n</li>\n";
+        $html .= "</ul>\n";
     }
-    $html .= '</ul>' . "\n";
+    //$html .= '</ul>' . "\n";
     $html = apply_filters('exhibit_builder_page_nav', $html);
     return $html;
 }
@@ -207,6 +208,8 @@ function exhibit_builder_page_trail($exhibitPage = null)
     }
 
     $html .= '<span class="current-page">' . metadata($exhibitPage, 'title') . '</span>';
+
+    $html = '<b>' . ($currentPage->order + 1) . '</b> sur ' . count($exhibit->Pages) . '</b>';
     return $html;
 }
 

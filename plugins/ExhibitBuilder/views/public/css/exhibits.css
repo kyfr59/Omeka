@@ -18,19 +18,42 @@
     width: 33%;
 }
 
-#exhibit-nav-prev {
-    float: left;
-    text-align: left;
+#exhibit-nav-prev,
+#exhibit-nav-next {
+    float:left;
+    text-align: right;
+    width:35px !important;
+    height:35px !important;    
 }
 
-#exhibit-nav-next {
-    float: right;
-    text-align: right;
+#exhibit-nav-prev a,
+#exhibit-nav-next a {
+    float:left;
+    display:block;
+    width:35px !important;
+    height:35px !important;    
+    text-indent:-9999px;
+    box-shadow: none !important;
+    background:url('../../../../../themes/studens/images/nav-next.png'); 
+    float:left;
+}
+
+#exhibit-nav-prev a {
+    background:url('../../../../../themes/studens/images/nav-prev.png'); 
+}
+
+#exhibit-nav-prev a:hover {
+    background:url('../../../../../themes/studens/images/nav-prev-hover.png'); 
+}
+
+#exhibit-nav-next a:hover {
+    background:url('../../../../../themes/studens/images/nav-next-hover.png'); 
 }
 
 #exhibit-nav-up {
-    margin: 0 auto;
-    text-align: center;
+    margin-top:10px;
+    width:70px !important;
+    float:left;
 }
 
 .exhibit-block {

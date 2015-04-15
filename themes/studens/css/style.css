@@ -1144,7 +1144,7 @@
   .exhibits.summary #content #primary > div:last-child {
     margin-bottom: 0;
   }
-  .exhibits.show #content h1 {
+  .exhibits #content h1 {
     font-size: 32px;
   }
   .exhibits.show #content #primary:first-child {

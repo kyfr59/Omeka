@@ -76,7 +76,8 @@
   .studens .exhibit-section-nav .current a {
   }
 
-  .studens #list {
+  .studens #list, 
+  .studens .exhibit {
     margin-left:150px;
     /* Override .studens #content > div in general CSS*/
     background-color:inherit !important;
@@ -85,23 +86,28 @@
     box-sizing: none !important;
   }
 
-  /* Collections list */
+  /* Collections list & exhibits */
 
-  .studens #content .collection {
+  .studens #content .collection, 
+  .studens #content .exhibit {
     background:inherit;
     padding-left:110px;
     margin-bottom:15px;
+    border:none;
   }
 
-  .studens #content .collection h2 {
+  .studens #content .collection h2, 
+  .studens #content .exhibit h2{
     line-height:inherit;
   }
 
-  .studens #content .collection p {
+  .studens #content .collection p, 
+  .studens #content .exhibit p{
     border:none !important;
   }
 
-  .studens #content .collection a.image {
+  .studens #content .collection a.image,
+  .studens #content .exhibit a.image {
     box-shadow:none !important;
     -moz-box-shadow:none !important;
     -webkit-box-shadow:none !important;
@@ -114,7 +120,8 @@
     padding-left:18px;
   }
 
-  .studens #content .collection .item-infos {
+  .studens #content .collection .item-infos,
+  .studens #content .exhibit .item-infos {
     margin:0;
     padding-bottom:30px;
     margin-bottom:30px;
@@ -210,7 +217,7 @@
   .studens .collections #content div .view-items-link {
     border-color: #313131;
   }
-  .studens #content h1 {
+  .studens #content > h1 {
     height:60px;
     background:url('../images/title-background.png') left center no-repeat;
     margin-top:-20px;
@@ -220,6 +227,7 @@
     padding-top:25px;
     text-transform: inherit !important;
     line-height:22px !important;
+    margin-bottom:0 !important;
   }
   .studens #content h1:first-letter {
     text-transform: uppercase;

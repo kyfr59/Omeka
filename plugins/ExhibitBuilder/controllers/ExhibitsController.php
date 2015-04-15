@@ -20,6 +20,9 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
     public function init()
     {
         $this->_helper->db->setDefaultModelName('Exhibit');
+        if (!is_admin_theme()) {
+            queue_css_file('exhibits-studens');
+        }
     }
 
     /**

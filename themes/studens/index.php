@@ -78,40 +78,44 @@ jQuery(document).ready(function() {
     <?php echo get_theme_option('Homepage Text'); ?>
 </p>
 
+<?php if($this->lastItem): ?>
 
-<div id="last">
+    <div id="last">
 
-    <a href="<?php echo html_escape(url('items/show/'.$this->lastItem->id)); ?>" class="last-archival">
-        <span></span>
-        <?php $image = record_image($this->lastItem, 'square_thumbnail'); ?>
-        <?php if($image): ?>
-            <?php echo $image; ?>
-        <?php else: ?>
-            <img src="/" />        
-        <?php endif; ?>    
-        <h2><?php echo metadata($this->lastItem, array('Dublin Core', 'Title')); ?></h2>
-        <p><?php echo cutString(metadata($this->lastItem, array('Dublin Core', 'Description'))); ?></p>
-    </a>    
+        <a href="<?php echo html_escape(url('items/show/'.$this->lastItem->id)); ?>" class="last-archival">
+            <span></span>
+            <?php $image = record_image($this->lastItem, 'square_thumbnail'); ?>
+            <?php if($image): ?>
+                <?php echo $image; ?>
+            <?php else: ?>
+                <img src="/" />        
+            <?php endif; ?>    
+            <h2><?php echo metadata($this->lastItem, array('Dublin Core', 'Title')); ?></h2>
+            <p><?php echo cutString(metadata($this->lastItem, array('Dublin Core', 'Description'))); ?></p>
+        </a>    
 
-    <a href="<?php echo url(array('slug'=>$this->lastExhibit->slug), 'exhibitSimple'); ?>" class="last-exhibit">
-        <span></span>
-        <?php $image = record_image($this->lastExhibit, 'square_thumbnail'); ?>
-        <?php if($image): ?>
-            <?php echo $image; ?>
-        <?php else: ?>
-            <img src="/" />
-        <?php endif; ?>    
-        <h2><?php echo $this->lastExhibit->title; ?></h2>
-        <p><?php echo cutString($this->lastExhibit->description) ?></p>
-    </a>
+        <a href="<?php echo url(array('slug'=>$this->lastExhibit->slug), 'exhibitSimple'); ?>" class="last-exhibit">
+            <span></span>
+            <?php $image = record_image($this->lastExhibit, 'square_thumbnail'); ?>
+            <?php if($image): ?>
+                <?php echo $image; ?>
+            <?php else: ?>
+                <img src="/" />
+            <?php endif; ?>    
+            <h2><?php echo $this->lastExhibit->title; ?></h2>
+            <p><?php echo cutString($this->lastExhibit->description) ?></p>
+        </a>
 
-    <a href="<?php echo html_escape(url('collections/show/'.$this->lastCollection->id)); ?>" class="last-collection">
-        <span></span>
-        <img src="<?php echo $this->lastCollectionImage ?>" />
-        <h2><?php echo metadata($this->lastCollection, array('Dublin Core', 'Title')); ?></h2>
-        <p><?php echo cutString($this->lastCollection->description, 'short'); ?></p>
-    </a>
-</div>
+        <?php if($this->lastCollection): ?>
+            <a href="<?php echo html_escape(url('collections/show/'.$this->lastCollection->id)); ?>" class="last-collection">
+                <span></span>
+                <img src="<?php echo $this->lastCollectionImage ?>" />
+                <h2><?php echo metadata($this->lastCollection, array('Dublin Core', 'Title')); ?></h2>
+                <p><?php echo cutString($this->lastCollection->description, 'short'); ?></p>
+            </a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
