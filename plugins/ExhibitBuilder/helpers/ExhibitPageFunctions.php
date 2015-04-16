@@ -210,6 +210,7 @@ function exhibit_builder_page_trail($exhibitPage = null)
     $html .= '<span class="current-page">' . metadata($exhibitPage, 'title') . '</span>';
 
     $html = '<b>' . ($currentPage->order + 1) . '</b> sur ' . count($exhibit->Pages) . '</b>';
+    
     return $html;
 }
 

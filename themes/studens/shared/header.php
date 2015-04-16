@@ -53,6 +53,7 @@
             <?php else: ?>
                 <ul class="submenu">
                     <li><a href="/">accueil</a></li><!--
+                    --><li><a href="/actualite">actualité</a></li>
                  --><li><a href="/contact">contact</a></li>
                 </ul>
             <?php endif; ?>   
