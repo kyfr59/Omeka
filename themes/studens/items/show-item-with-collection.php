@@ -162,7 +162,7 @@ echo $b->getPartial();
 			<?php $j = 0; ?>
 		    <?php foreach($this->recent_items as $i): ?>
 				
-		    	<?php if(metadata($i, array('Dublin Core', 'Description')) && $i->id != $item->id): ?>
+		    	<?php if($i->id != $item->id): ?>
 
 					<?php $files = $item->getFiles(); ?>
 					<?php if(count($files) > 0 ): ?>
@@ -188,7 +188,6 @@ echo $b->getPartial();
 	color:white !important;
 	background:black url(/themes/studens/images/lifeline/lifeline-view-all-items-background.png) right center no-repeat;
 	width:inherit !important;
-
 }
 </style>
 			<?php echo link_to_collection('Voir tous les items de la collection', array("class"=>"view-all-items"), 'show', $collection); ?>
