@@ -4,8 +4,7 @@ echo head(array(
     'bodyclass' => 'exhibits show'));
 ?>
 
-<h1><?php echo metadata('exhibit', 'title'); ?></h1>
-<!--<h2><?php echo metadata('exhibit_page', 'title'); ?></h2>-->
+<h1 style="padding-top:42px; height:53px"><?php echo metadata('exhibit', 'title'); ?></h1>
 
 <nav id="exhibit-nav">
     <p class="nav-title"><?php echo exhibit_builder_link_to_exhibit(null, 'Page d\'accueil'); ?></p> 
