@@ -23,7 +23,9 @@ echo $b->getPartial();
 	    			echo files_for_item(array('imageSize' => 'fullsize'));
 	    		}
 	    	?>
-    		<p><?php echo metadata($item, array('Dublin Core', 'Description')); ?></p><span class="bottom"></span>
+	    	<?php if(metadata($item, array('Dublin Core', 'Description'))): ?>
+    			<p><?php echo metadata($item, array('Dublin Core', 'Description')); ?></p><span class="bottom"></span>
+    		<?php endif; ?>
     	</div>
 
     	<div class="lifeline">

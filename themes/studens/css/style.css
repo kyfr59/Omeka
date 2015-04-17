@@ -184,7 +184,9 @@
 
   .show .item-file a {
     margin:0 15px;
+    margin-bottom:30px;
   }
+
 
   .show .item-file img {
     margin:0 auto;
