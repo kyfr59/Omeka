@@ -26,7 +26,7 @@ echo $b->getPartial();
 	    	<?php if(metadata($item, array('Dublin Core', 'Description'))): ?>
     			<p><?php echo metadata($item, array('Dublin Core', 'Description')); ?></p><span class="bottom"></span>
     		<?php else:?>	
-    			<p style="padding:0; margin-top:-15px;"></p><span class="bottom"></span>
+    			<p style="padding:0; margin-top:-20px;"></p><span class="bottom"></span>
     		<?php endif;?>
     	</div>
 
