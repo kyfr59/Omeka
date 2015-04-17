@@ -71,9 +71,8 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
             echo '</div><br style="clear:both;">';
         ?>
         </div>
-
-
     </div>
+    
 <?php endforeach; ?>
 
 <?php echo pagination_links(); ?>
