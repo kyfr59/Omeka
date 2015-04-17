@@ -7,7 +7,7 @@ echo head(array(
 <h1 style="padding-top:42px; height:53px"><?php echo metadata('exhibit', 'title'); ?></h1>
 
 <nav id="exhibit-nav">
-    <p class="nav-title"><?php echo exhibit_builder_link_to_exhibit(null, 'Page d\'accueil'); ?></p> 
+    <p class="nav-title" style="padding-left:3px;"><?php echo exhibit_builder_link_to_exhibit(null, 'Accueil exposition'); ?></p> 
     <?php echo exhibit_builder_page_nav(); ?>
 </nav>
 
