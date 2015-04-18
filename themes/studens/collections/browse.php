@@ -14,17 +14,18 @@ $months[11] = 'Novembre';
 $months[12] = 'Décembre';
 
 
-$pageTitle = __('Browse Collections');
+$pageTitle = __('Liste des collections');
 echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
 ?>
 
-<h1><?php echo $pageTitle; ?> <?php echo __('(%s total)', $total_results); ?></h1>
+<h1 class="without-subtitle"><?php echo $pageTitle; ?> <?php // echo __('(%s au total)', $total_results); ?></h1>
 <?php echo pagination_links(); ?>
 
 <div id="list">
 
     <?php
     $sortLinks[__('Title')] = 'Dublin Core,Title';
+    $sortLinks[__('Identifier')] = 'Dublin Core,Identifier';
     $sortLinks[__('Date Added')] = 'added';
     ?>
     <div id="sort-links">
@@ -59,12 +60,13 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
                         echo '<span>Createur : </span>'.$creator->text;
                     echo '</div>';
                 }
-
+            /*
             echo '<div class="date">';
             $date = metadata('collection', 'added');
             $dateFrench = ltrim(date("d ", strtotime($date)), '0'). strtolower($months[(int)date("m ", strtotime($date))]). date(" Y ", strtotime($date));
             echo '<span>Date : </span>'.$dateFrench;
             echo '</div><br style="clear:both;">';
+            */
         ?>
         </div>
 

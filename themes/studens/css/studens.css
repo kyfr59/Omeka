@@ -229,9 +229,17 @@
     line-height:22px !important;
     margin-bottom:0 !important;
   }
+
+
   .studens #content h1:first-letter {
     text-transform: uppercase;
   }
+
+  .studens #content > h1.without-subtitle {
+    height:49px;
+    padding-top:37px;
+  }
+
   .studens #content h1 span {
     display:block;
     margin:0;
