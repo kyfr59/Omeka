@@ -50,10 +50,10 @@
     color: #cccccc;
   }
   .studens a:link {
-    color: #0F565A;
+    color: #11565B;
   }
   .studens a:visited {
-    color: #0F565A;
+    color: #11565B;
   }
   .studens a:hover, .studens a:active {
     color: black;
@@ -84,6 +84,7 @@
     border:none !important;
     box-shadow: none !important;
     box-sizing: none !important;
+    width:800px;
   }
 
   /* Collections list & exhibits */
@@ -162,6 +163,11 @@
 
   .studens #sort-links {
     background-color:inherit;
+    padding-right:0 !important;
+  }
+
+  .studens #sort-links > span {
+    padding-right:30px;
   }
 
   .studens #sort-links li {
@@ -236,8 +242,8 @@
   }
 
   .studens #content > h1.without-subtitle {
-    height:49px;
-    padding-top:37px;
+    height:51px;
+    padding-top:45px;
   }
 
   .studens #content h1 span {
@@ -281,6 +287,9 @@
     margin-top:5px;
   }
 
+  .studens #content nav.pagination-nav .pagination {
+    margin-left:-15px;
+  }
 
   .studens #content .pagination_previous a, .studens #content .pagination_next a {
     background:url('../images/nav-prev.png'); 

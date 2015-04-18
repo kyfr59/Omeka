@@ -15,7 +15,7 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
 
     public $contexts = array('show' => array('omeka-xml', 'omeka-json'));
     
-    protected $_browseRecordsPerPage = 10; //self::RECORDS_PER_PAGE_SETTING;
+    protected $_browseRecordsPerPage = 1; //self::RECORDS_PER_PAGE_SETTING;
         
     public function init()
     {

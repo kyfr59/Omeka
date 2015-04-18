@@ -19,9 +19,10 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
 ?>
 
 <h1 class="without-subtitle"><?php echo $pageTitle; ?> <?php // echo __('(%s au total)', $total_results); ?></h1>
-<?php echo pagination_links(); ?>
 
 <div id="list">
+
+    <?php echo pagination_links(); ?>
 
     <?php
     $sortLinks[__('Title')] = 'Dublin Core,Title';
