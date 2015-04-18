@@ -27,6 +27,7 @@
     queue_css_file('print', 'print');
     echo head_css();
     ?>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:700,300,500,400' rel='stylesheet' type='text/css'>
 
     <!-- JavaScripts -->
     <?php queue_js_file('vendor/modernizr'); ?>

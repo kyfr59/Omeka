@@ -21,7 +21,7 @@
 	min-width:1230px;
     background-color:#efe5ca !important;
     margin:0 auto;
-    font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+    font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif !important;
 }
 
 #header-content {
@@ -228,6 +228,7 @@
     margin-right:50px;
     float:left;
     font-size:16px;
+    line-height: 25px !important;
 }
 
 #footer-content div.left {
@@ -235,10 +236,12 @@
 }
 
 #footer-content h3 {
+	font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif !important;
     font-size:20px;
     font-weight:bold;
     color:#0F565A;   
     margin-bottom:10px;
+    margin-top:10px;
 }
 
 #footer-content span {
@@ -278,6 +281,8 @@
 
 #footer-content hr {
     border-top:1px dotted #666;
+    margin-top:10px !important;
+    margin-bottom:10px !important;
 }
 
 
@@ -315,9 +320,9 @@
 }
 
 #footer-studens p {
-	width:340px;
+	width:340px !important;
 	color: #e1a123;
-	line-height:15px;
+	line-height:15px  !important;
 	border-top: 1px dotted #e1a123;
 	padding:0;
 	padding-top:10px;
@@ -340,6 +345,7 @@
 #footer-studens .bottom a,
 #footer-studens .bottom a:hover {
 	color:#e1a123;
+	font-weight:normal;
 }
 
 #footer-studens .social a {

@@ -1,11 +1,11 @@
 /* !---------- Studens Styles ---------- */
 
-
   .studens body {
     background-color: #F1E5CA;
-    color: black;
     font-size:14px;
-    font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+    /*font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;*/
+    font-style:normal;
+    font-family: 'Roboto', sans-serif;
   }
 
   .studens #content > div, 
@@ -470,14 +470,14 @@
   /* Text-homepage */
 
   .studens #text-homepage {
-    color:#2c2421 !important;
+    color:#2c2422 !important;
     margin-left:820px;
     font-size:16px;
   }
 
   .studens #text-homepage strong {
       display:block;
-      font-size:20px;
+      font-size:22px;
   }
 
 
@@ -546,6 +546,6 @@
 
   #last p {
       margin:0 !important;
-      font-size:18px !important;
+      font-size:16px !important;
       line-height: 20px !important;
   }
