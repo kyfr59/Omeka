@@ -66,10 +66,15 @@
 
 
 
+
 /* Form */
 
 #comment-form {
 	margin:0 auto;
+	background: url(../images/comments-form-background.png) left top no-repeat;
+	padding-top:150px;
+	padding-left:100px;
+	min-height:260px;
 }
 
 #comment-form input,
@@ -118,5 +123,17 @@
 	text-align:center;
 	width:180px;
 	padding:10px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
 }
 
+#comment-form input[type=submit]:hover {
+	background-color:#666;
+}
+
+#comment-form ul.error {
+	color:red;
+	font-size:12px;
+	font-weight: bold;
+}

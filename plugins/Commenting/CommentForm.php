@@ -72,7 +72,7 @@ class Commenting_CommentForm extends Omeka_Form
         $this->addElement('hidden', 'record_type', array('value'=>$record_type, 'decorators'=>array('ViewHelper')));
         $this->addElement('hidden', 'parent_comment_id', array('id'=>'parent-id', 'value'=>null, 'decorators'=>array('ViewHelper')));
         fire_plugin_hook('commenting_form', array('comment_form' => $this) );
-        $this->addElement('submit', 'submit', array('label'=>__('Submit')));
+        $this->addElement('submit', 'submit', array('label'=>__('Envoyer')));
     }
 
 
