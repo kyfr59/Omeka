@@ -132,7 +132,8 @@
 	background-color:#666;
 }
 
-#comment-form ul.error {
+#comment-form ul.error, 
+#comment-form ul.errors {
 	color:red;
 	font-size:12px;
 	font-weight: bold;
