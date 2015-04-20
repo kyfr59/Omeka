@@ -47,7 +47,7 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
         $this->setParam('collection', $this->view->collection->id);
         $params = $this->getAllParams();
 
-        $recordsPerPage = 2;
+        $recordsPerPage = 10;
         $currentPage = $this->getParam('page', 1);
 
         $records = $this->_helper->db->getTable('Item')->findBy(
