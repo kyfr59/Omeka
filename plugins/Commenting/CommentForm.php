@@ -15,17 +15,13 @@ class Commenting_CommentForm extends Omeka_Form
                 'labe'=>__('Website'),
             );
         $emailOptions = array(
-                'labe'=>__('Email (required)'),
                 'required'=>true,
                 'validators' => array(
-                    array(  'validator' => 'EmailAddress',
-                            'message' => "mlm"
-                    )
+                    array(  'validator' => 'EmailAddress', 'options' =>  array( 'messages' => array( Zend_Validate_EmailAddress::INVALID_FORMAT => "Adresse e-mail invalide") ) )
                 )
             );
         $nameOptions =  array(
-                        'labe'=> __('Your name'),
-                        'required'=> true,
+                        'required'=> true
                         );
 
         $text = new Zend_Form_Element_Textarea( 'body' );
