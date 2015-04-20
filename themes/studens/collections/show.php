@@ -39,7 +39,7 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
     <?php if (metadata('collection', 'total_items') > 0): ?>
         <?php foreach (loop('items') as $item): ?>
         <?php $itemTitle = strip_formatting(metadata('item', array('Dublin Core', 'Title'))); ?>
-        <div class="collection" style="min-height:60px;">
+        <div class="collection">
 
             <?php if (metadata('item', 'has thumbnail')): ?>
                 <?php echo link_to_item(item_image('thumbnail', array('alt' => $itemTitle)), array("class" => "image")); ?>
@@ -47,15 +47,27 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
 
             <h2><?php echo link_to_item($itemTitle); ?></h2>
 
+
+
+            <div class="item-description" style="min-height:40px;">
             <?php if ($text = metadata('item', array('Item Type Metadata', 'Text'), array('snippet'=>250))): ?>
-                <div class="item-description">
-                    <?php echo $text; ?>
-                </div>
-                <?php elseif ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
-                <div class="item-description">
-                    <?php echo $description; ?>
-                </div>
+                <?php echo $text; ?>
+            <?php elseif ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
+                <?php echo $description; ?>
             <?php endif; ?>
+            </div>
+
+            <div class="item-infos">
+            <?php $creators = $collection->getElementTexts('Dublin Core','Creator');  
+                if(count($creators) >  0) {
+                        echo '<div class="creators">';
+                        foreach($creators as $creator)
+                            echo '<span>Createur : </span>'.$creator->text;
+                        echo '</div>';
+                    }
+                
+            ?>
+            </div>
 
         </div>
         <?php endforeach; ?>
