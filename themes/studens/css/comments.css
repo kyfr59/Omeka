@@ -1,0 +1,12 @@
+#comments-container {
+	border:1px solid red !important;
+}
+
+#comments-container .comment-author-name {
+	border:1px solid red;
+	font-weight:bold;
+}
+
+#comments-container .gravatar {
+	display:none;
+}
