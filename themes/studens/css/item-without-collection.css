@@ -194,6 +194,14 @@
 	padding-bottom:20px;
 }
 
+#item-without-collection .no-coverage {
+	background:url(/themes/studens/images/item-without-collection/no-coverage-background.png), url(/themes/studens/images/item-without-collection/coverage-line-background.png);
+    background-position: right top, right top;
+	background-repeat: no-repeat, repeat-y;
+	min-height:220px;
+	padding-bottom:20px;	
+}
+
 #item-without-collection .coverage span {
 	background-color:#0f565a;
 	float:right;

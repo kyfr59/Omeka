@@ -6,7 +6,7 @@
 <div id="item-without-collection">
 
   	<div class="item">
-		<h2><?php echo strtoupper(metadata($item, array('Dublin Core', 'Title'))); ?></h2><span class="top"></span>
+		<h2><?php echo (metadata($item, array('Dublin Core', 'Title'))); ?></h2><span class="top"></span>
     	<?php 
     		if (metadata($item, 'has files')) { 
     			echo files_for_item(array('imageSize' => 'fullsize'));
@@ -52,15 +52,17 @@
    		<?php $coverages = $this->item->getElementTexts('Dublin Core','Coverage'); ?>
 		<?php if($hasMap || count($coverages)>0): ?>
 			<div class="row">
-				<div class="left shift coverage <?php echo $hasMap ? 'with' : 'no-coverage' ?>">
-					<span>
-						<?php if (count($coverages) > 0 ): ?>
-	    				<b>Couverture<?php echo count($coverages) > 1 ? 's' : '';?></b><br />
-	    				<?php foreach($coverages as $coverage): ?>
-	    					<?php echo $coverage->text; ?><br />
-	    				<?php endforeach; ?>	
-    					<?php endif; ?>		
-					</span>
+				<div class="left shift <?php if(strlen(trim($coverages))==0) echo "no-"?>coverage <?php echo $hasMap ? 'with' : 'no-coverage' ?>">
+					<?php if (strlen(trim($coverages)) > 0): ?>
+						<span>
+							<?php if (count($coverages) > 0 ): ?>
+		    				<b>Couverture<?php echo count($coverages) > 1 ? 's' : '';?></b><br />
+		    				<?php foreach($coverages as $coverage): ?>
+		    					<?php echo $coverage->text; ?><br />
+		    				<?php endforeach; ?>	
+		    				<?php endif; ?>							
+						</span>
+    				<?php endif; ?>							
 				</div>
 				<?php if ($hasMap): ?>
 	    			<div class="right localization">
