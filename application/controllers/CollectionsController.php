@@ -43,8 +43,12 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
     public function showAction()
     {
         parent::showAction();
+
+        $this->setParam('collection', $this->view->collection->id);
+        $params = $this->getAllParams();
+
         $this->view->items = $this->_helper->db->getTable('Item')->findBy(
-            array('collection' => $this->view->collection->id), is_admin_theme() ? 10 : 5);
+            $params, is_admin_theme() ? 10 : 5);
     }
     
     /**

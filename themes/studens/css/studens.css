@@ -249,12 +249,13 @@
   .studens #content h1 span {
     display:block;
     margin:0;
-    margin-top:7px;
+    margin-top:15px;
     padding:0;
     padding-left: 25px;
     line-height: 15px;
     color:#F8A301;
     background:url('../images/subtitle-background.png') left center no-repeat;
+    margin-left:-10px;
   }
 
   .studens #content h2 {

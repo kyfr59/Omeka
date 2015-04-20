@@ -120,7 +120,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
                 }
             }
         }
-        
+
         $params = $this->getAllParams();
         $recordsPerPage = $this->_getBrowseRecordsPerPage($pluralName);
         $currentPage = $this->getParam('page', 1);
