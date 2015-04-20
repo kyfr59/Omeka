@@ -1,12 +1,122 @@
 #comments-container {
-	border:1px solid red !important;
+	background:none !important;
+	width:70%;
+	margin:0 auto;
 }
 
-#comments-container .comment-author-name {
-	border:1px solid red;
+#comments-container .comment-body {
+	margin:0 !important;
+	padding:0 !important;
+	clear:both;
+	padding-bottom:20px !important;
+	border-bottom:1px dotted #ccc;
+	min-height:20px;
+	margin-bottom:15px !important;
+}
+
+#comments-container .comments .comment {
+	float:right;
+	width:98%;
+	padding-left:40px;
+	padding-top: 3px;
+	background: url(../images/comment-reply-background.png) left top no-repeat;
+}
+
+#comments-container .comments > .comment {
+	background: url(../images/comment-background.png) left top no-repeat;
+}
+
+#comments-container .comment-body > p {
+	margin:0;
+}
+
+#comments-container .comment-author {
+	margin:0;
+	width:400px;
+	float: left;
+}
+
+#comments-container .comment-author {
+	color:#10555c;
 	font-weight:bold;
+}
+
+#comments-container .comments > .comment > .comment-author {
+	color:black;
+}
+
+#comments-container .comment-infos {
+	color:#ca8603;
+	margin:0;
+	text-align:right;
+	color:black;
+}
+
+#comments-container .comment-reply {
+	color:#ca8607;
+}
+
+#comments-container .comment-flag {
+	display:none;
 }
 
 #comments-container .gravatar {
 	display:none;
 }
+
+
+
+/* Form */
+
+#comment-form {
+	margin:0 auto;
+}
+
+#comment-form input,
+#comment-form textarea {
+	background-color:white;
+	padding-left:30px;
+	border:1px solid #ccc;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	font-weight:normal !important;
+	color:black;
+	font-family: CalibriRegular, Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+	width:100%;
+}
+
+#comment-form input#author_name {
+	background: white url(../images/comment-name-background.png) left center no-repeat;
+}
+
+#comment-form input#author_email {
+	background: white url(../images/comment-mail-background.png) left center no-repeat;
+}
+
+#comment-form #body-label {
+	display:none;
+}
+
+#comment-form #body-element,
+#comment-form #email-element {
+	margin-left:0px;
+}
+
+#comment-form textarea#body {
+	background: white url(../images/comment-message-background.png) left top no-repeat;
+}
+
+#comment-form input[type=submit] {
+	margin:0 auto;
+	margin-top:20px;
+	background-color:#e3a126;
+	border:none;
+	color:white;
+	font-size:18px;
+	font-weight:bold;
+	text-align:center;
+	width:180px;
+	padding:10px;
+}
+
