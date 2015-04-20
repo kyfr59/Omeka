@@ -84,7 +84,7 @@ jQuery(document).ready(function() {
 
         <a href="<?php echo html_escape(url('items/show/'.$this->lastItem->id)); ?>" class="last-archival">
             <span></span>
-            <?php $image = record_image($this->lastItem, 'thumbnail'); ?>
+            <?php $image = record_image($this->lastItem, 'original'); ?>
             <?php if($image): ?>
                 <?php echo $image; ?>
             <?php else: ?>
@@ -96,7 +96,7 @@ jQuery(document).ready(function() {
 
         <a href="<?php echo url(array('slug'=>$this->lastExhibit->slug), 'exhibitSimple'); ?>" class="last-exhibit">
             <span></span>
-            <?php $image = record_image($this->lastExhibit, 'thumbnail'); ?>
+            <?php $image = record_image($this->lastExhibit, 'original'); ?>
             <?php if($image): ?>
                 <?php echo $image; ?>
             <?php else: ?>
