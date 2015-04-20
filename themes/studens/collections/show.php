@@ -21,9 +21,7 @@ echo head(array('bodyclass' => 'collections browse'));
 $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 'Title')));
 ?>
 
-<?php // echo head(array('title'=> $collectionTitle, 'bodyclass' => 'collections show')); ?>
-
-<h1><?php echo $collectionTitle; ?> <span><?php echo __('(%s au total)', count($items)); ?></span></h1>
+<h1><?php echo $collectionTitle; ?> <span><?php echo __('(%s au total)', $this->total_results); ?></span></h1>
 
 
 <div id="list">
