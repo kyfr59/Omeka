@@ -47,8 +47,24 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
         $this->setParam('collection', $this->view->collection->id);
         $params = $this->getAllParams();
 
-        $this->view->items = $this->_helper->db->getTable('Item')->findBy(
-            $params, is_admin_theme() ? 10 : 5);
+        $recordsPerPage = 2;
+        $currentPage = $this->getParam('page', 1);
+
+        $records = $this->_helper->db->getTable('Item')->findBy(
+            $params, $recordsPerPage, $currentPage);
+
+        $totalRecords = $this->_helper->db->getTable('Item')->count($params);
+
+        // Add pagination data to the registry. Used by pagination_links().
+        if ($recordsPerPage) {
+            Zend_Registry::set('pagination', array(
+                'page' => $currentPage, 
+                'per_page' => $recordsPerPage, 
+                'total_results' => $totalRecords, 
+            ));
+        }   
+
+        $this->view->assign(array('items' => $records, 'total_results' => $totalRecords));     
     }
     
     /**

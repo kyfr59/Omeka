@@ -41,7 +41,7 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
     <?php if (metadata('collection', 'total_items') > 0): ?>
         <?php foreach (loop('items') as $item): ?>
         <?php $itemTitle = strip_formatting(metadata('item', array('Dublin Core', 'Title'))); ?>
-        <div class="collection">
+        <div class="collection" style="min-height:60px;">
 
             <?php if (metadata('item', 'has thumbnail')): ?>
                 <?php echo link_to_item(item_image('thumbnail', array('alt' => $itemTitle)), array("class" => "image")); ?>
@@ -64,6 +64,9 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
     <?php else: ?>
         <p><?php echo __("There are currently no items within this collection."); ?></p>
     <?php endif; ?>
+
+    <?php echo pagination_links(); ?>
+
 </div><!-- end collection-items -->
 
 
