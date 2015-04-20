@@ -43,7 +43,7 @@ class IndexController extends Omeka_Controller_AbstractActionController
 		/** Retrieve last exhibit */
 
 		$this->_helper->db->setDefaultModelName('Exhibit');
-        $records = $this->_helper->db->findBy();
+        $records = $this->_helper->db->findBy(array('public' => 1, 'sort_field' => 'modified', 'sort_dir' => 'd'));
         $this->view->lastExhibit = $records[0];
 
 		/** Retrieve last collection */
