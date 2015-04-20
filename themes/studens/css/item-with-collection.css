@@ -340,3 +340,13 @@
 #item-with-collection .lifeline .social a.twitter {
 	background:url(../images/lifeline/lifeline-social-twitter-background.png);
 }
+
+#item-with-collection  .view-all-items {
+	margin-left:50px;
+	display:inline-block;
+	padding:8px;
+	padding-right:45px;
+	color:white !important;
+	background:black url(/themes/studens/images/lifeline/lifeline-view-all-items-background.png) right center no-repeat;
+	width:inherit !important;
+}

@@ -26,7 +26,6 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
         'admin_items_search',
         'admin_items_batch_edit_form',
         'items_batch_edit_custom',
-        'public_items_show',
         'items_browse_sql',
     );
 

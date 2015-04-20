@@ -179,22 +179,13 @@ echo $b->getPartial();
 		    	<?php if($j > 5) {break;} ?>
 		    <?php endforeach; ?>
 
-<style>
-.view-all-items {
-	margin-left:50px;
-	display:inline-block;
-	padding:8px;
-	padding-right:45px;
-	color:white !important;
-	background:black url(/themes/studens/images/lifeline/lifeline-view-all-items-background.png) right center no-repeat;
-	width:inherit !important;
-}
-</style>
 			<?php echo link_to_collection('Voir tous les items de la collection', array("class"=>"view-all-items"), 'show', $collection); ?>
 		</span>    
     </div>
 
 </div>
 <br style="clear:both" />
+
+<?php echo fire_plugin_hook('public_items_show', array('view' => $this)); ?>
 
 <?php echo foot(); ?>
