@@ -111,7 +111,7 @@
 		<!-- Item Type Metadata -->
 		<?php $itemTypeMetadata = item_type_elements($item); ?>
 		<?php $formats = $this->item->getElementTexts('Dublin Core', 'Format'); ?>
-		<?php if (count($itemTypeMetadata) > 0 || count($format) > 0): ?>
+		<?php if (count($itemTypeMetadata) > 0 || count($formats) > 0): ?>
     		<div class="row infos">
     			<?php if (count($formats)>0): ?>
 	    			<?php foreach($formats as $format): ?>
@@ -126,7 +126,7 @@
 		    		<?php endforeach; ?>
 		    	<?php endif; ?>
 		    		
-		    	<?php if (count($formats)>0): ?>	
+		    	<?php if (count($itemTypeMetadata)>0): ?>	
 		    		<div class="right"><span><u>
 	    			<?php foreach($itemTypeMetadata as $key => $value): ?>
 	    				<?php if($value && strlen(trim($value, '<br>')) > 0): ?>
