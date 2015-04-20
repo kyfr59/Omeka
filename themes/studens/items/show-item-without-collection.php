@@ -179,7 +179,15 @@
 			</div>
 		</div>	
 
-		<div class="row comments"></div>
+		<div class="row comments">
+			<span>
+				<?php 
+					$comments = new CommentingPlugin(); 
+					$nbComments = $comments->countComments($item);
+				?>
+				<?php echo $nbComments == 0 ? 'Aucun' : $nbComments ?> Commentaire<?php if($nbComments>1) echo 's' ?>
+			</span>	
+		</div>
 	</div>
 </div>
 <br style="clear:both" />
@@ -190,5 +198,8 @@
     <li id="next-item" class="next"><?php echo link_to_next_item_show(); ?></li>
 </ul>
 -->
+
+
+<?php echo fire_plugin_hook('public_items_show', array('view' => $this)); ?>
 
 <?php echo foot(); ?>

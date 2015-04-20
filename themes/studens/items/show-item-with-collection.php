@@ -186,6 +186,4 @@ echo $b->getPartial();
 </div>
 <br style="clear:both" />
 
-<?php echo fire_plugin_hook('public_items_show', array('view' => $this)); ?>
-
 <?php echo foot(); ?>
