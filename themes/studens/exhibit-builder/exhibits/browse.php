@@ -40,6 +40,7 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
 <!-- Sort links -->
 <?php
     $sortLinks[__('Title')] = 'title';
+    $sortLinks[__('Auteur')] = 'credits';
     $sortLinks[__('Date Added')] = 'added';
 ?>
 <div id="sort-links">
@@ -51,10 +52,10 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
 <?php foreach (loop('exhibit') as $exhibit): ?>
     <?php $exhibitCount++; ?>
     <div class="exhibit <?php if ($exhibitCount%2==1) echo ' even'; else echo ' odd'; ?>">
-        <h2><?php echo link_to_exhibit(); ?></h2>
         <?php if ($exhibitImage = record_image($exhibit, 'thumbnail')): ?>
             <?php echo exhibit_builder_link_to_exhibit($exhibit, $exhibitImage, array('class' => 'image')); ?>
         <?php endif; ?>
+        <h2><?php echo link_to_exhibit(); ?></h2>
         <?php if ($exhibitDescription = metadata('exhibit', 'description', array('no_escape' => true))): ?>
         <div class="description"><?php echo $exhibitDescription; ?></div>
         <?php endif; ?>
@@ -64,11 +65,12 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
 
         <div class="item-infos">
         <?php 
-            echo '<div class="date">';
+            echo '<div class="creators">';
             $date = metadata('exhibit', 'added');
-            $dateFrench = ltrim(date("d ", strtotime($date)), '0'). strtolower($months[(int)date("m ", strtotime($date))]). date(" Y ", strtotime($date));
-            echo '<span>Date : </span>'.$dateFrench;
-            echo '</div><br style="clear:both;">';
+            //$dateFrench = ltrim(date("d ", strtotime($date)), '0'). strtolower($months[(int)date("m ", strtotime($date))]). date(" Y ", strtotime($date));
+            echo '<span>Créateur : </span>'.$exhibit->credits;
+            echo '</div>';
+            //echo '</div><br style="clear:both; height:1px;">';
         ?>
         </div>
     </div>
@@ -82,3 +84,4 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
 <?php endif; ?>
 
 <?php echo foot(); ?>
+
