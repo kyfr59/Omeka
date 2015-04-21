@@ -166,6 +166,7 @@
 	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 	min-height:49px;
+	width:500px;
 }
 
 #item-with-collection .lifeline .subject span {
