@@ -20,7 +20,6 @@
 
 		<!-- About & subjects -->
     	<?php $about = metadata($item, array('Dublin Core', 'Description')); ?>
-    	<?php $subjects = $this->item->getElementTexts('Dublin Core','Subject'); ?>
 		<div class="row">
 			<?php if (strlen(trim($about)) > 0):?>
 				<div class="left about shift" >
@@ -28,12 +27,10 @@
 					<span><?php echo cutString($about, 'long'); ?></span>
 				</div>
 			<?php endif; ?>	
-			<?php if (count($subjects) > 0 ): ?>
+			<?php if ( hasSubjects($item) ): ?>
 				<div class="right has-about subject">
 					<b>Sujets</b><br />
-					<?php foreach($subjects as $subject): ?>
-						<?php echo $subject->text; ?><br />
-					<?php endforeach; ?>	
+					<?php echo getSubjects($item); ?><br />
 				</div>
 			<?php endif; ?>	
 		</div>

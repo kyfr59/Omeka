@@ -34,13 +34,11 @@ echo $b->getPartial();
     		<div class="full begin"></div>
 
     		<!-- Subjects -->
-    		<?php $subjects = $this->item->getElementTexts('Dublin Core','Subject'); ?>
-    		<?php if (count($subjects) > 0 ): ?>
+
+    		<?php if ( hasSubjects($item) ): ?>
     			<div class="full subject">
-    				<b>Sujet<?php echo count($subjects) > 1 ? 's' : '';?></b><br />
-    				<?php foreach($subjects as $subject): ?>
-    					<span><?php echo $subject->text; ?></span>
-    				<?php endforeach; ?>	
+    				<b>Sujets</b><br />
+    				<span><?php echo getSubjects($item) ?></span>
     			</div>
     		<?php endif; ?>		
 

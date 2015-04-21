@@ -67,3 +67,38 @@ function cutString($string, $length = 'medium') {
     return rtrim($string).'...';
 }
 
+
+function getSubjects($item) {
+
+    $result = '';
+
+    // Adding DC subjects
+    $subjects = $item->getElementTexts('Dublin Core','Subject'); 
+    if (count($subjects)) {
+        foreach($subjects as $subject) {
+            $result .= $subject->text . '<br />';
+        }
+    }
+
+    // Adding subjects extracting from tags
+    if (metadata($item,'has tags')) {
+        foreach ($item->Tags as $tag) {
+            if (substr(strtolower($tag),0,5) == 'sujet') {
+                $result .= trim(ltrim(trim(ltrim($tag, 'sujet')),':')) . '<br />';
+            }
+        }
+    }
+
+    return $result;
+}
+
+
+function hasSubjects($item) {
+
+    if (metadata($item,'has tags')) return true;
+
+    $subjects = $item->getElementTexts('Dublin Core','Subject'); 
+    if (count($subjects) > 0 ) return true;
+
+    return false;
+}
