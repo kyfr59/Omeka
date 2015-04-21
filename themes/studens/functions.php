@@ -83,7 +83,9 @@ function getSubjects($item) {
     // Adding subjects extracting from tags
     if (metadata($item,'has tags')) {
         foreach ($item->Tags as $tag) {
-            if (substr(strtolower($tag),0,5) == 'sujet') {
+            $t = strtolower($tag);
+            if (substr($t,0,5) == 'sujet') {
+                $tag = ltrim($tag, 'Sujet');
                 $result .= trim(ltrim(trim(ltrim($tag, 'sujet')),':')) . '<br />';
             }
         }
