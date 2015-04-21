@@ -43,7 +43,8 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
     $sortLinks[__('Auteur')] = 'credits';
     $sortLinks[__('Date Added')] = 'added';
 ?>
-<div id="sort-links">
+
+<div id="sort-links" style="margin-right:205px;">
     <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks) ; ?>
 </div>
 
