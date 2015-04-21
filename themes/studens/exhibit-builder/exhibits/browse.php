@@ -17,7 +17,7 @@ $months[12] = 'Décembre';
 $title = __('Browse Exhibits');
 echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
 ?>
-<h1><?php echo $title; ?> <?php echo __('(%s total)', $total_results); ?></h1>
+<h1 class="without-subtitle"><?php echo $title; ?> <?php echo __('(%s total)', $total_results); ?></h1>
 <?php if (count($exhibits) > 0): ?>
 
 <!--
@@ -44,7 +44,7 @@ echo head(array('title' => $title, 'bodyclass' => 'exhibits browse'));
     $sortLinks[__('Date Added')] = 'added';
 ?>
 
-<div id="sort-links" style="margin-right:205px;">
+<div id="sort-links" style="margin-right:205px; margin-top:10px;">
     <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks) ; ?>
 </div>
 
