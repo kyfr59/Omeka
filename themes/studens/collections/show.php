@@ -41,7 +41,7 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
         <?php $itemTitle = strip_formatting(metadata('item', array('Dublin Core', 'Title'))); ?>
         <div class="collection">
 
-            <?php if (metadata('item', 'has thumbnail')): ?>
+            <?php if (metadata('item', 'has files')): ?>
                 <?php echo link_to_item(item_image('thumbnail', array('alt' => $itemTitle)), array("class" => "image")); ?>
             <?php endif; ?>
 
