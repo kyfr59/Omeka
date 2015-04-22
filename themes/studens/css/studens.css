@@ -266,7 +266,9 @@
     border:none;
     margin-bottom:0;
     font-size:18px;
+    line-heigt:22px;
   }
+
   .studens #content > div, .studens #content #primary > div, .studens #content #sidebar > div,
   .studens #content #advanced-search-form > div, .studens #content #exhibit-pages {
     
