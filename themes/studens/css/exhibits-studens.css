@@ -59,10 +59,7 @@
         background:url(/themes/studens/images/exhibits/nav-background.png) left 4px no-repeat;
         padding-left:50px;
         padding-top:5px;
-    }
-
-    #exhibit-nav li.current {
-        background:url(/themes/studens/images/exhibits/nav-background-hover.png) left 4px no-repeat;
+        
     }
 
     #exhibit-nav a {
@@ -74,7 +71,11 @@
         color:#e3a126;
     }
 
-    #exhibit-nav li.current a {
+    #exhibit-nav li.current {
+        background:url(/themes/studens/images/exhibits/nav-background-hover.png) left 4px no-repeat;
+    }
+
+    #exhibit-nav li.current > a {
         color:#e3a126;
     }
 

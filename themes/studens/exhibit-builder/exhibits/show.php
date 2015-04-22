@@ -11,12 +11,6 @@ echo head(array(
     <?php echo exhibit_builder_page_nav(); ?>
 </nav>
 
-<?php if (count(exhibit_builder_child_pages()) > 0): ?>
-<nav id="exhibit-child-pages" class="secondary-nav">
-    <?php echo exhibit_builder_child_page_nav(); ?>
-</nav>
-<?php endif; ?>
-
 <div role="main">
 <?php exhibit_builder_render_exhibit_page(); ?>
 

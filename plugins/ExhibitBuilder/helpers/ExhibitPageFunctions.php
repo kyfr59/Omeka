@@ -81,11 +81,25 @@ function exhibit_builder_page_nav($exhibitPage = null)
 
         $html .= "<ul class=\"exhibit-nav-level-$levelNumber\">\n";
         $levelNumber +=1;
-        
+
+        if($levelNumber==2)
         foreach ($pageSiblings as $pageSibling) {
-            $html .= '<li' . ($pageSibling->id == $page->id ? ' class="current"' : '') . '>';
+            $html .= '<li' . ($exhibitPage->id == $pageSibling->id ? ' class="current"' : '') . '>';
             $html .= '<a class="exhibit-page-title" href="' . html_escape(exhibit_builder_exhibit_uri($exhibit, $pageSibling)) . '">';
-            $html .= html_escape($pageSibling->title) . "</a></li>\n";
+            $html .= html_escape($pageSibling->title) . "</a>\n";
+
+            $children = $pageSibling->getChildPages();
+            if ($children) {
+                $html .= '<ul>';
+                foreach ($children as $child) {
+                    $current = $child->id == $exhibitPage->id ? true : false;
+                    $html .= exhibit_builder_page_summary($child, $current);
+                    release_object($child);
+                }
+                $html .= '</ul>';
+            }
+            $html .= "</li>\n";
+
         }
         $html .= "</ul>\n";
     }
@@ -289,13 +303,14 @@ function exhibit_builder_child_pages($exhibitPage = null)
 /**
  * Get a list item for a page, containing a sublist of all its children.
  */
-function exhibit_builder_page_summary($exhibitPage = null)
+function exhibit_builder_page_summary($exhibitPage = null, $current = false)
 {
     if (!$exhibitPage) {
         $exhibitPage = get_current_record('exhibit_page');
     }
 
-    $html = '<li>'
+    $class = $current ? "class='current'" : "class=''";
+    $html = '<li '.$class .'>'
           . '<a href="' . exhibit_builder_exhibit_uri(get_current_record('exhibit'), $exhibitPage) . '">'
           . metadata($exhibitPage, 'title') .'</a>';
 
