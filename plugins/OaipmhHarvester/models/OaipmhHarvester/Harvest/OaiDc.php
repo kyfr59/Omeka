@@ -63,21 +63,29 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         if (count($insertedItems) == 0)
             return;
 
+        // $this->_addStatusMessage( print_r($insertedItems, 1) ); // Debug
+
         foreach ($insertedItems as $atomId => $tab) {
-
+            
             // Mapping of fields
-            $atomId         = $atomId;
-            $atomParentId   = $tab['atomParentId'];
-            $omekaId        = $tab['newId'];
-            $omekaParentId  = $insertedItems[$atomParentId]['newId'];
-            // $val .= "L'archive ATOM ".$atomId." a été insérée sous OMEKA ".$omekaId." et à comme parent : ".$tab['atomParentId']." (soit ".$omekaParentId." OMEKA)\r\n"; // Debug
-
-            if ($omekaId > 0 && $omekaParentId > 0)
+            $atomId             = $atomId;
+            $atomTopParentId    = $tab['atomTopParentId'];
+            $atomTopParentUrl   = $tab['atomTopParentUrl'];
+            $omekaId            = $tab['newId'];
+            $omekaTopParentId   = $insertedItems[$atomTopParentId]['newId'];
+            if (strlen(trim($omekaTopParentId)) == 0 && strlen(trim($atomTopParentUrl)) > 0)  {
+                
+                $e = get_db()->getTable('ElementText')->findBy(array('text' => $atomTopParentUrl));
+                $omekaTopParentId = $e[0]->record_id;
+            }
+            if ($omekaId > 0 && $omekaTopParentId > 0)
             {   
-                ItemRelationsPlugin::insertItemRelation($omekaId, 7, $omekaParentId);
+                $val .= "L'archive ATOM ".$atomId." a été insérée sous OMEKA ".$omekaId." et à comme parent : ".$atomTopParentId." (soit ".$omekaTopParentId." OMEKA)\r\n"; // Debug
+                $this->_addStatusMessage( $val ); // Debug
+                ItemRelationsPlugin::insertItemRelation($omekaId, 7, $omekaTopParentId);
             } 
         }
-        // $this->_addStatusMessage( $val); // Debug
+        
     }
 
     
@@ -292,11 +300,13 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
         /* ISAD/AV Importation END */
 
-        return array('itemMetadata' => $itemMetadata,
-                     'elementTexts' => $elementTexts,
-                     'fileMetadata' => array(),
-                     'atomId'       => $dcMetadata->atomId,            // Pass the atomId field to the abstract _harvestLoop() function
-                     'atomParentId' => $dcMetadata->atomParentId);     // Pass the atomParentId field to the abstract _harvestLoop() function
+        return array('itemMetadata'     => $itemMetadata,
+                     'elementTexts'     => $elementTexts,
+                     'fileMetadata'     => array(),
+                     'atomId'           => $dcMetadata->atomId,                 // Pass the atomId field to the abstract _harvestLoop() function
+                     'atomParentId'     => $dcMetadata->atomParentId,           // Pass the atomParentId field to the abstract _harvestLoop() function
+                     'atomTopParentId'  => $dcMetadata->atomTopParentId,        // Pass the atomTopParentId field to the abstract _harvestLoop() function
+                     'atomTopParentUrl' => $dcMetadata->atomTopParentUrl);      // Pass the atomTopParentUrl field to the abstract _harvestLoop() function
 
 
     }

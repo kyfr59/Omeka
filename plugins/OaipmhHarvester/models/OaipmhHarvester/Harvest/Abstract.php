@@ -177,6 +177,16 @@ abstract class OaipmhHarvester_Harvest_Abstract
         // Cache the record for later use.
         $this->_record = $record;
 
+        // Retrieve ATOM ID, parent ID & top parent ID
+        $atomId             = (string)$harvestedRecord['atomId'];
+        $atomParentId       = (string)$harvestedRecord['atomParentId'];
+        $atomTopParentId    = (string)$harvestedRecord['atomTopParentId'];
+        $atomTopParentUrl   = (string)$harvestedRecord['atomTopParentUrl'];
+
+        $this->_parentCorrespondance[$atomId]['atomParentId'] = $atomParentId;
+        $this->_parentCorrespondance[$atomId]['atomTopParentId'] = $atomTopParentId;
+        $this->_parentCorrespondance[$atomId]['atomTopParentUrl'] = $atomTopParentUrl;
+
         // Record has already been harvested
         if ($existingRecord) {
 
@@ -189,22 +199,21 @@ abstract class OaipmhHarvester_Harvest_Abstract
                                   $harvestedRecord['elementTexts'],
                                   $harvestedRecord['fileMetadata']);
             }
+            $this->_parentCorrespondance[$atomId]['newId'] = $existingRecord->item_id; // An existing                                        
             release_object($existingRecord);
+
         } else {
             $insertedId = $this->_insertItem(
                 $harvestedRecord['itemMetadata'],
                 $harvestedRecord['elementTexts'],
                 $harvestedRecord['fileMetadata']
             );
+            $this->_parentCorrespondance[$atomId]['newId'] = $insertedId; // A new record (just inserted)
         }
 
-        // Retrieve ATOM ID & Parent ID
-        $atomId         = (string)$harvestedRecord['atomId'];
-        $atomParentId   = (string)$harvestedRecord['atomParentId'];
+        
 
-        $this->_parentCorrespondance[$atomId]['newId'] = $insertedId;
-        $this->_parentCorrespondance[$atomId]['atomParentId'] = $atomParentId;
-
+        
     }
     
     /**
