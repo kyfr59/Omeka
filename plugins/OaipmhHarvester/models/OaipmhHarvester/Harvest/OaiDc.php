@@ -80,9 +80,13 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             }
             if ($omekaId > 0 && $omekaTopParentId > 0)
             {   
-                $val .= "L'archive ATOM ".$atomId." a été insérée sous OMEKA ".$omekaId." et à comme parent : ".$atomTopParentId." (soit ".$omekaTopParentId." OMEKA)\r\n"; // Debug
-                $this->_addStatusMessage( $val ); // Debug
-                ItemRelationsPlugin::insertItemRelation($omekaId, 7, $omekaTopParentId);
+                $existingRelation = get_db()->getTable('ItemRelationsRelation')->findBy( array('object_item_id' => $omekaTopParentId, 'subject_item_id' => $omekaId) );
+                
+                if (count($existingRelation) != 0) {
+                    ItemRelationsPlugin::insertItemRelation($omekaId, 7, $omekaTopParentId);
+                    // $val .= "L'archive ATOM ".$atomId." a été insérée sous OMEKA ".$omekaId." et à comme parent : ".$atomTopParentId." (soit ".$omekaTopParentId." OMEKA)\r\n"; // Debug
+                    // $this->_addStatusMessage( count($existingRelation) ); // Debug
+                }    
             } 
         }
         
