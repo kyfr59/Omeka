@@ -84,7 +84,7 @@ class OaipmhHarvester_Harvest extends Omeka_Record_AbstractRecord
             // specified.
             if(($startFrom = $this->start_from)) {
                 $oaiDate = $this->_datetimeToOai($startFrom);
-                // $query['from'] = $oaiDate;
+                $query['from'] = $oaiDate;
                 $this->addStatusMessage("Resuming harvest from $oaiDate.");
             }
         }
