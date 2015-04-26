@@ -58,7 +58,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
             if(count($creators) >  0) {
                     echo '<div class="creators">';
                     foreach($creators as $creator)
-                        echo '<span>Createur : </span>'.$creator->text;
+                        echo '<span>Créateur : </span>'.$creator->text;
                     echo '</div>';
                 }
             /*
