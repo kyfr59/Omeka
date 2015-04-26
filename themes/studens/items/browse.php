@@ -43,7 +43,7 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
     <div class="collection">
 
         <?php if (metadata('item', 'has files')) {
-            echo link_to_item(item_image('thumbnail'));
+            echo link_to_item(item_image('thumbnail'),  array('class' => 'image'));
         } else {
             echo link_to_item('<img src="'.OMEKA_ROOT.'/themes/studens/images/fallback.png" width="63" height="63"/>', array('class' => 'image'));
         }
