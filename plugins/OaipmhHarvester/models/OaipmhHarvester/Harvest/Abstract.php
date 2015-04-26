@@ -245,6 +245,7 @@ abstract class OaipmhHarvester_Harvest_Abstract
         $record->item_id    = $item->id;
         $record->identifier = (string) $this->_record->header->identifier;
         $record->datestamp  = (string) $this->_record->header->datestamp;
+        $record->public     =  1;
         $record->save();
         
         release_object($record);
