@@ -530,4 +530,18 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
             $this->addError('collection_id', __('Invalid collection.'));
         }
     }
+
+    /**
+     * Return true if the current item type is "Fonds"
+     */
+    public function isFonds() {
+        
+        if ($this->item_type_id == OaipmhHarvester_Harvest_OaiDc::FONDS_ITEM_TYPE) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }

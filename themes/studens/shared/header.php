@@ -47,6 +47,7 @@
                     <li><a href="/">accueil</a></li><!--
                  --><li><a href="/exhibits">expositions</a></li><!--
                  --><li><a href="/collections">collections</a></li><!--
+                 --><li><a href="/fonds">fonds</a></li><!--
                  --><li><a href="/">contribuer</a></li><!--
                  --><li><a href="/items/search">recherche avancée</a></li>
                 </ul>

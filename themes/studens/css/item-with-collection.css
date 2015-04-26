@@ -64,7 +64,7 @@
 
 /* Right area */
 #item-with-collection .right h2 {
-	background: url(/themes/studens/images/collection-page-right-title-background.png) left center no-repeat;
+	background: url(/themes/studens/images/collection-page-right-title-background.png) left top no-repeat;
 	padding-left:60px;
 	font-weight:normal;
 	color:#105658;
@@ -72,6 +72,7 @@
 	margin-bottom:20px;
 	font-size:20px;
 	min-height:63px;
+	padding-top:8px;
 }
 
 #item-with-collection .recent-items {
@@ -350,4 +351,8 @@
 	color:white !important;
 	background:black url(/themes/studens/images/lifeline/lifeline-view-all-items-background.png) right center no-repeat;
 	width:inherit !important;
+}
+
+#item-with-collection .fonds .recent-items a.title {
+	background: url(/themes/studens/images/fonds-listing-background.png) 20px top no-repeat;
 }

@@ -89,7 +89,19 @@ class ItemsController extends Omeka_Controller_AbstractActionController
 
         // Render the correction view on frontoffice
         if (!is_admin_theme()) {
-            if ($record->collection_id) {
+            
+            if ($record->isFonds()) {
+                
+                // Retrieve items of this fonds
+                $objects = get_db()->getTable('ItemRelationsRelation')->findByObjectItemId($record->id);
+                foreach($objects as $o) {
+                    $items[] = get_record_by_id('item', $o->subject_item_id);
+                }
+                $this->view->itemsOfFonds = $items;
+
+                $this->render('show-item-fonds');                
+            } else if ($record->collection_id) {
+
                 $this->view->recent_items = $this->_helper->db->getTable('Item')->findBy(
                     array('collection' => $record->collection_id, 'sort_field' => 'Dublin Core,Identifier')
                 );

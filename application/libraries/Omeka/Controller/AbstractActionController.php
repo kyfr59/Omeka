@@ -121,6 +121,13 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
             }
         }
 
+        // If URI is /fonds, retrieve only the "Fonds" items
+        echo $uri = Zend_Controller_Front::getInstance()->getRequest()->getPathInfo();
+        
+        if($uri == '/fonds') {
+            $this->setParam('item_type_id', OaipmhHarvester_Harvest_OaiDc::FONDS_ITEM_TYPE);
+        }         
+
         $params = $this->getAllParams();
         $recordsPerPage = $this->_getBrowseRecordsPerPage($pluralName);
         $currentPage = $this->getParam('page', 1);
