@@ -272,9 +272,9 @@ class Omeka_Db_Table
      * @param integer $page Page to retrieve.
      * @return array|null The set of objects that is returned
      */
-    public function findBy($params = array(), $limit = null, $page = null)
+    public function findBy($params = array(), $limit = null, $page = null, $range = null)
     {
-        $select = $this->getSelectForFindBy($params);
+        $select = $this->getSelectForFindBy($params, $range);
         if ($limit) {
             $this->applyPagination($select, $limit, $page);
         }
@@ -301,11 +301,14 @@ class Omeka_Db_Table
      * @param array $params optional Set of named search parameters.
      * @return Omeka_Db_Select
      */
-    public function getSelectForFindBy($params = array())
+    public function getSelectForFindBy($params = array(), $range = null)
     {
         $params = apply_filters($this->_getHookName('browse_params'), $params);
         
         $select = $this->getSelect();
+        if ($range) {
+            $this->filterByRange($select, $range);
+        }
         $sortParams = $this->_getSortParams($params);
         
         if ($sortParams) {
@@ -437,9 +440,12 @@ class Omeka_Db_Table
      * the count.
      * @return integer
      */
-    public function count($params=array())
+    public function count($params=array(), $range = null)
     {
         $select = $this->getSelectForCount($params);
+        if ($range) {
+            $this->filterByRange($select, $range);
+        }        
         return $this->getDb()->fetchOne($select);
     }
     

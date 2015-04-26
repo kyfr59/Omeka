@@ -1,53 +1,79 @@
-<?php echo head(array('title' => metadata('item', array('Dublin Core', 'Title')),'bodyclass' => 'items show')); ?>
+<?php
 
-<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>
+$months[01] = 'Janvier';
+$months[02] = 'Février';
+$months[03] = 'Mars';
+$months[04] = 'Avril';
+$months[05] = 'Mai';
+$months[06] = 'Juin';
+$months[07] = 'Juillet';
+$months[08] = 'Août';
+$months[09] = 'Septembre';
+$months[10] = 'Octobre';
+$months[11] = 'Novembre';
+$months[12] = 'Décembre';
 
-<div id="primary">
 
-    <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
-    <?php echo files_for_item(array('imageSize' => 'fullsize')); ?>
-    <?php endif; ?>
-    <?php echo all_element_texts('item'); ?>
-    <?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
+$pageTitle = __('Liste des fonds');
+echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
+?>
 
-</div><!-- end primary -->
+<h1 class="without-subtitle"><?php echo $pageTitle; ?> <?php // echo __('(%s au total)', $total_results); ?></h1>
 
-<aside id="sidebar">
-    <!-- The following returns all of the files associated with an item. -->
-    <?php if ((get_theme_option('Item FileGallery') == 1) && metadata('item', 'has files')): ?>
-    <div id="itemfiles" class="element">
-        <h2><?php echo __('Files'); ?></h2>
-        <?php echo item_image_gallery(); ?>
-    </div>
-    <?php endif; ?>
+<div id="list">
 
-    <!-- If the item belongs to a collection, the following creates a link to that collection. -->
-    <?php if (metadata('item', 'Collection Name')): ?>
-    <div id="collection" class="element">
-        <h2><?php echo __('Collection'); ?></h2>
-        <div class="element-text"><p><?php echo link_to_collection_for_item(); ?></p></div>
-    </div>
-    <?php endif; ?>
+    <?php echo pagination_links(); ?>
 
-    <!-- The following prints a list of all tags associated with the item -->
-    <?php if (metadata('item', 'has tags')): ?>
-    <div id="item-tags" class="element">
-        <h2><?php echo __('Tags'); ?></h2>
-        <div class="element-text"><?php echo tag_string('item'); ?></div>
-    </div>
-    <?php endif;?>
-
-    <!-- The following prints a citation for this item. -->
-    <div id="item-citation" class="element">
-        <h2><?php echo __('Citation'); ?></h2>
-        <div class="element-text"><?php echo metadata('item', 'citation', array('no_escape' => true)); ?></div>
+    <?php
+    $sortLinks[__('Title')] = 'Dublin Core,Title';
+    $sortLinks[__('Auteur')] = 'Dublin Core,Creator';
+    $sortLinks[__('Date Added')] = 'added';
+    ?>
+    <div id="sort-links">
+        <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
     </div>
 
-</aside>
+    <?php foreach (loop('items') as $collection): ?>
 
-<ul class="item-pagination navigation">
-    <li id="previous-item" class="previous"><?php echo link_to_previous_item_show(); ?></li>
-    <li id="next-item" class="next"><?php echo link_to_next_item_show(); ?></li>
-</ul>
+    <div class="collection">
+
+        <?php if (metadata('item', 'has files')) {
+            echo link_to_item(item_image('thumbnail'));
+        } else {
+            echo link_to_item('<img src="'.OMEKA_ROOT.'/themes/studens/images/fallback.png" width="63" height="63"/>', array('class' => 'image'));
+        }
+        ?>
+
+        <h2><?php echo link_to_item(); ?></h2>
+
+        <div class="collection-description" style="min-height:40px;">
+        <?php if (metadata('item', array('Dublin Core', 'Description'))): ?>
+            <?php echo text_to_paragraphs(metadata('item', array('Dublin Core', 'Description'), array('snippet'=>150))); ?>
+        <?php endif; ?>
+        </div>
+
+        <div class="item-infos">
+        <?php $creators = $collection->getElementTexts('Dublin Core','Creator');  
+            if(count($creators) >  0) {
+                    echo '<div class="creators">';
+                    foreach($creators as $creator)
+                        echo '<span>Createur : </span>'.$creator->text;
+                    echo '</div>';
+                }
+        ?>
+        </div>
+
+        <?php fire_plugin_hook('public_items_browse_each', array('view' => $this, 'collection' => $collection)); ?>
+
+    </div><!-- end class="collection" -->
+
+    <?php endforeach; ?>
+
+    <?php echo pagination_links(); ?>
+
+</div> <!-- end list -->
+
+<?php fire_plugin_hook('public_items_browse', array('collections'=>$collections, 'view' => $this)); ?>
 
 <?php echo foot(); ?>
+

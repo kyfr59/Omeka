@@ -171,7 +171,7 @@ echo $b->getPartial();
 		    	
 		    <?php endforeach; ?>
 
-			<!--<a href="/fonds/<?php echo $item->id ?>" class="view-all-items">Voir tous les items du fonds</a>-->
+			<a href="/fonds/<?php echo $item->id ?>" class="view-all-items">Voir tous les items du fonds</a>
 		</span>    
     </div>
 

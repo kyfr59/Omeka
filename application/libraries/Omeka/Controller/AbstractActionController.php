@@ -122,19 +122,34 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
         }
 
         // If URI is /fonds, retrieve only the "Fonds" items
-        echo $uri = Zend_Controller_Front::getInstance()->getRequest()->getPathInfo();
+        $uri = Zend_Controller_Front::getInstance()->getRequest()->getPathInfo();
         
         if($uri == '/fonds') {
             $this->setParam('item_type_id', OaipmhHarvester_Harvest_OaiDc::FONDS_ITEM_TYPE);
         }         
+
+        // Retrieve items of this fonds
+        if($this->_getParam('id')) {
+            $objects = get_db()->getTable('ItemRelationsRelation')->findByObjectItemId($this->_getParam('id'));
+            if(count($objects)) {
+                foreach($objects as $o) {
+                    $range .= $o->subject_item_id . ',';
+                }
+                $range = rtrim($range,',');
+            } else {
+                $range = "no-results";
+            }
+            $record = get_record_by_id('item', (int)$this->_getParam('id'));
+            $this->view->pageTitle = "Liste des items du fonds \"".metadata($record, array('Dublin Core', 'Title'))."\"";
+        }
 
         $params = $this->getAllParams();
         $recordsPerPage = $this->_getBrowseRecordsPerPage($pluralName);
         $currentPage = $this->getParam('page', 1);
         
         // Get the records filtered to Omeka_Db_Table::applySearchFilters().
-        $records = $this->_helper->db->findBy($params, $recordsPerPage, $currentPage);
-        $totalRecords = $this->_helper->db->count($params);
+        $records = $this->_helper->db->findBy($params, $recordsPerPage, $currentPage, $range);
+        $totalRecords = $this->_helper->db->count($params, $range);
         
         // Add pagination data to the registry. Used by pagination_links().
         if ($recordsPerPage) {

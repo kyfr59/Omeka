@@ -14,7 +14,7 @@ $months[11] = 'Novembre';
 $months[12] = 'Décembre';
 
 
-$pageTitle = __('Liste des fonds');
+$pageTitle = $this->pageTitle ? $this->pageTitle : __('Liste des fonds');
 echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
 ?>
 
@@ -29,9 +29,14 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
     $sortLinks[__('Auteur')] = 'Dublin Core,Creator';
     $sortLinks[__('Date Added')] = 'added';
     ?>
-    <div id="sort-links">
-        <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
-    </div>
+
+    <?php if (count($items) > 0): ?>
+        <div id="sort-links">
+            <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if (count($items)==0) echo "Aucun item." ?>
 
     <?php foreach (loop('items') as $collection): ?>
 
