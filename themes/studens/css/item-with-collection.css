@@ -81,7 +81,6 @@
 }
 
 #item-with-collection .recent-items a.title {
-	padding-left:50px;
 	display:block;
 	color:black;
 	font-weight:bold;
@@ -92,9 +91,7 @@
 #item-with-collection .recent-items a.description {
 	display:block;
 	padding-bottom:30px;
-	margin-left:50px;
 	color:black;
-	border-bottom:1px solid #ccc;
 	margin-bottom:20px;
 }
 

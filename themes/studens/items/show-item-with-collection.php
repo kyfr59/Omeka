@@ -94,9 +94,40 @@ echo $b->getPartial();
     		<!-- Item Type Metadata -->
     		<?php $itemTypeMetadata = item_type_elements($item); ?>
     		<?php $formats = $this->item->getElementTexts('Dublin Core', 'Format'); ?>
-    		<?php if (count($itemTypeMetadata) > 0 || count($format) > 0): ?>
+    		<?php $identifiants = $this->item->getElementTexts('Dublin Core', 'Identifier'); ?>
+    		<?php $languages = $this->item->getElementTexts('Dublin Core', 'Language'); ?>
+    		<?php $types = $this->item->getElementTexts('Dublin Core', 'Type'); ?>
+    		<?php if (count($itemTypeMetadata) || count($format) || count($identifiants) ): ?>
 	    		<div class="full infos">
-	    			<?php foreach($formats as $format): ?>
+
+	    			<?php foreach($identifiants as $identifiant): ?>
+	    				<?php if(strlen(trim($identifiant))>0): ?>
+			    			<div>
+			    				<span>Référence</span>
+				    			<strong><?php echo $identifiant ?></strong>
+				    		</div>	
+	    				<?php endif; ?>
+		    		<?php endforeach; ?>
+
+		    		<?php foreach($languages as $language): ?>
+	    				<?php if(strlen(trim($language))>0): ?>
+			    			<div>
+			    				<span>Language</span>
+				    			<strong><?php echo $language ?></strong>
+				    		</div>	
+	    				<?php endif; ?>
+		    		<?php endforeach; ?>
+
+		    		<?php foreach($types as $type): ?>
+	    				<?php if(strlen(trim($type))>0): ?>
+			    			<div>
+			    				<span>Type</span>
+				    			<strong><?php echo $type ?></strong>
+				    		</div>	
+	    				<?php endif; ?>
+		    		<?php endforeach; ?>	
+
+		    		<?php foreach($formats as $format): ?>
 	    				<?php if(strlen(trim($format))>0): ?>
 			    			<div>
 			    				<span>Format</span>
@@ -104,10 +135,24 @@ echo $b->getPartial();
 				    		</div>	
 	    				<?php endif; ?>
 		    		<?php endforeach; ?>
+
+		    		<?php foreach($formats as $format): ?>
+	    				<?php if(strlen(trim($format))>0): ?>
+			    			<div>
+			    				<span>Support</span>
+				    			<strong><?php echo $format ?></strong>
+				    		</div>	
+	    				<?php endif; ?>
+		    		<?php endforeach; ?>	    		
+
 	    			<?php foreach($itemTypeMetadata as $key => $value): ?>
 	    				<?php if($value): ?>
 			    			<div>
-			    				<span><?php echo __($key) ?></span>
+			    				<?php if($key == 'Original Format'): ?>
+			    					<span>Extent & medium</span>
+			    				<?php else: ?>	
+			    					<span><?php echo __($key) ?></span>
+			    				<?php endif; ?>	
 				    			<strong><?php echo $value ?></strong>
 
 				    		</div>	
@@ -161,17 +206,29 @@ echo $b->getPartial();
 		    <?php foreach($this->recent_items as $i): ?>
 				
 		    	<?php if($i->id != $item->id): ?>
+		    		<span style="margin-left:50px; position:relative; display:block; border-bottom:1px solid #ccc; margin-bottom:15px; padding-bottom:10px;">
+						<?php $files = $item->getFiles(); ?>
+						<?php if(count($files) > 0 ): ?>
+							<div>
+								<?php foreach($files as $file): ?>
+									<span class="fa <?php echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type) ?>"></span>
+								<?php endforeach; ?>
+							</div>
+						<?php endif; ?>	
+			    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
+			    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
 
-					<?php $files = $item->getFiles(); ?>
-					<?php if(count($files) > 0 ): ?>
-						<div>
-							<?php foreach($files as $file): ?>
-								<span class="fa <?php echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type) ?>"></span>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>	
-		    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
-		    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
+			    		<?php $editors = $this->item->getElementTexts('Dublin Core', 'Publisher'); ?>
+
+		    			<?php foreach($editors as $editor): ?>
+		    				<?php if(strlen(trim($editor))>0): ?>
+				    			<div>
+				    				<span style="color:#999;font-size:14px;">Lieu de conservation : <?php echo $editor ?></span><br />
+					    		</div>	
+		    				<?php endif; ?>
+			    		<?php endforeach; ?>
+			    		
+			    	</span>	
 		    		<?php $j++; ?>
 		    	<?php endif; ?>	
 		    	<?php if($j > 5) {break;} ?>
