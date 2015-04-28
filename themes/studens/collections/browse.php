@@ -38,11 +38,15 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
     <div class="collection">
 
         <?php
+            $collectionImage = null;
             $helperCollectionImage = new Omeka_Controller_Action_Helper_CollectionImage($collection);
             if($helperCollectionImage->getThumbmail()) {
                 $collectionImage = '<img src="'.$helperCollectionImage->getThumbmail().'"/>';
             } 
-            echo link_to_collection($collectionImage, array('class' => 'image'));
+            if($collectionImage)
+                echo link_to_collection($collectionImage, array('class' => 'image'));
+            else
+                echo link_to_collection('<img src="'.OMEKA_ROOT.'/themes/studens/images/fallback.png" width="63" height="63"/>', array('class' => 'image'));
         ?>
 
         <h2><?php echo link_to_collection(); ?></h2>
@@ -53,7 +57,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
         </div>
         <?php endif; ?>
 
-        <div class="item-infos">
+        <div class="item-infos" style="min-height:30px;">
         <?php $creators = $collection->getElementTexts('Dublin Core','Creator');  
             if(count($creators) >  0) {
                     echo '<div class="creators">';

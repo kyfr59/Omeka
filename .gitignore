@@ -27,6 +27,7 @@
 /files/square_thumbnails/*
 /files/theme_uploads/*
 /files/thumbnails/*
+/files/collections
 
 # For macs
 .DS_Store
