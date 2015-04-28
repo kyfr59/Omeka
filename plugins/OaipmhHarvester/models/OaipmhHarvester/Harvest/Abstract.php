@@ -25,6 +25,16 @@ abstract class OaipmhHarvester_Harvest_Abstract
     const MESSAGE_CODE_ERROR = 2;
     
     /**
+     * Prefix of tag for Collection
+     */
+    const COLLECTION_TAG_PREFIX = "Collection : ";
+
+    /**
+     * Prefix of tag for Fonds
+     */
+    const FONDS_TAG_PREFIX = "Fonds : ";
+
+    /**
      * Date format for OAI-PMH requests.
      * Only use day-level granularity for maximum compatibility with
      * repositories.
@@ -177,38 +187,63 @@ abstract class OaipmhHarvester_Harvest_Abstract
         // Cache the record for later use.
         $this->_record = $record;
 
+        $levelOfDescription   = (string)strtolower($harvestedRecord['levelOfDescription']);
+        $atomTopParentName   = $harvestedRecord['atomTopParentName'];
+
         // Retrieve ATOM ID, parent ID & top parent ID
         $atomId             = (string)$harvestedRecord['atomId'];
         $atomParentId       = (string)$harvestedRecord['atomParentId'];
         $atomTopParentId    = (string)$harvestedRecord['atomTopParentId'];
         $atomTopParentUrl   = (string)$harvestedRecord['atomTopParentUrl'];
 
+
         $this->_parentCorrespondance[$atomId]['atomParentId'] = $atomParentId;
         $this->_parentCorrespondance[$atomId]['atomTopParentId'] = $atomTopParentId;
         $this->_parentCorrespondance[$atomId]['atomTopParentUrl'] = $atomTopParentUrl;
 
-        // Record has already been harvested
-        if ($existingRecord) {
+        // Adding collections
+        if($levelOfDescription == 'collection') 
+        {
+            $collectionMetadata = array(
+            'metadata' => array(
+                'public' => 1,
+                'featured' => 0,
+            ),);
+            $collectionMetadata['elementTexts'] = $harvestedRecord['elementTexts'];
+            // $this->_addStatusMessage( 'Collection : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
+            $c = new Collection;
+            $res = $c->getCollectionIdByName($collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);
+            // $this->_addStatusMessage( 'Res : '. print_r($res,1));                
+            if (!$c->getCollectionIdByName($collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text'])) {
+                // $this->_addStatusMessage( 'Collection# : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
+                $this->_insertCollection($collectionMetadata);
+            } 
+        }  
+        else 
+        {
+            // Record has already been harvested
+            if ($existingRecord) {
 
-            // If datestamp has changed, update the record, otherwise ignore.
-            if($existingRecord->datestamp != $record->header->datestamp) {
-                //$message =  "ID : " . $harvestedRecord['atomId']. "\n" . $existingRecord->datestamp. "\n".$record->header->datestamp."\n\n";
-                $this->_addStatusMessage( $message );        
-                $this->_updateItem($existingRecord,
-                                  $harvestedRecord['itemMetadata'],
-                                  $harvestedRecord['elementTexts'],
-                                  $harvestedRecord['fileMetadata']);
+                // If datestamp has changed, update the record, otherwise ignore.
+                if($existingRecord->datestamp != $record->header->datestamp) {
+                    //$message =  "ID : " . $harvestedRecord['atomId']. "\n" . $existingRecord->datestamp. "\n".$record->header->datestamp."\n\n";
+                    // $this->_addStatusMessage( $message );        
+                    $this->_updateItem($existingRecord,
+                                      $harvestedRecord['itemMetadata'],
+                                      $harvestedRecord['elementTexts'],
+                                      $harvestedRecord['fileMetadata']);
+                }
+                $this->_parentCorrespondance[$atomId]['newId'] = $existingRecord->item_id; // An existing                                        
+                release_object($existingRecord);
+
+            } else {
+                $insertedId = $this->_insertItem(
+                    $harvestedRecord['itemMetadata'],
+                    $harvestedRecord['elementTexts'],
+                    $harvestedRecord['fileMetadata']
+                );
+                $this->_parentCorrespondance[$atomId]['newId'] = $insertedId; // A new record (just inserted)
             }
-            $this->_parentCorrespondance[$atomId]['newId'] = $existingRecord->item_id; // An existing                                        
-            release_object($existingRecord);
-
-        } else {
-            $insertedId = $this->_insertItem(
-                $harvestedRecord['itemMetadata'],
-                $harvestedRecord['elementTexts'],
-                $harvestedRecord['fileMetadata']
-            );
-            $this->_parentCorrespondance[$atomId]['newId'] = $insertedId; // A new record (just inserted)
         }
 
         
@@ -307,16 +342,16 @@ abstract class OaipmhHarvester_Harvest_Abstract
     {
         // If collection_id is not null, use the existing collection, do not
         // create a new one.
-        if (($collection_id = $this->_harvest->collection_id)) {
-            $collection = get_db()->getTable('Collection')->find($collection_id);
-        }
-        else {
+        //if (($collection_id = $this->_harvest->collection_id)) {
+        //    $collection = get_db()->getTable('Collection')->find($collection_id);
+        //}
+        //else {
             // There must be a collection name, so if there is none, like when the 
             // harvest is repository-wide, set it to the base URL.
-            if (!isset($metadata['elementTexts']['Dublin Core']['Title']['text']) || 
-                    !$metadata['elementTexts']['Dublin Core']['Title']['text']) {
-                $$metadata['elementTexts']['Dublin Core']['Title']['text'] = $this->_harvest->base_url;
-            }
+        //    if (!isset($metadata['elementTexts']['Dublin Core']['Title']['text']) || 
+        //            !$metadata['elementTexts']['Dublin Core']['Title']['text']) {
+         //       $$metadata['elementTexts']['Dublin Core']['Title']['text'] = $this->_harvest->base_url;
+        //    }
         
 
         
@@ -325,7 +360,7 @@ abstract class OaipmhHarvester_Harvest_Abstract
             // Remember to set the harvest's collection ID once it has been saved.
             $this->_harvest->collection_id = $collection->id;
             $this->_harvest->save();
-        }
+        //}
         return $collection;
     }
     

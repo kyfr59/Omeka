@@ -242,4 +242,19 @@ class Collection extends Omeka_Record_AbstractRecord implements Zend_Acl_Resourc
             return null;
         }
     }
+
+    /**
+     * Return the ID of an existing collection, otherwise false
+     *
+     * @return File|null
+     */
+    public function getCollectionIdByName($collectionName = '') 
+    {
+        $table = $this->getDb()->getTable('ElementText');
+        $res = $table->findBy(array('record_type'=>'Collection', 'text' => $collectionName));
+        if(count($res))
+            return $res[0]->record_id;
+        else
+            return false;
+    }
 }

@@ -35,21 +35,6 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
      */
      protected function _beforeHarvest()
     {
-        /*
-        $harvest = $this->_getHarvest();
-
-        $collectionMetadata = array(
-            'metadata' => array(
-                'public' => $this->getOption('public'),
-                'featured' => $this->getOption('featured'),
-            ),);
-        $collectionMetadata['elementTexts']['Dublin Core']['Title'][]
-            = array('text' => (string) "set_Title", 'html' => false); 
-        $collectionMetadata['elementTexts']['Dublin Core']['Description'][]
-            = array('text' => (string) "set_Description", 'html' => false); 
-        
-        $this->_collection = $this->_insertCollection($collectionMetadata);
-        */
     }
 
     /**
@@ -58,36 +43,55 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
      */
     protected function _afterHarvest()
     {
-        $insertedItems = $this->_parentCorrespondance;
+        $tags = get_db()->getTable('Tag')->findAll();
 
-        if (count($insertedItems) == 0)
-            return;
+        // Retrieving tags beginings by 'Collection :' 
+        foreach ($tags as $tag) 
+        {
 
-        // $this->_addStatusMessage( print_r($insertedItems, 1) ); // Debug
+            if (substr($tag, 0, strlen(self::COLLECTION_TAG_PREFIX)) == self::COLLECTION_TAG_PREFIX) {
 
-        foreach ($insertedItems as $atomId => $tab) {
-            
-            // Mapping of fields
-            $atomId             = $atomId;
-            $atomTopParentId    = $tab['atomTopParentId'];
-            $atomTopParentUrl   = $tab['atomTopParentUrl'];
-            $omekaId            = $tab['newId'];
-            $omekaTopParentId   = $insertedItems[$atomTopParentId]['newId'];
-            if (strlen(trim($omekaTopParentId)) == 0 && strlen(trim($atomTopParentUrl)) > 0)  {
-                
-                $e = get_db()->getTable('ElementText')->findBy(array('text' => $atomTopParentUrl));
-                $omekaTopParentId = $e[0]->record_id;
+                $recordsTags = get_db()->getTable('RecordsTags')->findBy(array('tag' => $tag));
+                $collectionName = ltrim($tag, self::COLLECTION_TAG_PREFIX);
+
+                foreach($recordsTags as $recordTag) {
+                    $c = new Collection;                    
+                    $collectionId = $c->getCollectionIdByName($collectionName);
+                    $collection = get_record_by_id('Collection', $collectionId);    
+                    
+                    if (get_class($collection) == 'Collection') {
+                        $item = get_record_by_id('Item', $recordTag->record_id);
+                        $item->collection_id = $collection->id;
+                        $item->save();
+                    }
+                }
             }
-            if ($omekaId > 0 && $omekaTopParentId > 0)
-            {   
-                $existingRelation = get_db()->getTable('ItemRelationsRelation')->findBy( array('object_item_id' => $omekaTopParentId, 'subject_item_id' => $omekaId) );
-                
-                if (count($existingRelation) == 0) {
-                    ItemRelationsPlugin::insertItemRelation($omekaId, 7, $omekaTopParentId);
-                    // $val .= "L'archive ATOM ".$atomId." a été insérée sous OMEKA ".$omekaId." et à comme parent : ".$atomTopParentId." (soit ".$omekaTopParentId." OMEKA)\r\n"; // Debug
-                    // $this->_addStatusMessage( count($existingRelation) ); // Debug
-                }    
-            } 
+        }
+
+
+        // Retrieving tags beginings by 'Fonds :' 
+        foreach ($tags as $tag) // Pour chaque tag de la table Tags
+        {
+            if (substr($tag, 0, strlen(self::FONDS_TAG_PREFIX)) == self::FONDS_TAG_PREFIX) { // Si le tag à la forme "Fonds : "
+
+                $recordsTags = get_db()->getTable('RecordsTags')->findBy(array('tag' => $tag)); // Récupération de tous les enregidstrements de RecordsTags pour ce tag
+                $fondsName = ltrim($tag, self::FONDS_TAG_PREFIX); // Récupération du nom du fonds (par exemple "Prica Bachelet")
+
+                // Recherche de l'ID du fond
+                $fondsSearch = get_db()->getTable('ElementText')->findBy(array('item_type_id' => 18, 'text' => $fondsName)); 
+                $fondsId = $fondsSearch[0]->record_id;
+
+                foreach($recordsTags as $recordTag) { // Pour chaque ID d'item à mettre à jour
+
+                    $existingRelation = get_db()->getTable('ItemRelationsRelation')->findBy( array('object_item_id' => $fondsId, 'subject_item_id' => $recordTag->record_id) );
+
+                    if (count($existingRelation) == 0) {
+                        ItemRelationsPlugin::insertItemRelation($recordTag->record_id, 7, $fondsId);
+                    }    
+                }
+
+            }
+        
         }
         
     }
@@ -101,6 +105,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
      */
     protected function _harvestRecord($record)
     {
+
         $itemMetadata = array(
             'collection_id' => $this->_collection->id, 
             'public'        => $this->getOption('public'), 
@@ -152,10 +157,10 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         if ( !empty($dcMetadata->levelOfDescription) && $dcMetadata->levelOfDescription == 'fonds') {
             $itemMetadata['item_type_id'] = self::FONDS_ITEM_TYPE;
             $elementTexts['Item Type Metadata']['Type de fonds'][] = array('text' => 'Fonds', 'html' => false); 
-        } else if ( !empty($dcMetadata->levelOfDescription) && $dcMetadata->levelOfDescription == 'collection') {
+        } /*else if ( !empty($dcMetadata->levelOfDescription) && $dcMetadata->levelOfDescription == 'collection') {
             $itemMetadata['item_type_id'] = self::FONDS_ITEM_TYPE;
             $elementTexts['Item Type Metadata']['Type de fonds'][] = array('text' => 'Collection archivistique', 'html' => false); 
-        }
+        }*/
 
         // Clean the 'Identifier' field in OMEKA (to remove the 'identifier' value of ATOM DC)
         unset($elementTexts['Dublin Core']['Identifier']);
@@ -288,9 +293,15 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
         }
 
-        // Add the name of the parent's collection as tag
-        if(isset($dcMetadata->collectionName) && !empty($dcMetadata->collectionName))
-            $tags[] = "Collection : ".$dcMetadata->collectionName;
+        // Add the parent's collection name as tag
+        if (strtolower($dcMetadata->atomTopParentType) == 'collection' && $dcMetadata->atomTopParentName && strtolower($dcMetadata->levelOfDescription) != 'collection') {
+            $tags[] = self::COLLECTION_TAG_PREFIX . $dcMetadata->collectionName;
+        }
+
+        // Add the parent's fonds name as tag
+        if (strtolower($dcMetadata->atomTopParentType) == 'fonds' && $dcMetadata->atomTopParentName && strtolower($dcMetadata->levelOfDescription) != 'fonds') {
+            $tags[] = self::FONDS_TAG_PREFIX . $dcMetadata->atomTopParentName;
+        }        
 
         // Add the subjects as tag
         if (isset($dcMetadata->subjects) && count($dcMetadata->subjects->subject) > 0) {
@@ -307,6 +318,10 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         return array('itemMetadata'     => $itemMetadata,
                      'elementTexts'     => $elementTexts,
                      'fileMetadata'     => array(),
+
+                     'levelOfDescription'   => $dcMetadata->levelOfDescription,              
+                     'atomTopParentName'    => $dcMetadata->atomTopParentName,              
+
                      'atomId'           => $dcMetadata->atomId,                 // Pass the atomId field to the abstract _harvestLoop() function
                      'atomParentId'     => $dcMetadata->atomParentId,           // Pass the atomParentId field to the abstract _harvestLoop() function
                      'atomTopParentId'  => $dcMetadata->atomTopParentId,        // Pass the atomTopParentId field to the abstract _harvestLoop() function
