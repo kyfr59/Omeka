@@ -197,6 +197,6 @@
 -->
 
 
-<?php echo fire_plugin_hook('public_items_show', array('view' => $this)); ?>
+<?php echo fire_plugin_hook('public_items_show', array('view' => $this, 'class' => 'item-without-collection')); ?>
 
 <?php echo foot(); ?>

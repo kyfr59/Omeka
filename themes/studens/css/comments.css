@@ -4,6 +4,28 @@
 	margin:0 auto;
 }
 
+/* Page item-without-collection */
+
+#comments-container.item-without-collection {
+	border:none;
+	background-color:none;
+	width:100%;
+}
+
+#comments-container.item-without-collection form {
+	padding-left:0px !important;
+	background-position:80px 0;
+	max-width:700px !important;
+	padding-left:150px !important;
+	padding-right:150px !important;
+}
+
+#comments-container.item-without-collection .comments {
+	max-width:1000px !important;
+	margin:0 auto;
+}
+
+
 #comments-container .comment-body {
 	margin:0 !important;
 	padding:0 !important;
@@ -138,3 +160,4 @@
 	font-size:12px;
 	font-weight: bold;
 }
+

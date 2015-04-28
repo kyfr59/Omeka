@@ -151,7 +151,7 @@ class CommentingPlugin extends Omeka_Plugin_AbstractPlugin
 
     public static function showComments($args = array())
     {
-        echo "<div id='comments-container'>";
+        echo "<div id='comments-container' class='".$args['class']."''>";
         echo "<div id='comment-main-container'>";
         if( (get_option('commenting_allow_public') == 1)
                 || (get_option('commenting_allow_public_view') == 1)
