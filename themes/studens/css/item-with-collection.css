@@ -81,6 +81,7 @@
 }
 
 #item-with-collection .recent-items a.title {
+	padding-left:50px;
 	display:block;
 	color:black;
 	font-weight:bold;
@@ -89,6 +90,7 @@
 }
 
 #item-with-collection .recent-items a.description {
+	padding-left:50px;
 	display:block;
 	padding-bottom:30px;
 	color:black;

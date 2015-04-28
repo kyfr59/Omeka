@@ -206,7 +206,7 @@ echo $b->getPartial();
 		    <?php foreach($this->recent_items as $i): ?>
 				
 		    	<?php if($i->id != $item->id): ?>
-		    		<span style="margin-left:50px; position:relative; display:block; border-bottom:1px solid #ccc; margin-bottom:15px; padding-bottom:10px;">
+		    		<span style="position:relative; display:block; margin-bottom:15px; padding-bottom:10px;">
 						<?php $files = $item->getFiles(); ?>
 						<?php if(count($files) > 0 ): ?>
 							<div>
@@ -223,11 +223,11 @@ echo $b->getPartial();
 		    			<?php foreach($editors as $editor): ?>
 		    				<?php if(strlen(trim($editor))>0): ?>
 				    			<div>
-				    				<span style="color:#999;font-size:14px;">Lieu de conservation : <?php echo $editor ?></span><br />
+				    				<span style="padding-left:50px;color:#999;font-size:14px;">Lieu de conservation : <?php echo $editor ?></span><br />
 					    		</div>	
 		    				<?php endif; ?>
 			    		<?php endforeach; ?>
-			    		
+			    		<span style="margin-top:8px; margin-left:50px; border-bottom:1px solid #ccc; display:block; max-width:100% !important;"></span>
 			    	</span>	
 		    		<?php $j++; ?>
 		    	<?php endif; ?>	
