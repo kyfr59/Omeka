@@ -285,7 +285,6 @@ abstract class OaipmhHarvester_Harvest_Abstract
         $record->item_id    = $item->id;
         $record->identifier = (string) $this->_record->header->identifier;
         $record->datestamp  = (string) $this->_record->header->datestamp;
-        $record->public     =  1;
         $record->save();
         
         release_object($record);
@@ -390,6 +389,7 @@ abstract class OaipmhHarvester_Harvest_Abstract
         $fileMetadata = array()
     ) {
         // Insert the item.
+        $metadata['public'] = 1;
         $item = insert_item($metadata, $elementTexts);
 
         // Retrieve the inserted ID

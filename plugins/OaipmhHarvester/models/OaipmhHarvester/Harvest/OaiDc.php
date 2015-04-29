@@ -68,16 +68,20 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             }
         }
 
-
         // Retrieving tags beginings by 'Fonds :' 
         foreach ($tags as $tag) // Pour chaque tag de la table Tags
         {
+            // $this->_addStatusMessage('Boucle $tags as $tag : '.$tag);
+
             if (substr($tag, 0, strlen(self::FONDS_TAG_PREFIX)) == self::FONDS_TAG_PREFIX) { // Si le tag à la forme "Fonds : "
 
+                // $this->_addStatusMessage('Boucle $tags as $tag (à la format Fonds) : '.$tag);
                 $recordsTags = get_db()->getTable('RecordsTags')->findBy(array('tag' => $tag)); // Récupération de tous les enregidstrements de RecordsTags pour ce tag
-                $fondsName = ltrim($tag, self::FONDS_TAG_PREFIX); // Récupération du nom du fonds (par exemple "Prica Bachelet")
+                
+                $fondsName = trim(substr($tag, strlen(self::FONDS_TAG_PREFIX), strlen($tag))); // Récupération du nom du fonds (par exemple "Prica Bachelet")
 
                 // Recherche de l'ID du fond
+                $this->_addStatusMessage('fondsName:'.$fondsName);
                 $fondsSearch = get_db()->getTable('ElementText')->findBy(array('item_type_id' => 18, 'text' => $fondsName)); 
                 $fondsId = $fondsSearch[0]->record_id;
 
@@ -93,6 +97,8 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             }
         
         }
+
+        $this->_addStatusMessage('Fin de la fonction _afterHarvest');
         
     }
 
