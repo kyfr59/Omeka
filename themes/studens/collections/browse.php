@@ -57,13 +57,13 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
             <?php echo link_to_collection(); ?>
         </h2>
 
-        <?php if (metadata('collection', array('Dublin Core', 'Description'))): ?>
+        
         <div class="collection-description">
             <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
         </div>
-        <?php endif; ?>
+        
 
-        <div class="item-infos" style="min-height:30px;">
+        <div class="item-infos">
         <?php $creators = $collection->getElementTexts('Dublin Core','Creator');  
             if(count($creators) >  0) {
                     echo '<div class="creators">';

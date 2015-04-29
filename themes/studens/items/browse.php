@@ -59,7 +59,7 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
 
         <div class="collection-description" style="min-height:40px;">
         <?php if (metadata('item', array('Dublin Core', 'Description'))): ?>
-            <?php echo text_to_paragraphs(metadata('item', array('Dublin Core', 'Description'), array('snippet'=>150))); ?>
+            <?php echo text_to_paragraphs(metadata('item', array('Dublin Core', 'Description'))); ?>
         <?php endif; ?>
         </div>
 
@@ -68,7 +68,7 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
             if(count($creators) >  0) {
                     echo '<div class="creators">';
                     foreach($creators as $creator)
-                        echo '<span>Createur : </span>'.$creator->text;
+                        echo '<span>Créateur : </span>'.$creator->text;
                     echo '</div>';
                 }
         ?>

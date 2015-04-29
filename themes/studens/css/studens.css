@@ -129,10 +129,14 @@
 
   .studens #content .collection .item-infos,
   .studens #content .exhibit .item-infos {
-    margin:0;
+    margin:0 !important;
     padding-bottom:30px;
-    margin-bottom:30px;
   }
+
+  .studens #content .collection-description {
+    min-height: 30px;
+  }
+
 
   .studens #content .exhibit .item-infos {
     margin-bottom:0px;
