@@ -152,21 +152,23 @@ echo $b->getPartial();
 			
 		    <?php foreach($this->itemsOfFonds as $i): ?>
 
-		    	<?php if($i->id != $item->id): ?>
+			    	<?php if($i->id != $item->id): ?>
 
-					<?php $files = $item->getFiles(); ?>
+					<?php $files = $i->getFiles(); ?>
 					<?php if(count($files) > 0 ): ?>
 						<div>
 							<?php foreach($files as $file): ?>
-								<span class="fa <?php echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type) ?>"></span>
+								<span class="fa fa-volume-up"></span>
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>	
+				
 		    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
 		    		<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
 		    			<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
 		    		<?php endif; ?>
 		    		<?php $j++; ?>
+		    		<span class="hr"></span>
 		    	<?php endif; ?>	
 		    	
 		    <?php endforeach; ?>
@@ -179,3 +181,4 @@ echo $b->getPartial();
 <br style="clear:both" />
 
 <?php echo foot(); ?>
+

@@ -366,6 +366,10 @@
 	width:inherit !important;
 }
 
-#item-with-collection .fonds .recent-items a.title {
-	background: url(/themes/studens/images/fonds-listing-background.png) 20px top no-repeat;
+#item-with-collection .fonds span.hr {
+	border-bottom:1px solid #ccc; 
+	display:block; 
+	margin-left:50px; 
+	margin-bottom:20px;	
+	margin-top:15px;
 }
