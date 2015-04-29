@@ -30,12 +30,12 @@
             <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-flickr.png" /></a>
             <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-rss.png" /></a>
         </div>
-
+        <!--
         <form>
             <input type="text" placeholder="Rehercher" required>
             <button type="submit">Search</button>
         </form>
-        
+        -->
         <div class="menu">
             <ul style="clear:both;">
                 <li class="<?php echo !$this->isOmeka ? 'selected' : ''; ?>"><a href="<?php echo WORDPRESS_ROOT ?>">accueil</a></li><!--
