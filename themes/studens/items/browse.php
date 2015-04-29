@@ -28,6 +28,7 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
     $sortLinks[__('Title')] = 'Dublin Core,Title';
     $sortLinks[__('Auteur')] = 'Dublin Core,Creator';
     $sortLinks[__('Date Added')] = 'added';
+    $sortLinks[__('Identifiant')] = 'Dublin Core,Identifier';
     ?>
 
     <?php if (count($items) > 0): ?>
@@ -49,7 +50,12 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
         }
         ?>
 
-        <h2><?php echo link_to_item(); ?></h2>
+        <h2>
+            <?php if (metadata('item', array('Dublin Core', 'Identifier'))): ?>
+                <span class="identifier"><?php echo metadata('item', array('Dublin Core', 'Identifier')) ?> - </span> 
+            <?php endif; ?>    
+            <?php echo link_to_item(); ?>
+        </h2>
 
         <div class="collection-description" style="min-height:40px;">
         <?php if (metadata('item', array('Dublin Core', 'Description'))): ?>

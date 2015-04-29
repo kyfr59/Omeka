@@ -28,6 +28,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
     $sortLinks[__('Title')] = 'Dublin Core,Title';
     $sortLinks[__('Auteur')] = 'Dublin Core,Creator';
     $sortLinks[__('Date Added')] = 'added';
+    $sortLinks[__('Identifiant')] = 'Dublin Core,Identifier';
     ?>
     <div id="sort-links">
         <span class="sort-label"><?php echo __('Sort by: '); ?></span><?php echo browse_sort_links($sortLinks); ?>
@@ -49,7 +50,12 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
                 echo link_to_collection('<img src="'.OMEKA_ROOT.'/themes/studens/images/fallback.png" width="63" height="63"/>', array('class' => 'image'));
         ?>
 
-        <h2><?php echo link_to_collection(); ?></h2>
+        <h2>
+            <?php if (metadata('collection', array('Dublin Core', 'Identifier'))): ?>
+                <span class="identifier"><?php echo metadata('collection', array('Dublin Core', 'Identifier')) ?> - </span> 
+            <?php endif; ?>    
+            <?php echo link_to_collection(); ?>
+        </h2>
 
         <?php if (metadata('collection', array('Dublin Core', 'Description'))): ?>
         <div class="collection-description">

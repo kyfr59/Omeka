@@ -59,6 +59,11 @@
     color: black;
   }
 
+  .studens h2 .identifier {
+    color:#999;
+    font-size:14px;
+  }
+
   a:active{outline: none !important;}
   a:focus{ outline: none !important;}
   :focus {outline: 0 !important;}
