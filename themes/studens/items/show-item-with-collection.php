@@ -220,7 +220,7 @@ echo $b->getPartial();
 		    			<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
 		    		<?php endif; ?>	
 
-		    		<?php $editors = $this->item->getElementTexts('Dublin Core', 'Publisher'); ?>
+		    		<?php $editors = $i->getElementTexts('Dublin Core', 'Publisher'); ?>
 
 	    			<?php foreach($editors as $editor): ?>
 	    				<?php if(strlen(trim($editor))>0): ?>
