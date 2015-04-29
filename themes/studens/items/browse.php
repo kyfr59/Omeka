@@ -27,8 +27,8 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
     <?php
     $sortLinks[__('Title')] = 'Dublin Core,Title';
     $sortLinks[__('Auteur')] = 'Dublin Core,Creator';
+    $sortLinks[__('Identifiant')] = 'Dublin Core,Identifier';    
     $sortLinks[__('Date Added')] = 'added';
-    $sortLinks[__('Identifiant')] = 'Dublin Core,Identifier';
     ?>
 
     <?php if (count($items) > 0): ?>
