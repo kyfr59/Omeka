@@ -100,7 +100,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         
         }
 
-        $this->_addStatusMessage('Fin de la fonction _afterHarvest');
+        // $this->_addStatusMessage('Fin de la fonction _afterHarvest');
         
     }
 

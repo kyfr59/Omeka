@@ -110,6 +110,7 @@
   .studens #content .collection p, 
   .studens #content .exhibit p{
     border:none !important;
+    margin-top:5px;
   }
 
   .studens #content .collection a.image,
