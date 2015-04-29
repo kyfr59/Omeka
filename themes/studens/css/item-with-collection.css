@@ -97,6 +97,14 @@
 	margin-bottom:20px;
 }
 
+#item-with-collection .recent-items span.hr {
+	margin-top:8px; 
+	margin-left:50px; 
+	border-bottom:1px solid #ccc; 
+	display:block; 
+	max-width:100% !important;
+}
+
 #item-with-collection .recent-items > div {
 	position:absolute;
 	float:left;

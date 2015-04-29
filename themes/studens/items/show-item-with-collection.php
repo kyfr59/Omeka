@@ -204,32 +204,32 @@ echo $b->getPartial();
 		    
 			<?php $j = 0; ?>
 		    <?php foreach($this->recent_items as $i): ?>
-				
+				<?php $files = $item->getFiles(); ?>
+				<?php if(count($files) > 0 ): ?>
+					<div>
+						<?php foreach($files as $file): ?>
+							<span class="fa <?php echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type) ?>"></span>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>	
 		    	<?php if($i->id != $item->id): ?>
-		    		<span style="position:relative; display:block; margin-bottom:15px; padding-bottom:10px;">
-						<?php $files = $item->getFiles(); ?>
-						<?php if(count($files) > 0 ): ?>
-							<div>
-								<?php foreach($files as $file): ?>
-									<span class="fa <?php echo Omeka_View_Helper_FileIcon::getIcon($file->mime_type) ?>"></span>
-								<?php endforeach; ?>
-							</div>
-						<?php endif; ?>	
-			    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
-			    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
+	    		<span style="position:relative; display:block; margin-bottom:15px; padding-bottom:10px;">
+					
+		    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
+		    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
 
-			    		<?php $editors = $this->item->getElementTexts('Dublin Core', 'Publisher'); ?>
+		    		<?php $editors = $this->item->getElementTexts('Dublin Core', 'Publisher'); ?>
 
-		    			<?php foreach($editors as $editor): ?>
-		    				<?php if(strlen(trim($editor))>0): ?>
-				    			<div>
-				    				<span style="padding-left:50px;color:#999;font-size:14px;">Lieu de conservation : <?php echo $editor ?></span><br />
-					    		</div>	
-		    				<?php endif; ?>
-			    		<?php endforeach; ?>
-			    		<span style="margin-top:8px; margin-left:50px; border-bottom:1px solid #ccc; display:block; max-width:100% !important;"></span>
-			    	</span>	
-		    		<?php $j++; ?>
+	    			<?php foreach($editors as $editor): ?>
+	    				<?php if(strlen(trim($editor))>0): ?>
+			    			<div>
+			    				<span style="padding-left:50px;color:#999;font-size:14px;">Lieu de conservation : <?php echo $editor ?></span><br />
+				    		</div>	
+	    				<?php endif; ?>
+		    		<?php endforeach; ?>
+		    		<span class="hr"></span>
+		    	</span>	
+		    	<?php $j++; ?>
 		    	<?php endif; ?>	
 		    	<?php if($j > 5) {break;} ?>
 		    <?php endforeach; ?>
