@@ -158,6 +158,12 @@
 	padding-top:100px;
 }
 
+#item-without-collection .lifeline a.subjects {
+	font-size:15px;
+	display:block;
+	padding-top:5px;
+}
+
 #item-without-collection .lifeline .date {
 	display:inline-block;
 	margin:0;

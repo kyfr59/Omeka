@@ -31,7 +31,7 @@ echo $b->getPartial();
     		<?php if ( hasSubjects($item) ): ?>
     			<div class="full subject">
     				<b>Sujets</b><br />
-    				<span><?php echo getSubjects($item) ?></span>
+    				<span><?php echo getSubjectsLinks($item, 'subjects') ?></span>
     			</div>
     		<?php endif; ?>		
 

@@ -30,7 +30,7 @@
 			<?php if ( hasSubjects($item) ): ?>
 				<div class="right has-about subject">
 					<b>Sujets</b><br />
-					<?php echo getSubjects($item); ?><br />
+					<?php echo getSubjectsLinks($item, 'subjects'); ?><br />
 				</div>
 			<?php endif; ?>	
 		</div>
