@@ -93,14 +93,27 @@ class ItemsController extends Omeka_Controller_AbstractActionController
             if ($record->isFonds()) {
                 
                 // Retrieve items of this fonds
-                $objects = get_db()->getTable('ItemRelationsRelation')->findByObjectItemId($record->id);
-                $i = 0;
-                foreach($objects as $o) {
-                    if($i >= 10) break;
-                    $items[] = get_record_by_id('item', $o->subject_item_id);
-                    $i++;
+                if($record->id) {
+                    $objects = get_db()->getTable('ItemRelationsRelation')->findByObjectItemId($record->id);
+                    if(count($objects)) {
+                        foreach($objects as $o) {
+                            $range .= $o->subject_item_id . ',';
+                        }
+                        $range = rtrim($range,',');
+                    } else {
+                        $range = "no-results";
+                    }
+                    $record = get_record_by_id('item', (int)$this->_getParam('id'));
+                    $this->view->pageTitle = "Liste des items du fonds \"".metadata($record, array('Dublin Core', 'Title'))."\"";
                 }
-                $this->view->itemsOfFonds = $items;
+
+                $this->setParam('sort_field', 'added');
+                $this->setParam('sort_dir', 'd');
+                $params = $this->getAllParams();
+                
+                // Get the records filtered to Omeka_Db_Table::applySearchFilters().
+                $this->view->itemsOfFonds = $this->_helper->db->findBy($params, 10, 1, $range);
+
 
                 $this->render('show-item-fonds');                
             } else if ($record->collection_id) {
