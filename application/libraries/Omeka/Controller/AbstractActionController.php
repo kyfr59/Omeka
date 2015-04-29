@@ -271,6 +271,13 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
                 $this->view->$varName = $record;
                 return;
             }
+
+            
+            // Deleting tags (to manage collections create manually)
+            foreach ($record->getTags() as $tag)
+                if (Tag::isCollectionTag($tag->name))
+                    $record->deleteTags($tag->name);
+
             $record->setPostData($_POST);
             if ($record->save(false)) {
                 $successMessage = $this->_getEditSuccessMessage($record);

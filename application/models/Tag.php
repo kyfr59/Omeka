@@ -117,4 +117,15 @@ class Tag extends Omeka_Record_AbstractRecord {
             }
         }
     }
+
+    /**
+     * Return true if the tags begins by "Collection : "
+     */
+    public static function isCollectionTag($tag) 
+    {
+        if (stripos($tag, OaipmhHarvester_Harvest_Abstract::COLLECTION_TAG_PREFIX) === 0) {
+            return true;
+        }
+        return false;
+    }
 }
