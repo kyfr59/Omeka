@@ -38,7 +38,7 @@ echo $b->getPartial();
     		<?php if ( hasSubjects($item) ): ?>
     			<div class="full subject">
     				<b>Sujets</b><br />
-    				<span><?php echo getSubjects($item) ?></span>
+    				<span><?php echo getSubjectsLinks($item, 'subjects') ?></span>
     			</div>
     		<?php endif; ?>		
 
@@ -216,7 +216,9 @@ echo $b->getPartial();
 	    		<span style="position:relative; display:block; margin-bottom:15px; padding-bottom:10px;">
 					
 		    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
-		    		<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
+		    		<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
+		    			<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
+		    		<?php endif; ?>	
 
 		    		<?php $editors = $this->item->getElementTexts('Dublin Core', 'Publisher'); ?>
 

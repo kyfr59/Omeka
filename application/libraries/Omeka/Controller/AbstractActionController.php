@@ -159,6 +159,9 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
                 'total_results' => $totalRecords, 
             ));
         }
+
+        if ($this->_getParam('tags'))
+            $this->view->pageTitle = $this->_getParam('tags');
         
         $this->view->assign(array($pluralName => $records, 'total_results' => $totalRecords));
     }

@@ -35,6 +35,11 @@ abstract class OaipmhHarvester_Harvest_Abstract
     const FONDS_TAG_PREFIX = "Fonds : ";
 
     /**
+     * Prefix of tag for Fonds
+     */
+    const SUBJECT_TAG_PREFIX = "Sujet : ";    
+
+    /**
      * Date format for OAI-PMH requests.
      * Only use day-level granularity for maximum compatibility with
      * repositories.

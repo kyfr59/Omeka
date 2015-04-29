@@ -306,7 +306,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         // Add the subjects as tag
         if (isset($dcMetadata->subjects) && count($dcMetadata->subjects->subject) > 0) {
             foreach($dcMetadata->subjects->subject as $subject) {
-                $tags[] = "Sujet : ".$subject;
+                $tags[] = self::SUBJECT_TAG_PREFIX . $subject;
             }
         }    
        

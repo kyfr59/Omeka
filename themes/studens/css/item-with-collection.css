@@ -92,9 +92,8 @@
 #item-with-collection .recent-items a.description {
 	padding-left:50px;
 	display:block;
-	padding-bottom:30px;
+	padding-bottom:20px;
 	color:black;
-	margin-bottom:20px;
 }
 
 #item-with-collection .recent-items span.hr {
@@ -175,6 +174,13 @@
 	background-repeat: no-repeat, repeat-y;
 	min-height:49px;
 	width:350px !important;
+}
+
+
+#item-with-collection .lifeline a.subjects {
+	font-size:15px;
+	display:block;
+	padding-top:5px;
 }
 
 #item-with-collection .lifeline .subject span {

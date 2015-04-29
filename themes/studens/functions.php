@@ -68,6 +68,14 @@ function cutString($string, $length = 'medium') {
 }
 
 
+function hasSubjects($item) {
+
+    if (getSubjects($item))
+        return true;
+    else
+        return false;
+}
+
 function getSubjects($item) {
 
     $result = '';
@@ -94,13 +102,33 @@ function getSubjects($item) {
     return $result;
 }
 
+function getSubjectsLinks($item, $class = '') {
 
-function hasSubjects($item) {
+    $result = '';
 
-    if (metadata($item,'has tags')) return true;
-
+    // Adding DC subjects
     $subjects = $item->getElementTexts('Dublin Core','Subject'); 
-    if (count($subjects) > 0 ) return true;
+    if (count($subjects)) {
+        foreach($subjects as $subject) {
+            $result .= $subject->text . '<br />';
+        }
+    }
 
-    return false;
+    // Adding subjects extracting from tags
+    if (metadata($item,'has tags')) {
+        foreach ($item->Tags as $tag) {
+            $t = strtolower($tag);
+            if (substr($t,0,5) == 'sujet') {
+                $shortTag = ltrim($tag, 'Sujet');
+                $result .= '<a class="'.$class.'" href="'.html_escape(url('items/browse', array('tags' => (string)$tag))).'">'.trim(ltrim(trim(ltrim($shortTag, 'sujet')),':')) .'</a>';
+            }
+        }
+    }
+
+    return $result;
 }
+
+function stripTagPrefix($tagName, $prefix = null) {
+    echo OaipmhHarvester_Harvest_Abstract::SUBJECT_TAG_PREFIX;
+}
+
