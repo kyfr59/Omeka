@@ -2,9 +2,9 @@
 
 <?php if($item->collection_id): ?>
 	<?php $collection = $item->getCollection(); ?>	
-	<h1><?php echo metadata($collection, array('Dublin Core', 'Title')); ?></h1>
+	<!--<h1><?php echo metadata($collection, array('Dublin Core', 'Title')); ?></h1>-->
 <?php else: ?>	
-	<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>
+	<!--<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>-->
 <?php endif; ?>	
 
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>

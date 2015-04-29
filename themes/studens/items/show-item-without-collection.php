@@ -1,6 +1,6 @@
 <?php echo head(array('title' => metadata('item', array('Dublin Core', 'Title')),'bodyclass' => 'items show')); ?>
 
-<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>
+<!--<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>-->
 
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 <div id="item-without-collection">
