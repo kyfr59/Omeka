@@ -50,9 +50,10 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
 
 
             <div class="item-description" style="min-height:40px;">
-            <?php if ($text = metadata('item', array('Item Type Metadata', 'Text'), array('snippet'=>250))): ?>
-                <?php echo $text; ?>
-            <?php elseif ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
+            <?php //if ($text = metadata('item', array('Item Type Metadata', 'Text'), array('snippet'=>250))): ?>
+                <?php //echo $text; ?>
+            <?php //elseif ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
+            <?php if ($description = metadata('item', array('Dublin Core', 'Description'), array('snippet'=>250))): ?>
                 <?php echo $description; ?>
             <?php endif; ?>
             </div>
