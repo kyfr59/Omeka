@@ -59,6 +59,8 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
                 $recordsTags = get_db()->getTable('RecordsTags')->findBy(array('tag' => $tag));
                 $collectionName = ltrim($tag, self::COLLECTION_TAG_PREFIX);
 
+                $this->_addStatusMessage('Boucle $tags as $tag : '.$collectionName);
+
                 foreach($recordsTags as $recordTag) {
                     $c = new Collection;                    
                     $collectionId = $c->getCollectionIdByName($collectionName);
