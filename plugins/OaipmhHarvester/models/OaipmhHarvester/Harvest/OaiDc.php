@@ -43,6 +43,9 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
      */
     protected function _afterHarvest()
     {
+
+        $this->_addStatusMessage('Début de la fonction _afterHarvest');
+
         $tags = get_db()->getTable('Tag')->findAll();
 
         // Retrieving tags beginings by 'Collection :' 
@@ -51,7 +54,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
             if (substr($tag, 0, strlen(self::COLLECTION_TAG_PREFIX)) == self::COLLECTION_TAG_PREFIX) {
 
-                 //$this->_addStatusMessage('Boucle $tags as $tag : '.$tag);
+                $this->_addStatusMessage('Boucle $tags as $tag : '.$tag);
 
                 $recordsTags = get_db()->getTable('RecordsTags')->findBy(array('tag' => $tag));
                 $collectionName = ltrim($tag, self::COLLECTION_TAG_PREFIX);
@@ -111,7 +114,7 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
         
         }
 
-        // $this->_addStatusMessage('Fin de la fonction _afterHarvest');
+        $this->_addStatusMessage('Fin de la fonction _afterHarvest');
         
     }
 
