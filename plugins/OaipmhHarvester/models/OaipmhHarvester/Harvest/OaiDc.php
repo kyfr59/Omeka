@@ -51,6 +51,8 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
             if (substr($tag, 0, strlen(self::COLLECTION_TAG_PREFIX)) == self::COLLECTION_TAG_PREFIX) {
 
+                 //$this->_addStatusMessage('Boucle $tags as $tag : '.$tag);
+
                 $recordsTags = get_db()->getTable('RecordsTags')->findBy(array('tag' => $tag));
                 $collectionName = ltrim($tag, self::COLLECTION_TAG_PREFIX);
 
@@ -61,8 +63,17 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
                     
                     if (get_class($collection) == 'Collection') {
                         $item = get_record_by_id('Item', $recordTag->record_id);
-                        $item->collection_id = $collection->id;
-                        $item->save();
+                        if ($item->Collection->id) {
+                            $currentCollection = get_record_by_id('Collection', $item->Collection->id);                        
+                            if (get_class($currentCollection) == 'Collection') {
+                                if(!$currentCollection->isManualCollection()) {
+                                    $item->collection_id = $collection->id;
+                                    $item->save();            
+                                }
+                                
+                            }
+                        }
+                        
                     }
                 }
             }

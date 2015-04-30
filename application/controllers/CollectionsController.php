@@ -32,6 +32,9 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
             $this->_setParam('sort_field', 'added');
             $this->_setParam('sort_dir', 'd');
         }
+
+        if(!is_admin_theme())
+            $this->_setParam('public', '1');
         
         parent::browseAction();
     }

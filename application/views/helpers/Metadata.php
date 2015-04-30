@@ -94,6 +94,10 @@ class Omeka_View_Helper_Metadata extends Zend_View_Helper_Abstract
             }
         }
 
+        // Remove the # of manual collections
+        if (get_class($record) == 'Collection' && !is_admin_theme())
+            $text = ltrim($text, '#');
+
         // If we get here, we're working with a single value only.
         return $this->_process($record, $metadata, $text, $snippet, $escape, $filter);
     }

@@ -257,4 +257,19 @@ class Collection extends Omeka_Record_AbstractRecord implements Zend_Acl_Resourc
         else
             return false;
     }
+
+
+    /**
+     * Return the correct collection name or false
+     *
+     */
+    public function isManualCollection() 
+    {
+        $title = $this->getElementTexts('Dublin Core', 'Title')[0];   
+        if ($title) {
+            if (substr($title,0,1) == '#')
+                return ltrim($title, '#');
+        }
+        return false;
+    }
 }

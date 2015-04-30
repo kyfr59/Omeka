@@ -207,7 +207,7 @@ abstract class OaipmhHarvester_Harvest_Abstract
         $this->_parentCorrespondance[$atomId]['atomTopParentUrl'] = $atomTopParentUrl;
 
         // Adding collections
-        if($levelOfDescription == 'collection') 
+        if(strtolower($levelOfDescription) == 'collection') 
         {
             $collectionMetadata = array(
             'metadata' => array(
@@ -215,12 +215,12 @@ abstract class OaipmhHarvester_Harvest_Abstract
                 'featured' => 0,
             ),);
             $collectionMetadata['elementTexts'] = $harvestedRecord['elementTexts'];
-            // $this->_addStatusMessage( 'Collection : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
+            $this->_addStatusMessage( 'Collection : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
             $c = new Collection;
             $res = $c->getCollectionIdByName($collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);
-            // $this->_addStatusMessage( 'Res : '. print_r($res,1));                
+            //$this->_addStatusMessage( 'Res : '. print_r($res,1));                
             if (!$c->getCollectionIdByName($collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text'])) {
-                // $this->_addStatusMessage( 'Collection# : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
+                //$this->_addStatusMessage( 'Collection# : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
                 $this->_insertCollection($collectionMetadata);
             } 
         }  
