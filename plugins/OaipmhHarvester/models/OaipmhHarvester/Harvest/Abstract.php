@@ -207,7 +207,7 @@ abstract class OaipmhHarvester_Harvest_Abstract
         $this->_parentCorrespondance[$atomId]['atomTopParentUrl'] = $atomTopParentUrl;
 
         // Adding collections
-        if($levelOfDescription == 'collection') 
+        if(strtolower($levelOfDescription) == 'collection' || strtolower($levelOfDescription) == 'dossier' || strtolower($levelOfDescription) == 'sous-fonds') 
         {
             $collectionMetadata = array(
             'metadata' => array(
