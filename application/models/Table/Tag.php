@@ -29,6 +29,13 @@ class Table_Tag extends Omeka_Db_Table
         
         return $tag;
     }
+
+    protected function _getColumnPairs()
+    {
+        return array(
+            'tags.id', 
+            'tags.name');
+    }
     
     /**
      * Filter a SELECT statement based on an Omeka_Record_AbstractRecord instance

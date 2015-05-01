@@ -213,6 +213,7 @@ class Table_Element extends Omeka_Db_Table
         ));
 
         $elements = $this->fetchAll($select);
+
         $selectOptions = array();
         foreach ($elements as $element) {
             if ($optgroups) {
