@@ -48,7 +48,7 @@
 
 #advanced-search-form #search-keywords {
 	width:800px;
-	background: #f7f1d9;
+	background: #f7f1d9 !important;
 	padding:50px;
 	margin-top:40px;
 	border:none;
