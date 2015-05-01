@@ -33,7 +33,7 @@ class Table_Tag extends Omeka_Db_Table
     protected function _getColumnPairs()
     {
         return array(
-            'tags.id', 
+            'tags.name', 
             'tags.name');
     }
     

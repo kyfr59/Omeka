@@ -1,3 +1,18 @@
+<script>
+jQuery(document).ready(function() {
+    jQuery('#keyword-search').click(function() {
+        jQuery(this).val('');
+    });
+    jQuery('.small-submit').click(function() {
+        jQuery('#keyword-search').val('');
+    });
+    jQuery('#submit_search_advanced').click(function() {
+        jQuery('#keyword-search').val('');
+    });
+    
+});
+</script>
+
 <?php
 if (!empty($formActionUri)):
     $formAttributes['action'] = $formActionUri;
@@ -12,20 +27,6 @@ $formAttributes['method'] = 'GET';
     <div id="search-keywords" class="field">
         <div id="inputs">
             <input type="submit" class="small-submit">
-            <script>
-            jQuery(document).ready(function() {
-                jQuery('#keyword-search').click(function() {
-                    jQuery(this).val('');
-                });
-                jQuery('.small-submit').click(function() {
-                    jQuery('#keyword-search').val('');
-                });
-                jQuery('#submit_search_advanced').click(function() {
-                    jQuery('#keyword-search').val('');
-                });
-                
-            });
-            </script>
             <?php
                 $default = @$_REQUEST['search'] ? @$_REQUEST['search'] : "Saisissez votre recherche ici";
             ?>
@@ -75,24 +76,7 @@ $formAttributes['method'] = 'GET';
                         'sort' => 'alphaBySet')
                     )
                 );
-                /*
-                echo $this->formSelect(
-                    "advanced[$i][type]",
-                    @$rows['type'],
-                    array(
-                        'title' => __("Search Type"),
-                        'id' => null,
-                        'class' => 'advanced-search-type'
-                    ),
-                    label_table_options(array(
-                        'contains' => __('contains'),
-                        'does not contain' => __('does not contain'),
-                        'is exactly' => __('is exactly'),
-                        'is empty' => __('is empty'),
-                        'is not empty' => __('is not empty'))
-                    )
-                );
-                */
+
                 echo $this->formText(
                     "advanced[$i][terms]",
                     @$rows['terms'],
@@ -111,26 +95,24 @@ $formAttributes['method'] = 'GET';
         <button type="button" class="add_search"><?php echo __('Add a Field'); ?></button>
     </div>
 
-    <div id="search-by-range" class="field">
-        <?php echo $this->formLabel('range', __('Search by a range of ID#s (example: 1-4, 156, 79)')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formText('range', @$_GET['range'],
-                array('size' => '40')
-            );
-        ?>
-        </div>
-    </div>
-
+    
     <div class="field">
         <?php echo $this->formLabel('collection-search', __('Search By Collection')); ?>
         <div class="inputs">
+        <?php 
+            $collections = get_db()->getTable('Collection')->findBy(array('public' => 1));
+            $collectionsRes[null] = "Faites votre choix";
+            foreach ($collections as $c) {
+                $collection = get_record_by_id('Collection', $c->id);    
+                $collectionsRes[$collection->id] = metadata($collection, array('Dublin Core', 'Title'));
+            }
+        ?>
         <?php
             echo $this->formSelect(
                 'collection',
                 @$_REQUEST['collection'],
                 array('id' => 'collection-search'),
-                get_table_options('Collection')
+                $collectionsRes
             );
         ?>
         </div>
@@ -150,32 +132,24 @@ $formAttributes['method'] = 'GET';
         </div>
     </div>
 
-    <?php if(is_allowed('Users', 'browse')): ?>
-    <div class="field">
-    <?php
-        echo $this->formLabel('user-search', __('Search By User'));?>
-        <div class="inputs">
-        <?php
-            echo $this->formSelect(
-                'user',
-                @$_REQUEST['user'],
-                array('id' => 'user-search'),
-                get_table_options('User')
-            );
-        ?>
-        </div>
-    </div>
-    <?php endif; ?>
-
     <div class="field">
         <?php echo $this->formLabel('tag-search', __('Search By Tags')); ?>
         <div class="inputs">
+        <?php
+            $tags = get_db()->getTable('Tag')->findAll(); //->filterByPublic($select, (bool) $params['public']);
+            $res[null] = "Faites votre choix";
+            foreach ($tags as $tag) {
+                if (substr($tag, 0, strlen(OaipmhHarvester_Harvest_Abstract::SUBJECT_TAG_PREFIX)) == OaipmhHarvester_Harvest_Abstract::SUBJECT_TAG_PREFIX)
+                    $res[$tag->name] = ltrim($tag->name, OaipmhHarvester_Harvest_Abstract::SUBJECT_TAG_PREFIX) ;
+            }
+        ?>
+
         <?php
             echo $this->formSelect(
                 'tags',
                 @$_REQUEST['tags'],
                 array('id' => 'tags-search'),
-                get_table_options('Tag')
+                $res
             );
         ?>
 
@@ -186,45 +160,9 @@ $formAttributes['method'] = 'GET';
         ?>
         </div>
     </div>
+    
 
-
-    <?php if (is_allowed('Items','showNotPublic')): ?>
-    <div class="field">
-        <?php echo $this->formLabel('public', __('Public/Non-Public')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formSelect(
-                'public',
-                @$_REQUEST['public'],
-                array(),
-                label_table_options(array(
-                    '1' => __('Only Public Items'),
-                    '0' => __('Only Non-Public Items')
-                ))
-            );
-        ?>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <div class="field">
-        <?php echo $this->formLabel('featured', __('Featured/Non-Featured')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formSelect(
-                'featured',
-                @$_REQUEST['featured'],
-                array(),
-                label_table_options(array(
-                    '1' => __('Only Featured Items'),
-                    '0' => __('Only Non-Featured Items')
-                ))
-            );
-        ?>
-        </div>
-    </div>
-
-    <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
+    <?php // fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
         <?php if (!isset($buttonText)) $buttonText = 'Rechercher'; ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">

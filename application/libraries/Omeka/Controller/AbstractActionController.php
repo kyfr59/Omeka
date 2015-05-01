@@ -99,7 +99,6 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
      */
     public function browseAction()
     {
-
         // Respect only GET parameters when browsing.
         $this->getRequest()->setParamSources(array('_GET'));
 
