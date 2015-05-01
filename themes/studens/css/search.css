@@ -1,0 +1,112 @@
+#advanced-search-form {
+	text-align:center;
+	width:1100px;
+	float:left;
+	font-family: 'Roboto', sans-serif;
+}
+
+#advanced-search-form input[type=text] {
+	background:white;
+	border:1px solid #e1dabe;	
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	color:black;
+	font-weight: 300;
+}
+
+#advanced-search-form input[type=submit],
+#advanced-search-form button {
+	background:#d9971c;
+	padding:15px;
+	border:none;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	height:inherit;
+	font-weight:300;
+	font-size:20px;
+	color:white;
+	text-transform: inherit;
+}
+
+#advanced-search-form button {
+	padding: 8px;
+	font-size:15px;
+}
+
+#advanced-search-form > div {
+	margin-left:165px;
+	width:800px !important;
+	border:none !important;
+	background:none !important;
+	box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+}
+
+
+#advanced-search-form #search-keywords {
+	width:800px;
+	background: #f7f1d9;
+	padding:50px;
+	margin-top:40px;
+	border:none;
+}
+
+#advanced-search-form #search-keywords #inputs {
+	float:left;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;	
+	border:1px solid #e1dabe;		
+}
+
+
+#advanced-search-form #search-keywords input[type='text'] {
+	padding:28px !important;
+	font-size:18px;
+	font-weight:300 !important;
+	background:white;
+	color:black;
+	text-align:center;
+	margin:0;
+	float:left;	
+	width:645px;
+	border:none;
+}
+
+
+#advanced-search-form #search-keywords .small-submit {
+	float:right;
+	width:39px;
+	height:39px;
+	background:url(../images/search-small-submit.png);
+	z-index: 999;
+	margin:0;
+	text-indent:-9999px;
+	margin-right:9px;
+	margin-top:8px;
+}
+
+#advanced-search-form label, 
+#advanced-search-form .label {
+	color:#33342e;
+	font-size:16px;
+	font-weight:bold;
+}
+
+#advanced-search-form select,
+#advanced-search-form option {
+	font-family: arial;
+	font-size:14px;
+	background-color:#efe5ca !important;
+	font-weight:100 !important;
+} 
+
+#advanced-search-form option,
+#advanced-search-form select > optgroup option {
+	font-family: arial;
+	font-weight:normal;
+}
+

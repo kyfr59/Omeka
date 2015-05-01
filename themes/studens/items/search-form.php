@@ -10,17 +10,35 @@ $formAttributes['method'] = 'GET';
 
 <form <?php echo tag_attributes($formAttributes); ?>>
     <div id="search-keywords" class="field">
-        <?php echo $this->formLabel('keyword-search', __('Search for Keywords')); ?>
-        <div class="inputs">
-        <?php
-            echo $this->formText(
-                'search',
-                @$_REQUEST['search'],
-                array('id' => 'keyword-search', 'size' => '40')
-            );
-        ?>
+        <div id="inputs">
+            <input type="submit" class="small-submit">
+            <script>
+            jQuery(document).ready(function() {
+                jQuery('#keyword-search').click(function() {
+                    jQuery(this).val('');
+                });
+                jQuery('.small-submit').click(function() {
+                    jQuery('#keyword-search').val('');
+                });
+                jQuery('#submit_search_advanced').click(function() {
+                    jQuery('#keyword-search').val('');
+                });
+                
+            });
+            </script>
+            <?php
+                $default = @$_REQUEST['search'] ? @$_REQUEST['search'] : "Saisissez votre recherche ici";
+            ?>
+            <?php
+                echo $this->formText(
+                    'search',
+                    $default,
+                    array('id' => 'keyword-search', 'size' => '40')
+                );
+            ?>
         </div>
     </div>
+
     <div id="search-narrow-by-fields" class="field">
         <div class="label"><?php echo __('Narrow by Specific Fields'); ?></div>
         <div class="inputs">
@@ -53,16 +71,10 @@ $formAttributes['method'] = 'GET';
                     ),
                     get_table_options('Element', null, array(
                         'record_types' => array('Item', 'All'),
-                        'name' => 'Interviewer',
+                        'element_set_name' => 'Dublin Core',
                         'sort' => 'alphaBySet')
                     )
                 );
-
-                Zend_Debug::dump(get_table_options('Element', null, array(
-                        'record_types' => array('Item', 'All'),
-                        'sort' => 'alphaBySet')
-                    ));
-
                 /*
                 echo $this->formSelect(
                     "advanced[$i][type]",
@@ -159,9 +171,18 @@ $formAttributes['method'] = 'GET';
         <?php echo $this->formLabel('tag-search', __('Search By Tags')); ?>
         <div class="inputs">
         <?php
+            echo $this->formSelect(
+                'tags',
+                @$_REQUEST['tags'],
+                array('id' => 'tags-search'),
+                get_table_options('Tag')
+            );
+        ?>
+
+        <?php /*
             echo $this->formText('tags', @$_REQUEST['tags'],
                 array('size' => '40', 'id' => 'tag-search')
-            );
+            ); */
         ?>
         </div>
     </div>
@@ -205,7 +226,7 @@ $formAttributes['method'] = 'GET';
 
     <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
-        <?php if (!isset($buttonText)) $buttonText = __('Search for items'); ?>
+        <?php if (!isset($buttonText)) $buttonText = 'Rechercher'; ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
     </div>
 </form>
