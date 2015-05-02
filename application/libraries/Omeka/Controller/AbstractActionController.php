@@ -149,7 +149,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
         // Get the records filtered to Omeka_Db_Table::applySearchFilters().
         $records = $this->_helper->db->findBy($params, $recordsPerPage, $currentPage, $range);
         $totalRecords = $this->_helper->db->count($params, $range);
-        
+
         // Add pagination data to the registry. Used by pagination_links().
         if ($recordsPerPage) {
             Zend_Registry::set('pagination', array(
@@ -162,6 +162,16 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
         if ($this->_getParam('tags'))
             $this->view->pageTitle = $this->_getParam('tags');
         
+        if ($params['advanced']) 
+        {
+            //Zend_Debug::dump($params);
+            echo "o".$totalRecords;
+        }
+
+        if (is_array($this->_getParam('advanced')))
+            $this->view->pageTitle = "Resultats de la recherche";
+
+
         $this->view->assign(array($pluralName => $records, 'total_results' => $totalRecords));
     }
     

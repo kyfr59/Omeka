@@ -1,13 +1,23 @@
 <script>
 jQuery(document).ready(function() {
-    jQuery('#keyword-search').click(function() {
-        jQuery(this).val('');
-    });
+    
     jQuery('.small-submit').click(function() {
-        jQuery('#keyword-search').val('');
+        var val = jQuery('#keyword-search').val();
+        if (val == 'Saisissez votre recherche ici') {
+            jQuery('#keyword-search').val('');
+        } 
     });
     jQuery('#submit_search_advanced').click(function() {
-        jQuery('#keyword-search').val('');
+        var val = jQuery('#keyword-search').val();
+        if (val == 'Saisissez votre recherche ici') {
+            jQuery('#keyword-search').val('');
+        } 
+    });
+    jQuery('#keyword-search').click(function() {
+        var val = jQuery('#keyword-search').val();
+        if (val == 'Saisissez votre recherche ici') {
+            jQuery('#keyword-search').val('');
+        } 
     });
     
 });
@@ -121,12 +131,19 @@ $formAttributes['method'] = 'GET';
     <div class="field">
         <?php echo $this->formLabel('item-type-search', __('Search By Type')); ?>
         <div class="inputs">
+        <?php 
+            $fonds = get_db()->getTable('Item')->findBy(array('public' => 1, 'item_type_id' => 18));
+            $fondsRes[null] = "Faites votre choix";
+            foreach ($fonds as $f) {
+                $fondsRes[$f->id] = $f->getElementTexts('Dublin Core', 'Title')[0]->text;
+            }
+        ?>
         <?php
             echo $this->formSelect(
-                'type',
-                @$_REQUEST['type'],
+                'item_relations_object_id',
+                @$_REQUEST['item_relations_object_id'],
                 array('id' => 'item-type-search'),
-                get_table_options('ItemType')
+                $fondsRes
             );
         ?>
         </div>

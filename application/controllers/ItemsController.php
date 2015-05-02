@@ -233,8 +233,6 @@ class ItemsController extends Omeka_Controller_AbstractActionController
             unset($_GET['user'], $_POST['user']);
         }
         
-        if (is_array($this->_getParam('advanced')))
-            $this->view->pageTitle = "Resultats de la recherche";
 
         parent::browseAction();
     }

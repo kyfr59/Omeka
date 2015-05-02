@@ -276,6 +276,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookAdminItemsSearch()
     {
+
         echo common('item-relations-advanced-search', array(
             'formSelectProperties' => get_table_options('ItemRelationsProperty'))
         );
@@ -299,6 +300,7 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
 
         // Save item relations.
         foreach ($post['item_relations_property_id'] as $key => $propertyId) {
+
             self::insertItemRelation(
                 $record,
                 $propertyId,
@@ -350,6 +352,11 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
                 )
                 ->where('item_relations_relations.property_id = ?',
                     $params['item_relations_property_id']
+                );
+
+            if($params['item_relations_object_id'] && is_numeric($params['item_relations_object_id']))    
+                $select->where ('item_relations_relations.object_item_id = ?',
+                    $params['item_relations_object_id']
                 );
         }
     }
