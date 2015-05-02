@@ -72,6 +72,21 @@ $formAttributes['method'] = 'GET';
                 //[type] = 'contains'
                 //[terms] = 'foobar'
                 //etc
+
+                $elements = get_db()->getTable('Element')->findBy(array('element_set_id' => '3')); 
+                $elementsRes[null] = "Faites votre choix";
+                foreach ($elements as $e) {
+                    //$element = get_record_by_id('Element', $c->id);    
+                    $names = array("Title", "Subject", "Creator", "Date", "Type", "Publisher");
+                    if(in_array($e->name, $names))
+                        if($e->name == 'Publisher')
+                            $elementsRes[$e->id] = 'Institution de conservation';
+                        else
+                            $elementsRes[$e->id] = __($e->name);
+                }
+                $elementRes = array();
+                
+
                 echo $this->formSelect(
                     "advanced[$i][element_id]",
                     @$rows['element_id'],
@@ -80,12 +95,27 @@ $formAttributes['method'] = 'GET';
                         'id' => null,
                         'class' => 'advanced-search-element'
                     ),
-                    get_table_options('Element', null, array(
-                        'record_types' => array('Item', 'All'),
-                        'element_set_name' => 'Dublin Core',
-                        'sort' => 'alphaBySet')
+                    $elementsRes
+                );
+
+
+                echo $this->formSelect(
+                    "advanced[$i][type]",
+                    @$rows['type'],
+                    array(
+                        'title' => __("Search Type"),
+                        'id' => null,
+                        'class' => 'advanced-search-type'
+                    ),
+                    label_table_options(array(
+                        'contains' => __('contains'),
+                        'does not contain' => __('does not contain'),
+                        'is exactly' => __('is exactly'),
+                        'is empty' => __('is empty'),
+                        'is not empty' => __('is not empty'))
                     )
                 );
+
 
                 echo $this->formText(
                     "advanced[$i][terms]",
@@ -177,9 +207,10 @@ $formAttributes['method'] = 'GET';
         ?>
         </div>
     </div>
-    
 
-    <?php // fire_plugin_hook('public_items_search', array('view' => $this)); ?>
+   
+
+    <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
         <?php if (!isset($buttonText)) $buttonText = 'Rechercher'; ?>
         <input type="submit" class="submit" name="submit_search" id="submit_search_advanced" value="<?php echo $buttonText ?>">
