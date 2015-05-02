@@ -329,9 +329,10 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookItemsBrowseSql($args)
     {
+
         $select = $args['select'];
         $params = $args['params'];
-
+                
         if (isset($params['item_relations_property_id'])
             && is_numeric($params['item_relations_property_id'])
         ) {
@@ -354,11 +355,13 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
                     $params['item_relations_property_id']
                 );
 
-            if($params['item_relations_object_id'] && is_numeric($params['item_relations_object_id']))    
+            if ($params['item_relations_object_id'] && is_numeric($params['item_relations_object_id'])) {
                 $select->where ('item_relations_relations.object_item_id = ?',
                     $params['item_relations_object_id']
                 );
+            }
         }
+
     }
 
     /**

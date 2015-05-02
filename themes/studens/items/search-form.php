@@ -144,7 +144,7 @@ $formAttributes['method'] = 'GET';
             $collectionsRes[null] = "Faites votre choix";
             foreach ($collections as $c) {
                 $collection = get_record_by_id('Collection', $c->id);    
-                $collectionsRes[$collection->id] = metadata($collection, array('Dublin Core', 'Title'));
+                $collectionsRes[$collection->id] = htmlspecialchars_decode(metadata($collection, array('Dublin Core', 'Title')), ENT_QUOTES);
             }
         ?>
         <?php
@@ -159,7 +159,7 @@ $formAttributes['method'] = 'GET';
     </div>
 
     <div class="field">
-        <?php echo $this->formLabel('item-type-search', __('Search By Type')); ?>
+        <?php echo $this->formLabel('item-type-search', 'Recherche par fonds'); ?>
         <div class="inputs">
         <?php 
             $fonds = get_db()->getTable('Item')->findBy(array('public' => 1, 'item_type_id' => 18));
@@ -176,6 +176,8 @@ $formAttributes['method'] = 'GET';
                 $fondsRes
             );
         ?>
+        <input type="hidden" name="item_relations_property_id" value="7">
+
         </div>
     </div>
 
@@ -208,7 +210,7 @@ $formAttributes['method'] = 'GET';
         </div>
     </div>
 
-   
+
 
     <?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
     <div>
