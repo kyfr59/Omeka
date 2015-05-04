@@ -106,7 +106,7 @@
 	margin-left:525px;
 	padding-top:70px;
 	background:url(../images/lifeline/lifeline-begin-background.png), url(../images/lifeline/lifeline-orange-background.png);
-	background-position: 1px top;
+	background-position: left top;
 	background-repeat: no-repeat, repeat-y;
 }
 
