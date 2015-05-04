@@ -26,6 +26,10 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
 
 <div id="list">
 
+    <?php 
+        echo drawFil($this->fil);
+    ?>
+
     <?php
     $sortLinks[__('Title')] = 'Dublin Core,Title';
     $sortLinks[__('Auteur')] = 'Dublin Core,Creator';

@@ -22,31 +22,8 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
 
 <div id="list">
 
-<style>
-.breadcrumb {
-    border:1px solid red;
-    font-weight:bold;
-}
-
-.breadcrumb a {
-}
-
-
-</style>
     <?php 
-        if ($this->fil) {
-            echo '<div class="breadcrumb">';
-            foreach ($this->fil as $link => $caption) {
-                if ($link) {
-                    echo '<a href="'.$link.'">'.$caption.'</a>&nbsp;>&nbsp;';
-                } else {
-                    echo $caption;
-                }
-            }
-            echo '</div>';
-            
-        }
-
+        echo drawFil($this->fil);
     ?>
 
     <?php echo pagination_links(); ?>

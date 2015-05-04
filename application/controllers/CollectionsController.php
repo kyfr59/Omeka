@@ -36,7 +36,7 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
         if(!is_admin_theme())
             $this->_setParam('public', '1');
         
-        $this->view->fil = array(   '/'     =>'acceuil',
+        $this->view->fil = array(   '/'     =>'accueil',
                                     ''       =>'liste des collections'
                             );
 
@@ -70,6 +70,12 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
                 'total_results' => $totalRecords, 
             ));
         }   
+
+
+        $this->view->fil = array(   '/'             =>'accueil',
+                                    '/collections'  =>'liste des collections',
+                                    ''              =>metadata($this->view->collection, array("Dublin Core", "Title"))
+                            );
 
         $this->view->assign(array('items' => $records, 'total_results' => $totalRecords));     
     }

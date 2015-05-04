@@ -583,3 +583,19 @@
       font-size:16px !important;
       line-height: 20px !important;
   }
+
+  /* Breadcrumb */
+
+.breadcrumb {
+  font-weight:bold;
+  margin-top:-5px;
+  color:#444;
+}
+
+.breadcrumb span {
+  color: #e3a126;
+}
+
+
+.breadcrumb a {
+}

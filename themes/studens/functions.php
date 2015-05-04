@@ -132,3 +132,19 @@ function stripTagPrefix($tagName, $prefix = null) {
     echo OaipmhHarvester_Harvest_Abstract::SUBJECT_TAG_PREFIX;
 }
 
+function drawFil($fil) {
+    if ($fil) {
+        $html = '<div class="breadcrumb">';
+        foreach ($fil as $link => $caption) {
+            if ($link) {
+                $html .= '<a href="'.$link.'">'.$caption.'</a>&nbsp;<span>></span>&nbsp;';
+            } else {
+                $html .= $caption;
+            }
+        }
+        $html .=  '</div>';
+    }
+    return $html;
+}
+
+
