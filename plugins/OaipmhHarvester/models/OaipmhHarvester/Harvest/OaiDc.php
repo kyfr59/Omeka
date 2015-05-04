@@ -61,15 +61,32 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
 
                 // $this->_addStatusMessage('Boucle $tags as $tag : '.$collectionName);
 
+                // For each item belonging to this collection
                 foreach($recordsTags as $recordTag) {
+
+                    // Retrieving the collection information
                     $c = new Collection;                    
                     $collectionId = $c->getCollectionIdByName($collectionName);
                     $collection = get_record_by_id('Collection', $collectionId);    
                     
+                    // If collection found
                     if (get_class($collection) == 'Collection') {
+
+                        // Retrieving infos of item
                         $item = get_record_by_id('Item', $recordTag->record_id);
-                        if ($item->Collection->id) {
+                        
+                        // If the item hasn't already a collection
+                        if (!$item->Collection->id) {
+
+                            $this->_addStatusMessage($collectionId);
+                            $item->collection_id = $collectionId;
+                            $item->save();            
+
+                        } else {
+
+                            // Retrieving current collection of if
                             $currentCollection = get_record_by_id('Collection', $item->Collection->id);                        
+
                             if (get_class($currentCollection) == 'Collection') {
                                 if(!$currentCollection->isManualCollection()) {
                                     $item->collection_id = $collection->id;
@@ -332,6 +349,11 @@ class OaipmhHarvester_Harvest_OaiDc extends OaipmhHarvester_Harvest_Abstract
             foreach($dcMetadata->subjects->subject as $subject) {
                 $tags[] = self::SUBJECT_TAG_PREFIX . $subject;
             }
+        }    
+
+        // Add the levelOfDescription as tag
+        if (isset($dcMetadata->levelOfDescription)) {
+            $tags[] = self::LEVEL_OF_DESCRIPTION_TAG_PREFIX . ucfirst($dcMetadata->levelOfDescription);
         }    
        
         $itemMetadata['tags'] = $tags;

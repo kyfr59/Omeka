@@ -40,6 +40,12 @@ abstract class OaipmhHarvester_Harvest_Abstract
     const SUBJECT_TAG_PREFIX = "Sujet : ";    
 
     /**
+     * Prefix of tag for Level Of Description
+     */
+    const LEVEL_OF_DESCRIPTION_TAG_PREFIX = "Niveau de descripiton : ";    
+
+
+    /**
      * Date format for OAI-PMH requests.
      * Only use day-level granularity for maximum compatibility with
      * repositories.
@@ -215,12 +221,9 @@ abstract class OaipmhHarvester_Harvest_Abstract
                 'featured' => 0,
             ),);
             $collectionMetadata['elementTexts'] = $harvestedRecord['elementTexts'];
-            $this->_addStatusMessage( 'Collection : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
+
             $c = new Collection;
-            $res = $c->getCollectionIdByName($collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);
-            //$this->_addStatusMessage( 'Res : '. print_r($res,1));                
             if (!$c->getCollectionIdByName($collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text'])) {
-                //$this->_addStatusMessage( 'Collection# : '. $collectionMetadata['elementTexts']['Dublin Core']['Title'][0]['text']);                
                 $this->_insertCollection($collectionMetadata);
             } 
         }  
