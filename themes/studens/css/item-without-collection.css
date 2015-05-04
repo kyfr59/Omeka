@@ -414,7 +414,7 @@
 
 #item-without-collection .social  {
 	width:250px;
-	background: url(/themes/studens/images/item-without-collection/social-background.png) center top no-repeat;
+	background: url(/themes/studens/images/item-without-collection/social-background.png) 515px top no-repeat;
 	text-align:center !important;
 	padding-top:100px;
 }
