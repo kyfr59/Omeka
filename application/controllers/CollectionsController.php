@@ -36,6 +36,10 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
         if(!is_admin_theme())
             $this->_setParam('public', '1');
         
+        $this->view->fil = array(   '/'     =>'acceuil',
+                                    ''       =>'liste des collections'
+                            );
+
         parent::browseAction();
     }
     
