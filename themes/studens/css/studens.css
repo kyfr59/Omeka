@@ -590,6 +590,8 @@
   font-weight:bold;
   margin-top:-5px;
   color:#444;
+  border:none !important;
+  background:none !important;
 }
 
 .breadcrumb span {

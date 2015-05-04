@@ -2,6 +2,8 @@
 
 <!--<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>-->
 
+<?php echo drawFil($this->fil);?>
+
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 <div id="item-without-collection">
 

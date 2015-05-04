@@ -120,13 +120,6 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
             }
         }
 
-        // If URI is /fonds, retrieve only the "Fonds" items
-        $uri = Zend_Controller_Front::getInstance()->getRequest()->getPathInfo();
-        
-        if($uri == '/fonds') {
-            $this->setParam('item_type_id', OaipmhHarvester_Harvest_OaiDc::FONDS_ITEM_TYPE);
-        }         
-
         // Retrieve items of this fonds
         if($this->_getParam('id')) {
             $objects = get_db()->getTable('ItemRelationsRelation')->findByObjectItemId($this->_getParam('id'));
@@ -141,6 +134,17 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
             $record = get_record_by_id('item', (int)$this->_getParam('id'));
             $this->view->pageTitle = "Liste des items du fonds \"".metadata($record, array('Dublin Core', 'Title'))."\"";
         }
+
+        // If URI is /fonds, retrieve only the "Fonds" items
+        $uri = Zend_Controller_Front::getInstance()->getRequest()->getPathInfo();
+        
+        if($uri == '/fonds') {
+            $this->setParam('item_type_id', OaipmhHarvester_Harvest_OaiDc::FONDS_ITEM_TYPE);
+
+            $this->view->fil = array(   '/'      =>'accueil',
+                            '' =>'liste des fonds',
+                           );
+        }    
 
         $params = $this->getAllParams();
         $recordsPerPage = $this->_getBrowseRecordsPerPage($pluralName);
@@ -165,7 +169,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
         if ($params['advanced']) 
         {
             //Zend_Debug::dump($params);
-            echo "o".$totalRecords;
+            // echo "o".$totalRecords;
         }
 
         if (is_array($this->_getParam('advanced')))
@@ -187,6 +191,7 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
     {
         // Retrieve thumbmail if collection & add flag to say if the image is on the slider or not
         $record = $this->_helper->db->findById();
+
         $recordType = get_class($record);
         if ($recordType == 'Collection') {
             $helperCollectionImage = new $this->_helper->collectionImage($record);

@@ -1,7 +1,10 @@
 <?php echo head(array('title' => metadata('item', array('Dublin Core', 'Title')),'bodyclass' => 'items show', 'wrapperclass' => 'no-background')); ?>
 
+<?php echo drawFil($this->fil); ?>
+
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 <div id="item-with-collection">
+
 
 <?php 
 $b = new Zend_View_Helper_Navigation_Breadcrumbs;
@@ -146,7 +149,7 @@ echo $b->getPartial();
     <div class="right fonds">
 
 		<span class="recent-items">
-		    <h2>Liste des items du fonds</h2>
+		    <h2>Liste des items du fonds : <?php echo metadata($item, array("Dublin Core", "Title"))?></h2>
 		    
 			<?php $j = 0; ?>
 			

@@ -114,9 +114,22 @@ class ItemsController extends Omeka_Controller_AbstractActionController
                 // Get the records filtered to Omeka_Db_Table::applySearchFilters().
                 $this->view->itemsOfFonds = $this->_helper->db->findBy($params, 10, 1, $range);
 
+                $this->view->fil = array(   '/'                                     =>'accueil',
+                                            '/fonds'                                =>'liste des fonds',
+                                            ''                                      => metadata($record, array("Dublin Core", "Title"))
+                                        );
 
                 $this->render('show-item-fonds');                
+
             } else if ($record->collection_id) {
+
+                $collection = get_collection_for_item($record);
+                $this->view->fil = array(   '/'                                     =>'accueil',
+                                            '/collections'                          =>'liste des collections',
+                                            '/collections/show/'.$collection->id    => metadata($collection, array("Dublin Core", "Title")),
+                                            ''                                      => metadata($record, array("Dublin Core", "Title"))
+                                        );
+
 
                 $this->view->recent_items = $this->_helper->db->getTable('Item')->findBy(
                     array('collection' => $record->collection_id, 'sort_field' => 'Dublin Core,Identifier')
@@ -125,6 +138,22 @@ class ItemsController extends Omeka_Controller_AbstractActionController
                 $this->render('show-item-with-collection');                
             }
             else
+                
+
+                if ($parentFonds = $record->getFonds()) {
+                    $this->view->fil = array(   '/'                               =>'accueil',
+                                                '/fonds'                          =>'liste des fonds',
+                                                '/items/show/'.$parentFonds->id         => metadata($parentFonds, array("Dublin Core", "Title")),
+                                                ''                                => metadata($record, array("Dublin Core", "Title"))
+
+                                            );
+                    
+                } else {
+                    $this->view->fil = array(   '/'                               =>'accueil',
+                                            ''                                => metadata($record, array("Dublin Core", "Title"))
+                                        );    
+                }
+
                 $this->render('show-item-without-collection');
         }
 

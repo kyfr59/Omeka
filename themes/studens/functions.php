@@ -137,9 +137,9 @@ function drawFil($fil) {
         $html = '<div class="breadcrumb">';
         foreach ($fil as $link => $caption) {
             if ($link) {
-                $html .= '<a href="'.$link.'">'.$caption.'</a>&nbsp;<span>></span>&nbsp;';
+                $html .= '<a href="'.$link.'">'.cutstring($caption, 'short').'</a>&nbsp;<span>></span>&nbsp;';
             } else {
-                $html .= $caption;
+                $html .= cutString($caption, 'short');
             }
         }
         $html .=  '</div>';

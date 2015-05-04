@@ -7,6 +7,8 @@
 	<!--<h1><?php echo metadata('item', array('Dublin Core', 'Title')); ?></h1>-->
 <?php endif; ?>	
 
+<?php echo drawFil($this->fil); ?>
+
 <?php $hasMap = Omeka_Controller_Action_Helper_Geolocation::hasMap($item->id); ?>
 <div id="item-with-collection">
 
@@ -208,7 +210,7 @@ echo $b->getPartial();
 	    <?php fire_plugin_hook('public_items_show_collection_tree', array('collection' => $collection)); ?>
 
 		<span class="recent-items">
-		    <h2>Items extraits de la collection</h2>
+		    <h2>Items de la collection : <?php echo metadata($collection, array("Dublin Core", "Title"))?></h2>
 		    
 			<?php $j = 0; ?>
 		    <?php foreach($this->recent_items as $i): ?>

@@ -22,9 +22,7 @@ echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
 
 <div id="list">
 
-    <?php 
-        echo drawFil($this->fil);
-    ?>
+    <?php echo drawFil($this->fil);?>
 
     <?php echo pagination_links(); ?>
 

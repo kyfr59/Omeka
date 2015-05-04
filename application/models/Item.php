@@ -544,6 +544,22 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     }
 
+    public function getFonds() {
+
+        $relation = get_db()->getTable('ItemRelationsRelation')->findBySubjectItemId($this->id);
+
+        if($relation) {
+            $id = $relation[0]['object_item_id'];
+            if($id) {
+                $record = get_record_by_id('Item', $id);
+                if($record) {
+                    return $record;
+                }
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Return the "level of description" tag (without prefix), otherwise false

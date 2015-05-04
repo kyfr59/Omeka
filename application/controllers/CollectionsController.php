@@ -71,10 +71,9 @@ class CollectionsController extends Omeka_Controller_AbstractActionController
             ));
         }   
 
-
         $this->view->fil = array(   '/'             =>'accueil',
                                     '/collections'  =>'liste des collections',
-                                    ''              =>metadata($this->view->collection, array("Dublin Core", "Title"))
+                                    ''              => metadata($this->view->collection, array("Dublin Core", "Title"))
                             );
 
         $this->view->assign(array('items' => $records, 'total_results' => $totalRecords));     
