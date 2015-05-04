@@ -57,13 +57,13 @@ jQuery(document).ready(function() {
                 <strong>
                     <?php 
                         $title = metadata($collection, array('Dublin Core', 'Title')); 
-                        echo rtrim(mb_strimwidth($title, 0, 60))."...";
+                        echo rtrim(cutString($title, 60));
                     ?>
                 </strong>
                 <u>
                     <?php 
                         $subject = metadata($collection, array('Dublin Core', 'Subject')); 
-                        echo rtrim(mb_strimwidth($subject, 0, 220))."...";
+                        echo rtrim(cutString($subject, 220));
                     ?>
                 </u>
             </p>
