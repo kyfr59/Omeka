@@ -39,7 +39,7 @@
 
     <script>
     jQuery(document).ready(function() {
-        if (navigator.userAgent.indexOf('Mac') < 0) 
+        if (navigator.userAgent.indexOf('Mac') > 0) 
             jQuery('body').addClass('mac-os');
     });
     </script>
