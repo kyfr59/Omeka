@@ -36,6 +36,14 @@
     <?php queue_js_file('vendor/respond'); ?>
     <?php queue_js_file('globals'); ?>
     <?php echo head_js(); ?>
+
+    <script>
+    jQuery(document).ready(function() {
+        if (navigator.userAgent.indexOf('Mac') < 0) 
+            jQuery('body').addClass('mac-os');
+    });
+    </script>
+
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
 
