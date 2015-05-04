@@ -333,8 +333,10 @@ class ItemRelationsPlugin extends Omeka_Plugin_AbstractPlugin
         $select = $args['select'];
         $params = $args['params'];
                 
-        if (isset($params['item_relations_property_id'])
-            && is_numeric($params['item_relations_property_id'])
+        if (    isset($params['item_relations_property_id'])
+                && is_numeric($params['item_relations_property_id'])
+                && isset($params['item_relations_object_id'])
+                && is_numeric($params['item_relations_object_id'])
         ) {
             $db = $this->_db;
             // Set the field on which to join.
