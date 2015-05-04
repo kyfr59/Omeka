@@ -108,19 +108,25 @@
 		<!-- Item Type Metadata -->
 		<?php $itemTypeMetadata = item_type_elements($item); ?>
 		<?php $formats = $this->item->getElementTexts('Dublin Core', 'Format'); ?>
-		<?php if (count($itemTypeMetadata) > 0 || count($formats) > 0): ?>
+		<?php $getLevelOfDescriptionTag = $this->item->getLevelOfDescriptionTag() ?>
+		<?php if (count($itemTypeMetadata) > 0 || count($formats) > 0 || $getLevelOfDescriptionTag): ?>
     		<div class="row infos">
-    			<?php if (count($formats)>0): ?>
-	    			<?php foreach($formats as $format): ?>
-	    				<div class="left"><span><u>
-	    				<?php if ($format && strlen(trim($format, '<br>')) > 0): ?>
-			    			<i>Format</i>
-							<strong>
-								<?php echo $format ?><br />
-							</strong>
-	    				<?php endif; ?>
-	    				</u></span></div>
-		    		<?php endforeach; ?>
+    			<?php if (count($formats)>0 || $getLevelOfDescriptionTag): ?>
+    				<div class="left"><span><u>
+					<?php foreach($formats as $format): ?>
+    				<?php if ($format && strlen(trim($format, '<br>')) > 0): ?>
+		    			<i>Format</i>
+						<strong>
+							<?php echo $format ?><br />
+						</strong>
+    				<?php endif; ?>
+    				<?php endforeach; ?>
+		    		
+		    		<?php if ($getLevelOfDescriptionTag): ?>
+		    			<i>Unité</i>
+		    			<strong><?php echo $getLevelOfDescriptionTag ?></strong>
+		    		<?php endif; ?>
+					</u></span></div>
 		    	<?php endif; ?>
 		    		
 		    	<?php if (count($itemTypeMetadata)>0): ?>	
@@ -133,6 +139,10 @@
 		    		<?php endforeach; ?>
 		    		</u></span></div>
 		    	<?php endif; ?>	
+
+
+
+		    	
     		</div>
 		<?php endif; ?>
 

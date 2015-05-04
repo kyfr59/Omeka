@@ -121,6 +121,7 @@ class ItemsController extends Omeka_Controller_AbstractActionController
                 $this->view->recent_items = $this->_helper->db->getTable('Item')->findBy(
                     array('collection' => $record->collection_id, 'sort_field' => 'Dublin Core,Identifier')
                 );
+
                 $this->render('show-item-with-collection');                
             }
             else

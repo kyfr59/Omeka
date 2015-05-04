@@ -158,6 +158,14 @@ echo $b->getPartial();
 				    		</div>	
 	    				<?php endif; ?>
 		    		<?php endforeach; ?>
+
+		    		<?php 
+		    			$getLevelOfDescriptionTag = $this->item->getLevelOfDescriptionTag(); 
+		    			if ($getLevelOfDescriptionTag) {
+		    				echo '<span>Unité</span><strong>'.$getLevelOfDescriptionTag.'</strong>';
+		    			}
+		    		?>
+							    		
 	    		</div>
     		<?php endif; ?>
 

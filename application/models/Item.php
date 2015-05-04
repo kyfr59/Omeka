@@ -544,4 +544,17 @@ class Item extends Omeka_Record_AbstractRecord implements Zend_Acl_Resource_Inte
 
     }
 
+
+    /**
+     * Return the "level of description" tag (without prefix), otherwise false
+     */
+    public function getLevelOfDescriptionTag() 
+    {
+        foreach ($this->getTags() as $tag) {
+            if (substr($tag, 0, strlen(OaipmhHarvester_Harvest_OaiDc::LEVEL_OF_DESCRIPTION_TAG_PREFIX)) == OaipmhHarvester_Harvest_OaiDc::LEVEL_OF_DESCRIPTION_TAG_PREFIX)
+                return ltrim($tag, OaipmhHarvester_Harvest_OaiDc::LEVEL_OF_DESCRIPTION_TAG_PREFIX);
+        }
+        return false;
+    }
+
 }

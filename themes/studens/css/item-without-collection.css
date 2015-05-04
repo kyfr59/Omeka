@@ -141,7 +141,7 @@
 
 #item-without-collection .lifeline .subject {
     background:url(/themes/studens/images/item-without-collection/subject-background.png), url(/themes/studens/images/item-without-collection/subject-line-background.png);
-    background-position: left bottom, left top;
+    background-position: 2px bottom, 2px top;
 	background-repeat: no-repeat, repeat-y;
     padding-left:100px;
     margin-left:541px !important;
@@ -343,16 +343,19 @@
 	display:block;
 	float:left;
 	width:50%;
+	margin-top:6px;	
 }
 
 #item-without-collection .infos strong {
 	display:block;
 	float:left;
+	margin-top:6px;
 }
 
 #item-without-collection .infos .right i {
 	width:100%;
-	margin-top:8px;
+	margin-top:6px;
+
 }
 
 #item-without-collection .infos .right strong {
