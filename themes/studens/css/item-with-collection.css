@@ -373,3 +373,15 @@
 	margin-bottom:20px;	
 	margin-top:15px;
 }
+
+/* MAC-OS styles */
+
+.mac-os #item-with-collection .lifeline .begin,
+.mac-os #item-with-collection .lifeline .infos {
+	background-position:left top, 1px top;
+}
+
+.mac-os #item-with-collection .lifeline .social {
+	background: url(../images/lifeline/lifeline-social-background.png) left top no-repeat;
+}
+
