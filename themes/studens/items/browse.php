@@ -18,10 +18,9 @@ $pageTitle = $this->pageTitle ? $this->pageTitle : __('Liste des fonds');
 echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
 ?>
 
+<h1 class="without-subtitle"><?php echo $pageTitle; ?> <?php // echo __('(%s au total)', $total_results); ?></h1>
 
 <?php echo drawFil($this->fil);?>
-
-<h1 class="without-subtitle"><?php echo $pageTitle; ?> <?php // echo __('(%s au total)', $total_results); ?></h1>
 
 <div id="list">
 
