@@ -164,7 +164,7 @@ echo $b->getPartial();
 		    		<?php 
 		    			$getLevelOfDescriptionTag = $this->item->getLevelOfDescriptionTag(); 
 		    			if ($getLevelOfDescriptionTag) {
-		    				echo '<span>Unité</span><strong>'.$getLevelOfDescriptionTag.'</strong>';
+		    				echo '<span>Unité de description</span><strong>'.$getLevelOfDescriptionTag.'</strong>';
 		    			}
 		    		?>
 							    		
