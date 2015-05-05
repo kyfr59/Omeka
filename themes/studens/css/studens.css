@@ -633,6 +633,9 @@
   .simple-page #primary {
     background:none !important;
     border:none !important;
+    margin-left:90px;
+    margin-right:90px;
+    color:#666 !important;
   }
 
   .simple-page #primary a {
