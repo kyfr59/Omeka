@@ -151,7 +151,7 @@ echo $b->getPartial();
 	    				<?php if($value): ?>
 			    			<div>
 			    				<?php if($key == 'Original Format'): ?>
-			    					<span>Extent & medium</span>
+			    					<span>Format original</span>
 			    				<?php else: ?>	
 			    					<span><?php echo __($key) ?></span>
 			    				<?php endif; ?>	
