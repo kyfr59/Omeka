@@ -85,7 +85,7 @@ function simple_pages_navigation($parentId = 0, $sort = 'order', $requiresIsPubl
  * @param string $separator The string used to separate each section of the breadcrumb.
  * @param boolean $includePage Whether to include the title of the current page.
  */
-function simple_pages_display_breadcrumbs($pageId = null, $seperator=' > ', $includePage=true)
+function simple_pages_display_breadcrumbs($pageId = null, $seperator=' <b>></b> ', $includePage=true)
 {
     $html = '';
 
@@ -121,7 +121,7 @@ function simple_pages_display_breadcrumbs($pageId = null, $seperator=' > ', $inc
         $pageLinks[] = '<a href="'. public_url('') . '">' . __('Home') . '</a>';
 
         // create the bread crumb
-        $html .= implode(html_escape($seperator), array_reverse($pageLinks));
+        $html .= implode(($seperator), array_reverse($pageLinks));
     }
     return $html;
 }

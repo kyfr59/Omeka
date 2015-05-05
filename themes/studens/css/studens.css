@@ -590,18 +590,51 @@
 
   /* Breadcrumb */
 
-.breadcrumb {
-  font-weight:bold;
-  margin-top:-5px;
-  color:#444;
-  border:none !important;
-  background:none !important;
-}
+  .breadcrumb {
+    font-weight:bold;
+    margin-top:-5px;
+    color:#444;
+    border:none !important;
+    background:none !important;
+  }
 
-.breadcrumb span {
-  color: #e3a126;
-}
+  .breadcrumb span {
+    color: #e3a126;
+  }
 
 
-.breadcrumb a {
-}
+  .breadcrumb a {
+  }
+
+
+  /* Simple page */
+
+  .simple-page #content > h1 {
+    height: 51px;
+    padding-top: 45px;
+  }
+
+
+  .simple-page #simple-pages-breadcrumbs {
+    border:none;
+    padding-left:15px;
+    margin-top:7px;
+    color:#444;
+  }
+
+  .simple-page #simple-pages-breadcrumbs a {
+      text-transform:lowercase;
+  }
+
+  .simple-page #simple-pages-breadcrumbs b {
+    color:#e3a126;
+  }
+
+  .simple-page #primary {
+    background:none !important;
+    border:none !important;
+  }
+
+  .simple-page #primary a {
+    font-weight:bold;
+  }
