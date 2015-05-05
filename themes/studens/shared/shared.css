@@ -128,6 +128,11 @@
 	border:none;
 }
 
+#header-content ul.submenu li a.selected,
+#header-content ul.submenu li a.selected:hover {
+	color:#888 !important;
+}
+
 #header-content ul.submenu {
 	border-bottom:1px solid #D7CEAF;
 }

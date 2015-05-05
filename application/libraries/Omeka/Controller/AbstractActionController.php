@@ -172,8 +172,14 @@ abstract class Omeka_Controller_AbstractActionController extends Zend_Controller
             // echo "o".$totalRecords;
         }
 
-        if (is_array($this->_getParam('advanced')))
+        if (is_array($this->_getParam('advanced'))) {
             $this->view->pageTitle = "Résultats de la recherche";
+
+            $this->view->fil = array(   '/'                               =>'accueil',
+                            '/items/search'                         =>'recherche avancée',
+                            ''                             => 'résultats de la recherche'  
+                );
+        }
 
 
         $this->view->assign(array($pluralName => $records, 'total_results' => $totalRecords));

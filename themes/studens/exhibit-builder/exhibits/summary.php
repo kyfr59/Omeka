@@ -1,5 +1,7 @@
 <?php echo head(array('title' => metadata('exhibit', 'title'), 'bodyclass'=>'exhibits summary')); ?>
 
+<?php echo drawFil($this->fil); ?>
+
 <h1 style="padding-top:42px; height:53px"><?php echo metadata('exhibit', 'title'); ?></h1>
 
 <?php set_exhibit_pages_for_loop_by_exhibit(); ?>

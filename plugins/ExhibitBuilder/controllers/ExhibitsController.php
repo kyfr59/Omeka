@@ -59,6 +59,9 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             }
         }
 
+        $this->view->fil = array(   '/'   =>'accueil',
+                                    ''    =>'liste des expositions',
+                                    );
         parent::browseAction();
     }
 
@@ -152,6 +155,13 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
             'exhibit' => $exhibit,
             'exhibit_page' => $exhibitPage,
         ));
+
+        $this->view->fil = array(   '/'                                 =>'accueil',
+                                    '/exhibits'                         =>'liste des collections',
+                                    '/exhibits/show/'.$exhibit->slug    => metadata($exhibit, 'Title'),
+                                    ''                                  => metadata($exhibitPage, 'Title'),
+                        );
+
     }
 
     /**
@@ -166,6 +176,11 @@ class ExhibitBuilder_ExhibitsController extends Omeka_Controller_AbstractActionC
 
         fire_plugin_hook('show_exhibit', array('exhibit' => $exhibit));
         $this->view->exhibit = $exhibit;
+
+        $this->view->fil = array(   '/'          => 'accueil',
+                                    '/exhibits'  => 'liste des expositions',
+                                    ''           =>  metadata('exhibit', 'title')
+                        );
     }
 
     /**

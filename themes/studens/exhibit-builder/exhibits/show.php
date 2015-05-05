@@ -4,6 +4,8 @@ echo head(array(
     'bodyclass' => 'exhibits show'));
 ?>
 
+<?php echo drawFil($this->fil); ?>
+
 <h1 style="padding-top:42px; height:53px"><?php echo metadata('exhibit', 'title'); ?></h1>
 
 <nav id="exhibit-nav">

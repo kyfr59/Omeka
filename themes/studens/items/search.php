@@ -4,6 +4,8 @@ echo head(array('title' => $pageTitle,
            'bodyclass' => 'items advanced-search'));
 ?>
 
+<?php echo drawFil($this->fil); ?>
+
 <h1><?php echo $pageTitle; ?></h1>
 <!--
 <nav class="items-nav navigation secondary-nav">

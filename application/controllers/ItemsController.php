@@ -65,6 +65,10 @@ class ItemsController extends Omeka_Controller_AbstractActionController
         if($this->getRequest()->isXmlHttpRequest()) {
             $this->render('search-form');
         }
+
+        $this->view->fil = array(   '/'                               =>'accueil',
+                                    ''                         =>'recherche avancée',
+                        );
     }
     
     /**
