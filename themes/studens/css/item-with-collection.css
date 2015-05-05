@@ -265,7 +265,7 @@
 #item-with-collection .lifeline .infos span {
 	display:block;
 	float:left;
-	width:120px;
+	width:130px;
 	/*background-color:#ccc;*/
 }
 
@@ -274,7 +274,7 @@
 	float:left;
 	/*background-color:#eee;*/
 	margin-left:15px;
-	width:200px;
+	width:190px;
 }
 
 #item-with-collection .lifeline .view {
