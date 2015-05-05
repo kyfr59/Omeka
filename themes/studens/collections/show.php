@@ -21,14 +21,14 @@ echo head(array('bodyclass' => 'collections browse'));
 $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 'Title')));
 ?>
 
+<?php echo drawFil($this->fil); ?>
+
 <h1><?php echo $collectionTitle; ?> <span><?php echo __('(%s au total)', $this->total_results); ?></span></h1>
 
 
 <div id="list">
 
-    <?php 
-        echo drawFil($this->fil);
-    ?>
+    
 
     <?php
     $sortLinks[__('Title')] = 'Dublin Core,Title';

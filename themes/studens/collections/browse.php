@@ -18,11 +18,13 @@ $pageTitle = __('Liste des collections');
 echo head(array('title'=>$pageTitle,'bodyclass' => 'collections browse'));
 ?>
 
+<?php echo drawFil($this->fil);?>
+
 <h1 class="without-subtitle"><?php echo $pageTitle; ?> <?php // echo __('(%s au total)', $total_results); ?></h1>
 
 <div id="list">
 
-    <?php echo drawFil($this->fil);?>
+    
 
     <?php echo pagination_links(); ?>
 

@@ -27,18 +27,18 @@ $recent = get_recent_items(3);
 <div id="footer-studens">
     <div id="footer-content">
         <div class="contact left">
-            <h3>cité des mémoires étudiantes</h3>
-            Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, definit amicitiam paribus officiis ac ut par sit.<br />
+            <h3>Studens</h3>
+            Studens est le portail des archives et ressources documentaires sur les engagements étudiants. Il est porté par la Cité des mémoires étudiantes.<br />
             <a target="_blank" href="http://www.citedesmemoiresetudiantes.org" class="site">Visitez citedesmemoiresetudiantes.org</a>
         </div>
         <div class="contact">
-            <h3>studens</h3>
-            <span>Standard de 9h cà 18h</span>
-            <span>Tél: +33 (0)1 44 55 66 77 88</span>
-            <a href="mailto:contact@citedesmemoiresetudiantes.org">contact@citedesmemoiresetudiantes.org</a>
+            <h3>Studens</h3>
+            <span>Standard de 9h à 18h</span>
+            <span>Tél: +33 (0)1 43 52 88 04</span>
+            <a href="mailto:studens@citedesmemoiresetudiantes.org">studens@citedesmemoiresetudiantes.org</a>
         </div>
         <div class="contact">
-            <h3>derniers inventaires</h3>
+            <h3>Dernières notices</h3>
             <?php 
             foreach($recent as $item) {
                 $title = metadata($item, array('Dublin Core', 'Title'));
@@ -58,16 +58,17 @@ $recent = get_recent_items(3);
         <div id="bg"></div>
         <div class="social">
             <a href="#" class="fa fa-facebook"><i>Facebook</i></a>
-            <a href="#" class="fa fa-twitter"><i>Twitter</i></a>
-            <a href="#" class="fa fa-google"><i>Google +</i></a>
+            <a href="https://twitter.com/port_studens" class="fa fa-twitter"><i>Twitter</i></a>
+            <a href="https://www.facebook.com/cite.etudiantes?fref=ts" class="fa fa-google"><i>Google +</i></a>
             <a href="#" class="fa fa-vimeo-square"><i>Vimeo</i></a>
             <a href="#" class="fa fa-flickr"><i>Flickr</i></a>
             <a href="#" class="fa fa-rss"><i>Rss</i></a>
 
         </div>
         <div class="mentions">
-            <a href="#">Mentions légales</a>&nbsp;&nbsp;-&nbsp;
-            <a href="#">Contact</a><br />
+            <a href="http://www.studens.info/mentions-legales/">Mentions légales</a>&nbsp;&nbsp;-&nbsp;
+            <a href="http://www.studens.info/?p=104/">CGU</a>&nbsp;&nbsp;-&nbsp;
+            <a href="http://www.studens.info/contact/">Contact</a><br />
             Copyright &copy; citememoiresetudiantes.org<br />
             Tous droits réservés
         </div>

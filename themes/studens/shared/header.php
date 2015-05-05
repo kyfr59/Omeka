@@ -23,9 +23,9 @@
         <a title="Retour à l'accueil" class="logo-studens" href="/">Accueil</a>
 
         <div class="social">
-            <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-facebook.png" /></a>
-            <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-twitter.png" /></a>
-            <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-google.png" /></a>
+            <a href="https://www.facebook.com/cite.etudiantes?fref=ts"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-facebook.png" /></a>
+            <a href="https://twitter.com/port_studens"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-twitter.png" /></a>
+            <a href="https://www.facebook.com/cite.etudiantes?fref=ts"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-google.png" /></a>
             <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-vimeo.png" /></a>
             <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-flickr.png" /></a>
             <a href="#"><img src="<?php echo OMEKA_ROOT ?>/themes/studens/images/menu-rss.png" /></a>
@@ -40,7 +40,8 @@
             <ul style="clear:both;">
                 <li class="<?php echo !$this->isOmeka ? 'selected' : ''; ?>"><a href="<?php echo WORDPRESS_ROOT ?>">accueil</a></li><!--
              --><li class="<?php echo $this->isOmeka ? 'selected' : ''; ?>"><a href="<?php echo OMEKA_ROOT ?>">ressources numériques</a></li><!--
-             --><li><a href="<?php echo ATOM_ROOT ?>">inventaires d'archives</a></li>
+             
+             --><li><a href="http://www.studens.info/les-inventaires/">inventaires d'archives</a></li>
             </ul>
             <?php if($this->isOmeka): ?>
                 <ul class="submenu">
@@ -48,7 +49,7 @@
                  --><li><a href="/exhibits">expositions</a></li><!--
                  --><li><a href="/collections">collections</a></li><!--
                  --><li><a href="/fonds">fonds</a></li><!--
-                 --><li><a href="/">contribuer</a></li><!--
+                 --><li><a href="/contribuer">contribuer</a></li><!--
                  --><li><a href="/items/search">recherche avancée</a></li>
                 </ul>
             <?php else: ?>
