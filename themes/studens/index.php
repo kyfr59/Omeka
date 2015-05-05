@@ -103,7 +103,7 @@ jQuery(document).ready(function() {
                 <img src="/" />
             <?php endif; ?>    
             <h2><?php echo $this->lastExhibit->title; ?></h2>
-            <p><?php echo cutString(metadata($lastExhibit, 'description')) ?></p>
+            <p><?php echo cutString(strip_tags(html_entity_decode(metadata($lastExhibit, 'description')))) ?></p>
         </a>
 
         <?php if($this->lastCollection): ?>
