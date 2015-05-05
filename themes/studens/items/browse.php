@@ -39,7 +39,7 @@ echo head(array('title'=>$pageTitle, 'bodyclass' => 'collections browse'));
         </div>
     <?php endif; ?>
 
-    <?php if (count($items)==0) echo "Aucun item." ?>
+    <?php if (count($items)==0) echo "Vérifiez l’orthographe des termes de recherche. Essayez d'autres combinaisons de filtres." ?>
 
     <?php foreach (loop('items') as $collection): ?>
 
