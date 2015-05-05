@@ -103,7 +103,7 @@ jQuery(document).ready(function() {
                 <img src="/" />
             <?php endif; ?>    
             <h2><?php echo $this->lastExhibit->title; ?></h2>
-            <p><?php echo cutString($this->lastExhibit->description) ?></p>
+            <p><?php echo cutString(metadata($lastExhibit, 'description')) ?></p>
         </a>
 
         <?php if($this->lastCollection): ?>
@@ -111,12 +111,12 @@ jQuery(document).ready(function() {
                 <span></span>
                 <img src="<?php echo $this->lastCollectionImage ?>" />
                 <h2><?php echo metadata($this->lastCollection, array('Dublin Core', 'Title')); ?></h2>
-                <p><?php echo cutString($this->lastCollection->description, 'short'); ?></p>
+                <p><?php echo cutString(metadata($this->lastCollection, array('Dublin Core', 'Description'))); ?></p>
             </a>
         <?php endif; ?>
     </div>
 <?php endif; ?>
 
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
 
 <?php echo foot(); ?>
