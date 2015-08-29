@@ -176,7 +176,7 @@ echo $b->getPartial();
 		    		<?php endif; ?>
 		    		<?php $j++; ?>
 		    		<?php if ($levelOfDescriptionTag = $i->getLevelOfDescriptionTag()): ?>
-		    			<span style="padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block;">Unité de description : <?php echo $levelOfDescriptionTag ?></span>
+		    			<span style="padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block;">Unité : <?php echo $levelOfDescriptionTag ?></span>
 		    		<?php endif; ?>
 		    		<span class="hr"></span>
 		    	<?php endif; ?>	

@@ -232,6 +232,10 @@ echo $b->getPartial();
 
 		    		<?php $editors = $i->getElementTexts('Dublin Core', 'Publisher'); ?>
 
+					<?php if ($levelOfDescriptionTag = $i->getLevelOfDescriptionTag()): ?>
+		    			<span style="padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block;">Unité : <?php echo $levelOfDescriptionTag ?></span>
+		    		<?php endif; ?>
+
 	    			<?php foreach($editors as $editor): ?>
 	    				<?php if(strlen(trim($editor))>0): ?>
 			    			<div>
