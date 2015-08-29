@@ -125,7 +125,7 @@
     				<?php endforeach; ?>
 		    		
 		    		<?php if ($getLevelOfDescriptionTag): ?>
-		    			<i>Unité de description</i>
+		    			<i style="width:150px">Unité de description</i>
 		    			<strong><?php echo $getLevelOfDescriptionTag ?></strong>
 		    		<?php endif; ?>
 					</u></span></div>
