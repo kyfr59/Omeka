@@ -152,7 +152,7 @@ echo $b->getPartial();
 
 	<style>
 	.full-info-title {width:140px; float:left; padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block; }
-	.full-info-description {width:330px; float:left; color:#999;font-size:14px;margin-top:0px !important; display:block; }
+	.full-info-description {width:330px; float:left; color:#000;font-size:14px;margin-top:0px !important; display:block; }
 	</style>
 
     <div class="right fonds">
@@ -185,9 +185,11 @@ echo $b->getPartial();
                                 </a>
 
 		    		<?php $j++; ?>
-		    		<?php if ($levelOfDescriptionTag = $i->getLevelOfDescriptionTag()): ?>
-		    			<span style="padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block;">Unité : <?php echo $levelOfDescriptionTag ?></span>
-		    		<?php endif; ?>
+                    <?php if ($levelOfDescriptionTag = $i->getLevelOfDescriptionTag()): ?>
+                            <span class="full-info-title">Unité</span>
+                            <span class="full-info-description"><?php echo $levelOfDescriptionTag ?></span>
+                    <?php endif; ?>
+
 
                     <?php /* Dates */ ?>
                     <?php $dates = $i->getElementTexts('Dublin Core','Date'); ?>
