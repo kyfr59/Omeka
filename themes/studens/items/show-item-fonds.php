@@ -150,6 +150,11 @@ echo $b->getPartial();
     	</div>
     </div>
 
+	<style>
+	.full-info-title {width:140px; float:left; padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block; }
+	.full-info-description {width:330px; float:left; color:#999;font-size:14px;margin-top:0px !important; display:block; }
+	</style>
+
     <div class="right fonds">
 
 		<span class="recent-items">
@@ -179,14 +184,10 @@ echo $b->getPartial();
                                 <?php echo metadata($i, array('Dublin Core', 'Title')); ?>
                                 </a>
 
-		    		<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
-		    			<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
-		    		<?php endif; ?>
 		    		<?php $j++; ?>
 		    		<?php if ($levelOfDescriptionTag = $i->getLevelOfDescriptionTag()): ?>
 		    			<span style="padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block;">Unité : <?php echo $levelOfDescriptionTag ?></span>
 		    		<?php endif; ?>
-		    		<span class="hr"></span>
 
                     <?php /* Dates */ ?>
                     <?php $dates = $i->getElementTexts('Dublin Core','Date'); ?>
@@ -232,6 +233,8 @@ echo $b->getPartial();
 	                <?php //endif; ?>
 
 	                <br />
+
+	                		    		<span class="hr"></span>
 
 
 		    	<?php endif; ?>	
