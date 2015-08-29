@@ -170,7 +170,15 @@ echo $b->getPartial();
 						</div>
 					<?php endif; ?>	
 				
-		    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo metadata($i, array('Dublin Core', 'Title')); ?></a>
+					
+
+		    		<a class="title" href="<?php echo absolute_url('items/show/'.$i->id); ?>">
+                                <?php if (metadata($i, array('Dublin Core', 'Identifier'))): ?>
+                                        <strong style="color:#999; font-size:14px;" class="identifier"><?php echo metadata($i, array('Dublin Core', 'Identifier')) ?> - </strong>
+                                <?php endif; ?>
+                                <?php echo metadata($i, array('Dublin Core', 'Title')); ?>
+                                </a>
+
 		    		<?php if(metadata($i, array('Dublin Core', 'Description'))): ?>
 		    			<a class="description" href="<?php echo absolute_url('items/show/'.$i->id); ?>"><?php echo cutString(metadata($i, array('Dublin Core', 'Description'))); ?></a>	
 		    		<?php endif; ?>
@@ -179,6 +187,53 @@ echo $b->getPartial();
 		    			<span style="padding-left:50px;color:#999;font-size:14px;margin-top:0px !important; display:block;">Unité : <?php echo $levelOfDescriptionTag ?></span>
 		    		<?php endif; ?>
 		    		<span class="hr"></span>
+
+                    <?php /* Dates */ ?>
+                    <?php $dates = $i->getElementTexts('Dublin Core','Date'); ?>
+                    <?php if (count($dates) > 0 ): ?>
+                            <span class="full-info-title">Date : </span>
+                            <span class="full-info-description">
+                            <?php foreach($dates as $date): ?>
+                                    <?php echo $date->text ?><br />
+                            <?php endforeach; ?>
+                            </span>
+                            <br style="clear:both;" />
+                    <?php endif; ?>
+
+                    <?php /* Description*/ ?>
+                    <?php $description = metadata($i, array('Dublin Core','Description')); ?>
+                    <?php if ($description ): ?>
+                            <span class="full-info-title">Description : </span>
+                            <span class="full-info-description">
+                            <?php echo $description ?><br />
+                            </span>
+                            <br style="clear:both;" />
+                    <?php endif; ?>
+
+    		       	<?php /* Lieu de conservation*/ ?>
+	                <?php $dates = $i->getElementTexts('Dublin Core','Publisher'); ?>
+	                <?php if (count($dates) > 0 ): ?>
+	                        <span class="full-info-title">Lieu de conservation : </span>
+	                        <span class="full-info-description">
+	                        <?php foreach($dates as $date): ?>
+	                                <?php echo $date->text ?><br />
+	                        <?php endforeach; ?>
+	                        </span>
+	                        <br style="clear:both;" />
+	                <?php endif; ?>
+
+
+
+	                <?php /* Durée */ ?>
+
+	                <?php //$itemTypeMetadata = item_type_elements($i); ?>
+	                <?php //if ($itemTypeMetadata['Duration'] ): ?>
+	                        <?php //print_r($itemTypeMetadata['Duration']); ?>
+	                <?php //endif; ?>
+
+	                <br />
+
+
 		    	<?php endif; ?>	
 		    	
 		    <?php endforeach; ?>
